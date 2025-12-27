@@ -1,30 +1,67 @@
-body {
+body{
     background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 h1 {
     color: #2c3e50;
-
 }
-button {
+/* botones*/
+button{
     background-color: #3498db;
     color: white;
-    padding: 10px 20px;
+    padding: 10px   20px;
     border: none;
     border-radius: 5px;
-    
-
-}
-
-button{
     cursor: pointer;
 }
-
-button:hover {
-    background-color: black;
-    color: brown;
+button:hover{
+    background-color: #2980b9;
 
 }
+/*header*/
+header{
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 30px;
 
+}
+header h1 {
+    margin: 0;
+    color: white;
+}
+/* contenedor del menu*/
+.menu-container {
+    display: flex;
+    gap: 20px;
+    padding: 20;
+    justify-content: center;
+}
+/*tarjetas del menu*/
+.menu-card {
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 30px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 2px   5px     rgba(0.0.0.0.1);
 
+}
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0   5px     15px    rgba(0.0.0.0.2);
+    transition: all 0.3s;
+}
+.menu-card h2 {
+    color: #2c3e50;
+    margin-top: 0;
+
+}
+.menu-card p {
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}

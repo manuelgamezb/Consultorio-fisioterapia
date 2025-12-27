@@ -19,7 +19,7 @@
         <div class="menu-card">
             <h2> Pacientes</h2>
             <p>Gestiona la informacion de tus pacientes</p>
-            <button>Ir a Pacientes</button>
+            <button onclick="irAPacientes()">Ir a Pacientes</button>
         </div>
 
         <div class="menu-card">
@@ -35,5 +35,20 @@
         </div>
     </div>
 
+<div id="seccionPacientes" style="display: none;">
+    <h2>Registrar Nuevo Paciente</h2>
+    <form>
+        <label>Nombre:</label>
+        <input type="text"  id="nombrePaciente">
+        <br><br>
+        <label>Telefono:</label>
+        <input type="text"  id="TelefonoPaciente">
+        <br><br>
+        <button type="button"   onclick="guardarPacinte()">Guardar</button>
+        <button type="button"   onclick="cerrarFormulario()">Cancelar</button>
+    </form>
+</div>
+    <script src="script.js"></script>
+    
 </body>
 </html>

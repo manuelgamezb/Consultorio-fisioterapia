@@ -42,11 +42,25 @@
         <input type="text"  id="nombrePaciente">
         <br><br>
         <label>Telefono:</label>
-        <input type="text"  id="TelefonoPaciente">
+        <input type="text"  id="telefonoPaciente">
         <br><br>
-        <button type="button"   onclick="guardarPacinte()">Guardar</button>
+        <button type="button"   onclick="guardarPaciente()">Guardar</button>
         <button type="button"   onclick="cerrarFormulario()">Cancelar</button>
     </form>
+    <!-- Tabla pacientes-->
+     <h3>Pacientes Registrados</h3>
+     <table id="tablaPacientes">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Telefono</th>
+
+            </tr>
+        </thead>
+        <tbody id="listaPacientes">
+            <!--Aqui se agregaran pacientes-->
+        </tbody>
+     </table>
 </div>
     <script src="script.js"></script>
     

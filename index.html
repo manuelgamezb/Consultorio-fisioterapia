@@ -61,7 +61,48 @@
             <!--Aqui se agregaran pacientes-->
         </tbody>
      </table>
+
 </div>
+            
+
+<div id= "SeccionCitas" style="display: none;">
+     <h2>Agendar Nueva Cita</h2>
+     <form>
+        <label for="citaPaciente"></label>
+        <select id="citaPaciente">
+            <option value=""> Seleccionar paciente</option>
+        </select>
+        <br><br>
+
+        <label for="citaFecha">Fecha:</label>
+        <input type="date" id="citaFecha">
+        <br><br>
+
+        <label for="citaHora">Hora:</label>
+        <input type="time"  id="citaHora">
+        <br><br>
+
+        <label for="citaTipo">Tipo de cita:</label>
+        <select id="citaTipo">
+            <option>Evaluacion inicial</option>
+            <option>Seguimiento</option>
+            <option>Tratamiento</option>
+            <option>Control</option>
+        </select>
+        <br><br>
+
+        <label for="citaNotas">Notas:</label>
+        <textarea id="citaNotas" rows="3"></textarea>
+        <br><br>
+
+        <button type="button" onclick="agendarCita()">Agendar</button>
+        <button type="button" onclick="cerrarCitas()">Canceler</button>
+
+     </form>
+     
+     
+    </div>
+
     <script src="script.js"></script>
     
 </body>

@@ -142,6 +142,47 @@ function agendarCita(){
         return;
      }
 
-     
+     let cita = {
+        paciente: paciente,
+        fecha: fecha,
+        hora: hora,
+        tipo: tipo,
+        notas: notas,
+        estado: "programada"
+     };
 
+     citas.push(cita);
+     guardarEnLocalStorage();
+     mostrarCitas();
+
+        document.getElementById("citaPaciente").value = "";
+        document.getElementById("citaFecha").value = "";
+        document.getElementById("citaHora").value = "";
+        document.getElementById("citaNotas").value = "";
+
+        alert("Cita Agendada exitosamente");
+
+
+}
+
+function mostrarCitas(){
+    let tbody = document.getElementById("listaCitas");
+    tbody.innerHTML = "";
+
+    for (let i=0; i <citas,length; i++){
+        let fila = "<tr>" +
+             "<td>" + citas[i].paciente + "</td>"+
+             "<td>" + citas[i].fecha + "</td>"+
+              "<td>" + citas[i].hora + "</td>"+
+              "<td>" + citas[i].tipo + "</td>"+
+             "</tr>";
+            
+        tbody.innerHTML += fila;
+        
+
+
+
+
+
+    }
 }

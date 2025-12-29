@@ -1,51 +1,74 @@
-//array para guardar todos los pacientes//
-let pacientes =[];
-function irAPacientes() {
-document.getElementById("seccionPacientes").style.display = "block";
+//arrays para guardar pacientes//
+let pacientes = [];
+//cargar pacientes al iniciar la pagina//
+window.onload = function(){
+    cargarPacientes();
+
+};
+function cargarPacientes(){
+    //obtener datos de localstorage
+    let datosGuardados = localStorage.getItem("pacientes");
+
+    if(datosGuardados) {
+        //convertir de texto a array
+        pacientes = JSON.parse(datosGuardados);
+        mostrarPacientes();
+    }
+
 }
 
-function cerrarFormulario () {
-    alert("la funcion se ejecuto");
-    document.getElementById("seccionPacientes").style.display ="none";
-    
+function guardarEnLocalStorage(){
+    //convertir array en texto y guardar
+
+    localStorage.setItem("pacientes",JSON.stringify(pacientes));
+
+}
+function irAPacientes(){
+    document.getElementById("seccionPacientes").style.display = "block";
+
+}
+
+function cerrarFormulario(){
+    document.getElementById("seccionPacientes").style.display = "none";
 }
 function guardarPaciente(){
-    //obtener los valores//
+
     let nombre = document.getElementById("nombrePaciente").value;
     let telefono = document.getElementById("telefonoPaciente").value;
-    //validar que no esten vacios//
-    if (nombre ==="" || telefono ===""){
-        alert("Por favor llena todos los campos");
+
+    if (nombre === ""|| telefono === "") {
+        alert("por favor llene todos los campos");
         return;
-    }
-    //crear objeto paciente//
-    let paciente = {
-        nombre: nombre,
-        telefono: telefono
-    };
+}
+let paciente = {
+    nombre : nombre,
+    telefono : telefono
 
-    //agregar array//
-    pacientes.push(paciente);
 
-    //mostrar en la tabla//
-    mostrarPacientes();
-//limpiar el formulario//
+};
+pacientes.push(paciente);
+
+//guardar localStorage
+guardarEnLocalStorage();
+
+mostrarPacientes();
+
 document.getElementById("nombrePaciente").value = "";
 document.getElementById("telefonoPaciente").value = "";
 
-alert("Paciente Guardado exitosamente");
+alert("Paciente guardado exitosamente");
 
 }
-function mostrarPacientes() {
+
+function mostrarPacientes(){
+
     let tbody = document.getElementById("listaPacientes");
-    tbody.innerHTML = ""; 
+    tbody.innerHTML = "";
 
-    //recorrer todos  los pacientes//
-
-    for(let i = 0; i<pacientes.length; i++) {
+    for (let i = 0; i <pacientes.length; i++){
         let fila = "<tr><td>" + pacientes[i].nombre + "</td><td>" + pacientes[i].telefono + "</td></tr>";
         tbody.innerHTML += fila;
-    }
 
+    }
 
 }

@@ -1,12 +1,17 @@
 //arrays para guardar pacientes//
 let pacientes = [];
+let citas = [];
+
 //cargar pacientes al iniciar la pagina//
 window.onload = function(){
     cargarPacientes();
+    cargarCitas();
+
 
 };
+
 function cargarPacientes(){
-    //obtener datos de localstorage
+
     let datosGuardados = localStorage.getItem("pacientes");
 
     if(datosGuardados) {
@@ -17,20 +22,56 @@ function cargarPacientes(){
 
 }
 
+function cargarCitas(){
+    let datosGuardados = localStorage.getItem("citas");
+    if (datosGuardados){
+        citas = JSON.parse(datosGuardados);
+        mostrarCitas();
+
+    }
+}
+
+
+
+
+
 function guardarEnLocalStorage(){
-    //convertir array en texto y guardar
+
 
     localStorage.setItem("pacientes",JSON.stringify(pacientes));
+    localStorage.setItem("citas", JSON.stringify(citas));
+
 
 }
+
 function irAPacientes(){
     document.getElementById("seccionPacientes").style.display = "block";
+    document.getElementById("seccionCitas").style.display = "none";
+
+
+}
+
+function irACitas(){
+
+    document.getElementById("seccionCitas").style.display = "block";
+    document.getElementById("seccionPacientes").style.display = "none";
+    cargarSelectorPacientes();
 
 }
 
 function cerrarFormulario(){
     document.getElementById("seccionPacientes").style.display = "none";
 }
+
+function cerrarCitas(){
+    document.getElementById("seccionCitas").style.display = "none";
+
+
+
+}
+//          ===== pacientes ======     >
+
+
 function guardarPaciente(){
 
     let nombre = document.getElementById("nombrePaciente").value;
@@ -40,15 +81,18 @@ function guardarPaciente(){
         alert("por favor llene todos los campos");
         return;
 }
+
 let paciente = {
     nombre : nombre,
     telefono : telefono
 
 
 };
+
+
 pacientes.push(paciente);
 
-//guardar localStorage
+
 guardarEnLocalStorage();
 
 mostrarPacientes();
@@ -70,5 +114,34 @@ function mostrarPacientes(){
         tbody.innerHTML += fila;
 
     }
+
+}
+
+// citas//
+
+function cargarSelectorPacientes(){
+    let select = document.getElementById("citaPacientes");
+    select.innerHTML = '<option value="">Seleccionar paciente...</option>';
+
+    for (let i=0; i< pacientes.length; i++){
+        select.innerHTML += 'option value ="' + pacientes[i].nombre + '">' + pacientes[i].nombre + '</option>';
+
+    }
+
+
+}
+function agendarCita(){
+    let paciente = document.getElementById("citaPaciente").value;
+    let fecha = document.getElementById("citaFecha").value;
+    let hora = document.getElementById("citaHora").value;
+    let tipo = document.getElementById("citaTipo").value;
+    let notas = document.getElementById("citaNotas").value;
+
+    if (paciente === "" || fecha === "" || hora === "") {
+        alert("Por favor llena los campos obligatorios  (Paciente, Fecha, Hora)");
+        return;
+     }
+
+     
 
 }

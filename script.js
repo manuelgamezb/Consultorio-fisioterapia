@@ -120,11 +120,11 @@ function mostrarPacientes(){
 // citas//
 
 function cargarSelectorPacientes(){
-    let select = document.getElementById("citaPacientes");
+    let select = document.getElementById("citaPaciente");
     select.innerHTML = '<option value="">Seleccionar paciente...</option>';
 
     for (let i=0; i< pacientes.length; i++){
-        select.innerHTML += 'option value ="' + pacientes[i].nombre + '">' + pacientes[i].nombre + '</option>';
+        select.innerHTML += '<option value ="' + pacientes[i].nombre + '">' + pacientes[i].nombre + '</option>';
 
     }
 
@@ -169,7 +169,7 @@ function mostrarCitas(){
     let tbody = document.getElementById("listaCitas");
     tbody.innerHTML = "";
 
-    for (let i=0; i <citas,length; i++){
+    for (let i=0; i <citas.length; i++){
         let fila = "<tr>" +
              "<td>" + citas[i].paciente + "</td>"+
              "<td>" + citas[i].fecha + "</td>"+
@@ -178,7 +178,7 @@ function mostrarCitas(){
              "</tr>";
             
         tbody.innerHTML += fila;
-        
+
 
 
 

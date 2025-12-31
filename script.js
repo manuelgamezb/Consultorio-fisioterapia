@@ -84,9 +84,9 @@ function cerrarCitas(){
 
 function cerrarSesiones(){
     document.getElementById("seccionSesiones").style.display = "none";
-    
+
 }
-//          ===== pacientes ======     >
+//          ===== pacientes ======  aqui me quede 12/30   >
 
 
 function guardarPaciente(){
@@ -195,11 +195,19 @@ function mostrarCitas(){
              "</tr>";
             
         tbody.innerHTML += fila;
-
-
-
-
-
-
     }
 }
+    // ------ Sesiones -------//
+
+    function cargarSelectorPacientesSesion(){
+        let select = document.getElementById("sesionPaciente");
+        select.innerHTML = '<option value="">Seleccionar Paciente...</option>';
+
+        for (let i=0; i< pacientes.length; i++){
+            select.innerHTML += '<option value="' + pacientes[i].nombre + '">' + pacientes[i].nombre + '</option>';
+
+        }
+
+    }
+
+

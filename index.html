@@ -3,6 +3,7 @@
 <html>
 <head>
     <title> Consultorio de Fisioterapia</title>
+    <meta charset="UTF-8">
    <link rel="stylesheet" href="estilos.css">
    
     
@@ -30,8 +31,8 @@
 
         <div class="menu-card">
             <h2>Sesiones</h2>
-            <p>Registra la sesiones del tratamiento</p>
-            <button>Ir a Sesiones</button>
+            <p>Registra las sesiones del tratamiento</p>
+            <button onclick="irASesiones()">Ir a Sesiones</button>
         </div>
     </div>
 
@@ -68,7 +69,7 @@
 <div id= "seccionCitas" style="display: none;">
      <h2>Agendar Nueva Cita</h2>
      <form>
-        <label for="citaPaciente"></label>
+        <label for="citaPaciente">Paciente:</label>
         <select id="citaPaciente">
             <option value=""> Seleccionar paciente</option>
         </select>
@@ -96,7 +97,7 @@
         <br><br>
 
         <button type="button" onclick="agendarCita()">Agendar</button>
-        <button type="button" onclick="cerrarCitas()">Canceler</button>
+        <button type="button" onclick="cerrarCitas()">Cancelar</button>
 
      </form>
      

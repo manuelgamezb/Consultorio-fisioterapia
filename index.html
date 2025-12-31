@@ -133,10 +133,41 @@
             <br><br>
 
             <label for="sesionEjercicios">Ejercicios Realizados:</label>
-            <textarea id="sesionEjercicios" rows="3"><textarea>
+            <textarea id="sesionEjercicios" rows="3"></textarea>
             <br><br>
-            
 
+            <label for="sesionObservaciones">Observaciones:</label>
+            <textarea id="sesionObservaciones" rows="3"></textarea>
+            <br><br>
+
+            <label for="sesionEvolucion">Evolucion del paciente: </label>
+            <textarea id="sesionEvolucion" rows="3"></textarea>
+            <br><br>
+
+            <label for="sesionProximos">Proximos Pasos:</label>
+            <textarea id="sesionProximos" rows="3"></textarea>
+            <br><br>
+
+            <button type="button" onclick="registrarSesion()">Guardar Sesion</button>
+            <button type="button" onclick="cerrarSesiones()">Cancelar</button>
+            </form>
+
+
+            <h3>Sesiones Registradas</h3>
+            <table id="tablaSesiones">
+                <thead>
+                    <tr>
+                        <th>Pacientes</th>
+                        <th>Fecha</th>
+                        <th>Tratamiento</th>
+                        <th>Ver Detalles</th>
+                    </tr>
+
+                </thead>
+                <tbody id="listaSesiones">
+                </tbody>
+            </table>
+        </div>
 
     <script src="script.js"></script>
     

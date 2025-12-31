@@ -1,21 +1,18 @@
 //arrays para guardar pacientes//
 let pacientes = [];
 let citas = [];
+let sesiones =[];
 
 //cargar pacientes al iniciar la pagina//
 window.onload = function(){
     cargarPacientes();
     cargarCitas();
-
-
+    cargarSesiones();
 };
 
 function cargarPacientes(){
-
     let datosGuardados = localStorage.getItem("pacientes");
-
     if(datosGuardados) {
-        //convertir de texto a array
         pacientes = JSON.parse(datosGuardados);
         mostrarPacientes();
     }
@@ -30,7 +27,14 @@ function cargarCitas(){
 
     }
 }
+function cargarSesiones(){
+    let datosGuardados = localStorage.getItem("sesiones");
+    if(datosGuardados){
+        sesiones = JSON.parse(datosGuardados);
+        mostrarSesiones();
+    }
 
+}
 
 
 
@@ -40,13 +44,15 @@ function guardarEnLocalStorage(){
 
     localStorage.setItem("pacientes",JSON.stringify(pacientes));
     localStorage.setItem("citas", JSON.stringify(citas));
-
-
+    localStorage.setItem("seccionSesiones",JSON.stringify(sesiones));
 }
 
+//===== NAVEGACION ========//
 function irAPacientes(){
     document.getElementById("seccionPacientes").style.display = "block";
     document.getElementById("seccionCitas").style.display = "none";
+    document.getElementById("seccionSesiones").style.display = "none";
+
 
 
 }
@@ -55,9 +61,18 @@ function irACitas(){
 
     document.getElementById("seccionCitas").style.display = "block";
     document.getElementById("seccionPacientes").style.display = "none";
+    document.getElementById("seccionSesiones").style.display = "none";
     cargarSelectorPacientes();
 
 }
+
+function irASesiones(){
+    document.getElementById("seccionSesiones").style.display ="block";
+    document.getElementById("seccionPacientes").style.display ="none";
+    document.getElementById("seccionCitas").style.display = "none";
+    cargarSelectorPacientesSesion();
+
+}  
 
 function cerrarFormulario(){
     document.getElementById("seccionPacientes").style.display = "none";
@@ -65,9 +80,11 @@ function cerrarFormulario(){
 
 function cerrarCitas(){
     document.getElementById("seccionCitas").style.display = "none";
+}
 
-
-
+function cerrarSesiones(){
+    document.getElementById("seccionSesiones").style.display = "none";
+    
 }
 //          ===== pacientes ======     >
 

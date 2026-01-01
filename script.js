@@ -209,5 +209,85 @@ function mostrarCitas(){
         }
 
     }
+    function registrarSesion(){
+        let paciente = document.getElementById("sesionPaciente").value;
+        let fecha = document.getElementById("sesionFecha").value;
+        let tratamiento = document.getElementById("sesionTratamiento").value;
+        let ejercicios = document.getElementById("sesionEjercicios").value;
+        let observaciones = document.getElementById("sesionObservaciones").value;
+        let evolucion = document.getElementById("sesionEvolucion").value;
+        let proximos = document.getElementById("sesionProximos").value;
+        
+        if (paciente === "" || fecha === "") {
+            alert("Por favor llena los campos obligatorios (Paciente y Fecha)");
+            return;
+        }
+    
+    let sesion = {
+        paciente: paciente,
+        fecha:  fecha,
+        tratamiento: tratamiento,
+        ejercicios : ejercicios,
+        observaciones: observaciones,
+        evolucion: evolucion,
+        proximos: proximos
+    };
+
+    sesiones.push(sesion);
+    guardarEnLocalStorage();
+    mostrarSesiones();
+
+    document.getElementById("sesionPaciente").value = "";
+    document.getElementById("sesionFecha").value = "";
+    document.getElementById("sesionTratamiento").value = "";
+    document.getElementById("sesionEjercicios").value = "";
+    document.getElementById("sesionObservaciones").value = "";
+    document.getElementById("sesionEvolucion").value = "";
+    document.getElementById("sesionProximos").value = "";
+
+    alert("Sesion registrada exitosamente");
+    }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
 
 

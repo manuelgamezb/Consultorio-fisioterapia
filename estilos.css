@@ -66,4 +66,52 @@ body {
         line-height: 1.6;
     }
     /*secciones principales*/
-    
+    #seccionPacientes,
+    #seccionCitas,
+    #seccionSesiones {
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px  30px  rgba(0, 0, 0, 2);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    #seccionPacientes h2,
+    #seccionCitas h2,
+    #seccionSesiones h2 {
+        color: #2c3e50;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 3px  solid #3498db;
+    }
+
+     #seccionPacientes h3,
+    #seccionCitas h3,
+    #seccionSesiones h3 {
+        color: #34495e;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        
+    }
+
+    /*formularios */
+
+form{
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+label{
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 1.05em;
+}
+
+
+
+
+

@@ -139,6 +139,30 @@ textarea{
     min-height: 80px;
 
 }
+/*botones*/
+button{
+    background: linear-gradient(135deg, #3498db,  #2980b9);
+    color: whwite;
+    padding: 12px, 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s  ease;
+    margin-right: 10px;
+    box-shadow: 0  4px   10px  rgba(52, 152, 219, 0.3);
+    }
+button:hover{
+    background: linear-gradient(135deg,#2980b9, #21618c);
+    transform: translateY(-2px);
+    box-shadow: 0  6px, 15px, rgba(52, 152, 219, 0.4);
+
+}
+
+button:active {
+    transform: translateY(0);
+}
 
 
 

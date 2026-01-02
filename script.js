@@ -44,7 +44,7 @@ function guardarEnLocalStorage(){
 
     localStorage.setItem("pacientes",JSON.stringify(pacientes));
     localStorage.setItem("citas", JSON.stringify(citas));
-    localStorage.setItem("seccionSesiones",JSON.stringify(sesiones));
+    localStorage.setItem("sesiones",JSON.stringify(sesiones));
 }
 
 //===== NAVEGACION ========//
@@ -249,12 +249,12 @@ function mostrarCitas(){
     }
 
     function mostrarSesiones(){
-        let tbody = document.getElementById("ListaSesiones");
+        let tbody = document.getElementById("listaSesiones");
         tbody.innerHTML = "";
 
         for (let i= 0; i< sesiones.length; i++){
             let tratamientoCorto = sesiones[i].tratamiento.substring(0,50) + "....";
-            let fila = "</tr>" +
+            let fila = "<tr>" +
                 "<td>" + sesiones[i].paciente + "</td>" +
                 "<td>" + sesiones[i].fecha + "</td>" +
                 "<td>" + tratamientoCorto + "</td>" +
@@ -266,7 +266,22 @@ function mostrarCitas(){
 
     }
 
-    
+    function verDetalleSesion(index){
+        let sesion = sesiones[index];
+        let mensaje = "SESION COMPLETA:\n\n" +
+            "Paciente: " + sesion.paciente + "\n\n" +
+            "Fecha:" + sesion.fecha + "\n\n" +
+            "Tratamiento: " + sesion.tratamiento + "\n\n" +
+            "Ejercicios:" + sesion.ejercicios + "\n\n" +
+            "Observaciones:" + sesion.observaciones + "\n\n" +
+            "Evolucion:" + sesion.evolucion + "\n\n" +
+            "Proximos pasos :" + sesion.proximos;
+
+        alert(mensaje);
+
+
+        
+    }
 
 
 
@@ -306,6 +321,8 @@ function mostrarCitas(){
 
 
 
-}
+
+
+
 
 

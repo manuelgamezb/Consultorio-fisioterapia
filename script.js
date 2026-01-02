@@ -248,6 +248,24 @@ function mostrarCitas(){
     alert("Sesion registrada exitosamente");
     }
 
+    function mostrarSesiones(){
+        let tbody = document.getElementById("ListaSesiones");
+        tbody.innerHTML = "";
+
+        for (let i= 0; i< sesiones.length; i++){
+            let tratamientoCorto = sesiones[i].tratamiento.substring(0,50) + "....";
+            let fila = "</tr>" +
+                "<td>" + sesiones[i].paciente + "</td>" +
+                "<td>" + sesiones[i].fecha + "</td>" +
+                "<td>" + tratamientoCorto + "</td>" +
+                "<td><button onclick= 'verDetalleSesion(" + i + ")'>ver</button></td>" +
+                "</tr>";
+            tbody.innerHTML += fila;
+
+        }
+
+    }
+
     
 
 

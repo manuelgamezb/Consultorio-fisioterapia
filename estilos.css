@@ -164,6 +164,17 @@ button:active {
     transform: translateY(0);
 }
 
+/*boton cancelar*/
+button[onclick*="cerrar"]:hover {
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+    box-shadow: 0  4px 10px rgba(149, 165, 166, 0.3);
+}
+button[onclick*="cerrar"]:hover {
+    background: linear-gradient(135deg, #7f8c8d, #5d6d7e);
+}
+
+
+
 
 
 

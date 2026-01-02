@@ -173,8 +173,54 @@ button[onclick*="cerrar"]:hover {
     background: linear-gradient(135deg, #7f8c8d, #5d6d7e);
 }
 
+/*tablas*/
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px  15px  rgba(0, 0, 0, 1);
+}
 
+thead{
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+}
 
+th{
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+td{
+    padding: 15px;
+    border-bottom: 1px, solid #ecf0f1;
+}
+
+tbody tr {
+    transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/*botones dentro de las tablas*/
+table button {
+    padding: 8px 20px;
+    font-size: 0.9em;
+    margin: 0;
+}
 
 
 

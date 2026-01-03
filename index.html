@@ -37,7 +37,7 @@
         <div class="menu-card">
             <h2> Reportes</h2>
             <p> consulta reportes de asistencias</p>
-            <button onclick="irReportes()"> </button>
+            <button onclick="irAReportes()">Ir a Reportes </button>
         </div>
     </div>
 
@@ -71,7 +71,7 @@
 </div>
             
 
-<div id= "seccionCitas" style="display: none;">
+<div id="seccionCitas" style="display: none;">
      <h2>Agendar Nueva Cita</h2>
      <form>
         <label for="citaPaciente">Paciente:</label>
@@ -174,9 +174,7 @@
                 </tbody>
             </table>
         </div>
-
-                    <! ==== seccion reportes  ===>
-
+       
         <div id="seccionReportes" style="display: none;">
             <h2> Reporte de Asistencias</h2>
 
@@ -207,13 +205,16 @@
                         <option value="11">Noviembre</option>
                         <option value="12">Diciembre</option>
                     </select>
-                    <label for="reporteAnio">Año:<label>
+                    <label for="reporteAnio">Año:</label>
                     <input type="number" id="reporteAnio" value="2026" min="2030">
                     <br><br>
 
-                    <button onclick="generarReporte()">Generar Reportes</button>
+                    <button onclick="generarReporte()">Ir a Reportes</button>
                     <button onclick="cerrarReportes()">Cerrar</button>
                 </div>
+
+                <div id="resultadoReporte"></div>
+        </div>
 
 
     <script src="script.js"></script>

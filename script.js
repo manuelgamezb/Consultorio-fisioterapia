@@ -303,7 +303,67 @@ function mostrarCitas(){
 
         }
     }
+    function generarReporte(){
+        let pacienteSeleccionado = document.getElementById("reportePaciente").value;
+        let mes = parseInt(document.getElementById("reporteMes").value); // 1-12
+        let anio = parseInt(document.getElementById("reporteAnio").value);
+        let periodo = document.querySelector('input[name="periodo"]: checked').value;
+
+        let mesJS = mes -1;
+        //filtrar sesiones//
+        let sesionesFiltradas = [];
+
+        for (let i=0; i< sesiones.length; i++) {
+            let sesion = sesiones[i];
+            let fechaSesion = new Date(sesion.fecha);
+
+            //verificar si coincide el mes y el anio//
+
+            if (fechaSesion.getMonth() === mesJS && fechaSesion.getFullYear() == anio){
+                // si hay  un paciente seleccionado, filtrar por ese paciente//
+                if (pacienteSeleccionado === "" || sesion.paciente === pacienteSeleccionado){
+                    // filtrar por quincena
+                if (periodo === "quincenal"){
+                    let dia = fechaSesion.getDate();
+
+                    sesionesFiltradas.push(sesion);
+
+                } else {
+                    sesionesFiltradas.push(sesion);
+
+                }
+                }
+            }
+        }
+    mostrarResultadoReporte(sesionesFiltradas, pacienteSeleccionado, mes,anio); {
+        let div = document.getElementById("resultadoReporte");
+
+        if (sesiones.length === 0) {
+            div.innerHTML = '<div style = "background: #fff3cd; padding: 20px; border-radius: 10px, color: #856404;">' +
+            '<h3> No se encontraron sesiones</h3>' +
+            '<p>No hay sesiones registradas para los criterios seleccionados,</p>'+
+            '</div>';
+            return;
+        }
+        let nombreMeses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+        let html = '<div style= "background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px, 15px, rgba(0,0,0,0.1);">';
+        html += '<h3 style="color: #2c3e50; border-bottom: 3px, solid #3498db; padding-bottom: 10px;"> REPORTE DE ASISTENCIAS </h3>';
+
+        if (paciente !== ""){
+            html += '<p><strong>Paciente:</strong>' + paciente + '</p>';
+        } else {
+            html += '<p><strong>Todos los pacientes</strong></p>';
+
+        }
+        html += '<p><strong>Periodo:</strong>' + nombreMeses[mes -1] +'' + anio + '</p>';
+        html += '<hr style= "margin: 20px 0;">';
+        
+
     
+    }
+
+
+    }
 
 
 

@@ -357,11 +357,23 @@ function mostrarCitas(){
         }
         html += '<p><strong>Periodo:</strong>' + nombreMeses[mes -1] +'' + anio + '</p>';
         html += '<hr style= "margin: 20px 0;">';
-        
-
-    
     }
+    html += '<h4 style="color: #27ae60;"> SESIONES REALIZADAS:</h4>';
+    html += '<table style= widht: 100%; margin-top: 15px;">';
+    html += '<thead><tr style= "background: #ecf0f1;"><th style="padding: 10px; text-align: left;"fecha</th><th style= "padding: 10px; text-align: left;">Paciente</th><th> style="padding: 10px; text-align: left;">Tratamiento</th></tr></thead>';
+    html += '<tbody>';
 
+    for (let i=0; i<sesiones.length; i++){
+        let s= sesiones[i];
+        let tratamientoCorto = s.tratamiento.substring(0,50) + "...";
+        html += '<tr style="border-bottom: 1px, solid #ecf0f1;">';
+        html += 'td style = "padding: 10px;">' + s.fecha + '</td>';
+        html += 'td style = "padding: 10px;">' + s.paciente + '</td>';
+        html += 'td style = "padding: 10px;">' + tratamientoCorto + '</td>';
+        html += '</tr>';
+
+    }
+    
 
     }
 

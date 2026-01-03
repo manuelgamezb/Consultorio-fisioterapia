@@ -278,10 +278,34 @@ function mostrarCitas(){
             "Proximos pasos :" + sesion.proximos;
 
         alert(mensaje);
-
-
-        
     }
+
+    // reportes//
+
+    function irAReportes(){
+        document.getElementById("seccionReportes").style.display = "block";
+        document.getElementById("seccionPacientes").style.display = "none";
+        document.getElementById("seccionCitas").style.display = "none";
+        document.getElementById("seccionSesiones").style.display= "none";
+        cargarSelectorPacientesReporte();
+    }
+
+    function cerrarReportes(){
+        document.getElementById("seccionReportes").style.display = "none";
+
+    }
+    function cargarSelectorPacientesReporte(){
+        let select = document.getElementById("reportePaciente");
+        select.innerHTML = '<option value="">Todos los Pacientes</option>';
+
+        for (let i=0; i < pacientes.length; i++) {
+            select.innerHTML +='<option value="' + pacientes[i].nombre + '">' + pacientes[i].nombre +'</option>';
+
+        }
+    }
+    
+
+
 
 
 

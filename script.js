@@ -373,9 +373,17 @@ function mostrarCitas(){
         html += '</tr>';
 
     }
-    
+    html += '</tbody></table>';
+    html += '<hr style="margin: 20px 0; ">';
+    html += '<div style = "background: #d4edda; padding: 20px; border-radius: 8px; margin-top: 20px;">';
+    html += '<h3 style="color: #155724; margin: 0;"> TOTAL DE SESIONES:' + sesiones.length + '</h3>';
+    html += '<p style= "margin: 10px 0 0 0 ; color: #155724;"> Sesiones a facturar para este periodo</p>';
+    html += '</div>';
+    html += '</div>';
 
+    div.innerHTML = html;
     }
+    
 
 
 

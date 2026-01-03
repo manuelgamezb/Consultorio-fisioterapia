@@ -175,6 +175,46 @@
             </table>
         </div>
 
+                    <! ==== seccion reportes  ===>
+
+        <div id="seccionReportes" style="display: none;">
+            <h2> Reporte de Asistencias</h2>
+
+            <div style="background: #f8f9fa; padding: 30px; border-radius:  10px; margin-bottom: 30px;">
+                <label for="reportePaciente">Seleccionar Paciente: </label>
+                <select id="reportePaciente">
+                    <option value="">Todos los pacientes</option>
+                    </select>
+                    <br><br>
+                    <label>Periodo: </label><br>
+                    <input type="radio" name="periodo" value="quincenal" id="quincenal">
+                    <label for="quincenal">Quincenal</label>
+                    <input type="radio" name="periodo" value="mensual" id="mensual" checked>
+                    <label for="mensual">Mensual</label>
+                    <br><br>
+                    <label for="reporteMes">Mes:</label>
+                    <select id="reporteMes">
+                        <option value="1">Enero</option>
+                        <option value="2">Febrero</option>
+                        <option value="3">Marzo</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Mayo</option>
+                        <option value="6">Junio</option>
+                        <option value="7">Julio</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
+                    </select>
+                    <label for="reporteAnio">Año:<label>
+                    <input type="number" id="reporteAnio" value="2026" min="2030">
+                    <br><br>
+
+                    
+        </div>
+
+
     <script src="script.js"></script>
     
 </body>

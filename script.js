@@ -8,14 +8,21 @@ window.onload = function(){
     cargarPacientes();
     cargarCitas();
     cargarSesiones();
-    document.getElementById("quincenal").addEventListener("change", function() {
-        document.getElementById("divQuincena").style.display = "block";
 
-    });
+    let quincenal= document.getElementById("quincenal");
+    let mensual = document.getElementById("mensual");
+    let divQuincena = document.getElementById("divQuincena");
 
-    document.getElementById("mensual").addEventListener("change", function() {
-        document.getElementById("divQuincena").style.display = "none";
-    });
+    if (quincenal && mensual && divQuincena) {
+        quincenal.addEventListener("change", function(){
+            divQuincena.style.display = "block";
+
+        });
+
+        mensual.addEventListener("change", function() {
+            divQuincena.style.display = "none";
+        });
+    }
 
 
 };

@@ -484,7 +484,49 @@ function mostrarCitas(){
     citas [index].motivoInasistencia = motivoTexto;
     marcarAsistencia(index, false);
 }
+function mostrarCitasControl(){
+    let fechaHoy = new Date().toISOString().split('T')[0];
+    let tbody = document.getElementById("listaControlAsistencias");
+    tbody.innerHTML = "";
 
+    let citasHoy = citas.filter(function(cita) {
+        return cita.fecha === fechaHoy;
+
+    });
+
+    if (citasHoy.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center;">No hay citas programadas para hoy</td></tr>';
+        return;
+    }
+    for (let i = 0; i<citasHoy.length; i++){
+        let cita = citasHoy[i];
+        let indexOriginal = citas.indexOf(cita);
+
+        let estadoHTML = "";
+        if (cita.asistencia === null){
+            estadoHTML = '<button onclick= "marcarAsistencia(' + indexOriginal + ', true)"> Asistio</button>' +
+                        '<button onclick= "registrarMotivo(' + indexOriginal + ')"> No Asistio</button>';
+
+        }   else if (cita.asistencia === "asistio") {
+            estadoHTML = '<span style= "color: green;"> ASISITIO</span>';
+
+        } else {
+           estadoHTML=  '<span style= "color: red;">NO ASISITIO</span><br><small>' + cita.motivoInasistencia + '</small>';
+
+        }
+
+        let fila = "<tr>" +
+            "<td>" + cita.paciente + "</td>" +
+            "<td>" + cita.fecha + "</td>" +
+            "<td>" + cita.hora + "</td>" +
+            "<td>" + cita.tipo + "</td>" +
+            "<td>" + estadoHTML + "</td>" +
+            "</tr>";
+
+            tbody.innerHTML += fila;
+            
+            }
+}
     
 
 

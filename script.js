@@ -109,6 +109,17 @@ function cerrarSesiones(){
     document.getElementById("seccionSesiones").style.display = "none";
 
 }
+
+function irAAsistencias(){
+    document.getElementById("seccionAsistencias").style.display = "block";
+    document.getElementById("seccionPacientes").style.display = "none";
+    document.getElementById("seccionCitas").style.display = "none";
+    document.getElementById("seccionSesiones").style.display = "none";
+    document.getElementById("seccionReportes").style.display = "none";
+}
+function cerrarAsistencias(){
+    document.getElementById("seccionAsistencia").style.display = "none";
+}
 //          ===== pacientes ======  aqui me quede 12/30   >
 
 
@@ -415,6 +426,19 @@ function mostrarCitas(){
     html += '</div>';
 
     div.innerHTML = html;
+    }
+    function marcarAsistencia(index, asistio){
+        if(asistio){
+            citas[index].asistencia = "asistio";
+            citas[index].motivoInasistencia = "";
+
+        } else {
+            citas[index].asistencia = "no_asistio";
+        }
+        guardarEnLocalStorage();
+        mostrarCitas();
+        alert(asistio ? "Asistencia registrada" : "Inasistencia registrada");
+        
     }
     
 

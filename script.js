@@ -331,9 +331,9 @@ function mostrarCitas(){
         }
     }
                 
-}          mostrarResultadoReporte(sesionesFiltradas, pacienteSeleccionado, mes, anio);
-
-        function mostrarResultadoReporte(sesiones, paciente, mes,anio) {
+          mostrarResultadoReporte(sesionesFiltradas, pacienteSeleccionado, mes, anio);
+}
+        function mostrarResultadoReporte(sesiones, paciente, mes, anio) {
         let div = document.getElementById("resultadoReporte");
 
         if (sesiones.length === 0) {

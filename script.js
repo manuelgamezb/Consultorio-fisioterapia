@@ -307,7 +307,7 @@ function mostrarCitas(){
         let pacienteSeleccionado = document.getElementById("reportePaciente").value;
         let mes = parseInt(document.getElementById("reporteMes").value); // 1-12
         let anio = parseInt(document.getElementById("reporteAnio").value);
-        let periodo = document.querySelector('input[name="periodo"]: checked').value;
+        let periodo = document.querySelector("input[name='periodo']:checked").value;
 
         let mesJS = mes -1;
         //filtrar sesiones//
@@ -335,7 +335,7 @@ function mostrarCitas(){
                 }
             }
         }
-    mostrarResultadoReporte(sesionesFiltradas, pacienteSeleccionado, mes,anio); {
+        function mostrarResultadoReporte(sesiones, paciente, mes,anio) {
         let div = document.getElementById("resultadoReporte");
 
         if (sesiones.length === 0) {
@@ -345,7 +345,7 @@ function mostrarCitas(){
             '</div>';
             return;
         }
-        let nombreMeses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+        let nombresMeses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
         let html = '<div style= "background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px, 15px, rgba(0,0,0,0.1);">';
         html += '<h3 style="color: #2c3e50; border-bottom: 3px, solid #3498db; padding-bottom: 10px;"> REPORTE DE ASISTENCIAS </h3>';
 
@@ -383,7 +383,7 @@ function mostrarCitas(){
 
     div.innerHTML = html;
     }
-    
+
 
 
 

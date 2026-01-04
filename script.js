@@ -336,6 +336,7 @@ function mostrarCitas(){
         function mostrarResultadoReporte(sesiones, paciente, mes, anio) {
         let div = document.getElementById("resultadoReporte");
 
+
         if (sesiones.length === 0) {
             div.innerHTML = '<div style= "background: #fff3cd; padding: 20px; border-radius: 10px; color: #856404;">' +
             '<h3> No se encontraron sesiones</h3>' +
@@ -380,6 +381,14 @@ function mostrarCitas(){
 
     div.innerHTML = html;
     }
+    document.getElementById("quincenal").addEventListener("change", function() {
+        document.getElementById("divQuincena").style.display = "block";
+
+    });
+
+    document.getElementById("mensual").addEventListener("change", function(){
+        document.getElementById("divQuincena").style.display = "none";
+    });
 
 
 

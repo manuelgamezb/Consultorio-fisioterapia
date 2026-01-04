@@ -440,6 +440,51 @@ function mostrarCitas(){
         alert(asistio ? "Asistencia registrada" : "Inasistencia registrada");
         
     }
+    function registrarMotivo(index){
+        let motivo = prompt(
+            "Seleccione el motivo de inasistencia: \n\n" +
+            "1. Cancelo con aviso\n" +
+            "2. No aviso (falta)\n" +
+            "3. Emergencia medica\n" +
+            "4. Problema de transporte\n" +
+            "5. Otro\n\n" +
+            "Ingrese el numero (1-5):"
+        );
+
+        if  (motivo === null) return; //usuario cancelo
+
+        let motivoTexto = "";
+        switch(motivo){
+            case "1":
+                motivoTexto = "Cancelo con Aviso";
+                break;
+             case "2":
+                motivoTexto = "No aviso (falta)";
+                break;
+             case "3":
+                motivoTexto = "Emergencia medica";
+                break;
+             case "4":
+                motivoTexto = "Problema de transporte";
+                break;
+             case "5":
+               let otro = prompt("Especifique el motivo:");
+               if (otro) {
+                    motivoTexto = "Otro:" + otro;
+
+               } else {
+                   return;
+               }
+        
+        break;
+     default:
+        alert("Opcion invalida");
+        return;
+    }
+    citas [index].motivoInasistencia = motivoTexto;
+    marcarAsistencia(index, false);
+}
+
     
 
 

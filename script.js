@@ -1,5 +1,5 @@
 //arrays para guardar pacientes//
-let pacientes = [];
+let Pacientes = [];
 let citas = [];
 let sesiones =[];
 
@@ -229,6 +229,7 @@ function mostrarCitas(){
     function registrarSesion(){
         let paciente = document.getElementById("sesionPaciente").value;
         let fecha = document.getElementById("sesionFecha").value;
+        console.log("Fecha capturada:", fecha);
         let tratamiento = document.getElementById("sesionTratamiento").value;
         let ejercicios = document.getElementById("sesionEjercicios").value;
         let observaciones = document.getElementById("sesionObservaciones").value;

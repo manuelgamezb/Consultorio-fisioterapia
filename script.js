@@ -8,12 +8,12 @@ window.onload = function(){
     cargarPacientes();
     cargarCitas();
     cargarSesiones();
-    document.getElementById("quincenal").addEventListener("change", function(){
+    document.getElementById("quincenal").addEventListener("change", function() {
         document.getElementById("divQuincena").style.display = "block";
 
     });
 
-    document.getElementById("mensual").addEventListener("change", function(){
+    document.getElementById("mensual").addEventListener("change", function() {
         document.getElementById("divQuincena").style.display = "none";
     });
 
@@ -391,14 +391,7 @@ function mostrarCitas(){
 
     div.innerHTML = html;
     }
-    document.getElementById("quincenal").addEventListener("change", function() {
-        document.getElementById("divQuincena").style.display = "block";
-
-    });
-
-    document.getElementById("mensual").addEventListener("change", function(){
-        document.getElementById("divQuincena").style.display = "none";
-    });
+    
 
 
 

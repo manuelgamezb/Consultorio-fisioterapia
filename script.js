@@ -69,6 +69,8 @@ function irAPacientes(){
     document.getElementById("seccionPacientes").style.display = "block";
     document.getElementById("seccionCitas").style.display = "none";
     document.getElementById("seccionSesiones").style.display = "none";
+    document.getElementById("seccionReportes").style.display = "none";
+    document.getElementById("seccionAsistencias").style.display = "none";
 
 
 
@@ -79,6 +81,8 @@ function irACitas(){
     document.getElementById("seccionCitas").style.display = "block";
     document.getElementById("seccionPacientes").style.display = "none";
     document.getElementById("seccionSesiones").style.display = "none";
+    document.getElementById("seccionReportes").style.display = "none";
+    document.getElementById("seccionAsistencias").style.display = "none";
     cargarSelectorPacientes();
 
 }
@@ -87,6 +91,8 @@ function irASesiones(){
     document.getElementById("seccionSesiones").style.display ="block";
     document.getElementById("seccionPacientes").style.display ="none";
     document.getElementById("seccionCitas").style.display = "none";
+    document.getElementById("seccionReportes").style.display = "none";
+    document.getElementById("seccionAsistencias").style.display = "none";
     cargarSelectorPacientesSesion();
 
 }  
@@ -182,7 +188,9 @@ function agendarCita(){
         hora: hora,
         tipo: tipo,
         notas: notas,
-        estado: "programada"
+        estado: "programada",
+        asistencia: null,
+        motivoInasistencia: ""
      };
 
      citas.push(cita);
@@ -305,6 +313,7 @@ function mostrarCitas(){
         document.getElementById("seccionPacientes").style.display = "none";
         document.getElementById("seccionCitas").style.display = "none";
         document.getElementById("seccionSesiones").style.display= "none";
+        document.getElementById("seccionAsistencia").style.display= "none";
         cargarSelectorPacientesReporte();
     }
 

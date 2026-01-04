@@ -1,5 +1,5 @@
 //arrays para guardar pacientes//
-let Pacientes = [];
+let pacientes = [];
 let citas = [];
 let sesiones =[];
 
@@ -344,7 +344,15 @@ function mostrarCitas(){
                 if (periodo === "quincenal"){
                     let dia = fechaSesion.getDate();
                     let quincena = document.getElementById("reporteQuincena").value;
-                }    
+
+                if (quincena === "primera" && dia <= 15){
+                    sesionesFiltradas.push(sesion);
+                } else if (quincena === "segunda" && dia > 15){
+                    sesionesFiltradas.push(sesion);
+                }
+                } else {
+                    sesionesFiltradas.push(sesion);
+                }   
             }          
         }
     }
@@ -372,10 +380,10 @@ function mostrarCitas(){
             html += '<p><strong>Todos los pacientes</strong></p>';
 
         }
-        html += '<p><strong>Periodo:</strong>' + nombreMeses[mes -1] +'' + anio + '</p>';
+        html += '<p><strong>Periodo:</strong>' + nombresMeses[mes -1] +'' + anio + '</p>';
         html += '<hr style="margin: 20px 0;">';
         html += '<h4 style="color: #27ae60;"> SESIONES REALIZADAS:</h4>';
-        html += '<table style= "width: 100%; margin-top: 15px;">';
+        html += '<table style="width: 100%; margin-top: 15px;">';
         html += '<thead><tr style="background: #ecf0f1;"><th style="padding: 10px; text-align: left;">Fecha</th><th style="padding: 10px; text-align: left;">Paciente</th><th style="padding: 10px; text-align: left;">Tratamiento</th></tr></thead>';
         html += '<tbody>';
 

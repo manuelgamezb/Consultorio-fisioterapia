@@ -325,29 +325,37 @@ function mostrarCitas(){
                     // filtrar por quincena
                 if (periodo === "quincenal"){
                     let dia = fechaSesion.getDate();
+                    let quincena = document.getElementById("reporteQuincena").value;
+                    
+                    if (quincena === "primera" && dia<=15)
+
 
                     sesionesFiltradas.push(sesion);
 
-                } else {
+                } else  if (quincena === "segunda" && dia > 15) {
                     sesionesFiltradas.push(sesion);
 
                 }
-                }
-            }
+            } else {
+                sesionesFiltradas.push(sesion);
+            } 
         }
+        }
+            mostrarResultadoReporte(sesionesFiltradas, pacienteSeleccionado, mes, anio);
+
         function mostrarResultadoReporte(sesiones, paciente, mes,anio) {
         let div = document.getElementById("resultadoReporte");
 
         if (sesiones.length === 0) {
-            div.innerHTML = '<div style = "background: #fff3cd; padding: 20px; border-radius: 10px, color: #856404;">' +
+            div.innerHTML = '<div style= "background: #fff3cd; padding: 20px; border-radius: 10px; color: #856404;">' +
             '<h3> No se encontraron sesiones</h3>' +
-            '<p>No hay sesiones registradas para los criterios seleccionados,</p>'+
+            '<p>No hay sesiones registradas para los criterios seleccionados.</p>'+
             '</div>';
             return;
         }
         let nombresMeses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-        let html = '<div style= "background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px, 15px, rgba(0,0,0,0.1);">';
-        html += '<h3 style="color: #2c3e50; border-bottom: 3px, solid #3498db; padding-bottom: 10px;"> REPORTE DE ASISTENCIAS </h3>';
+        let html = '<div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">';
+        html += '<h3 style="color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px;"> REPORTE DE ASISTENCIAS </h3>';
 
         if (paciente !== ""){
             html += '<p><strong>Paciente:</strong>' + paciente + '</p>';
@@ -356,28 +364,27 @@ function mostrarCitas(){
 
         }
         html += '<p><strong>Periodo:</strong>' + nombreMeses[mes -1] +'' + anio + '</p>';
-        html += '<hr style= "margin: 20px 0;">';
-    }
-    html += '<h4 style="color: #27ae60;"> SESIONES REALIZADAS:</h4>';
-    html += '<table style= widht: 100%; margin-top: 15px;">';
-    html += '<thead><tr style= "background: #ecf0f1;"><th style="padding: 10px; text-align: left;"fecha</th><th style= "padding: 10px; text-align: left;">Paciente</th><th> style="padding: 10px; text-align: left;">Tratamiento</th></tr></thead>';
-    html += '<tbody>';
+        html += '<hr style="margin: 20px 0;">';
+        html += '<h4 style="color: #27ae60;"> SESIONES REALIZADAS:</h4>';
+        html += '<table style= width: 100%; margin-top: 15px;">';
+        html += '<thead><tr style="background: #ecf0f1;"><th style="padding: 10px; text-align: left;">Fecha</th><th style="padding: 10px; text-align: left;">Paciente</th><th style="padding: 10px; text-align: left;">Tratamiento</th></tr></thead>';
+        html += '<tbody>';
 
     for (let i=0; i<sesiones.length; i++){
         let s= sesiones[i];
-        let tratamientoCorto = s.tratamiento.substring(0,50) + "...";
-        html += '<tr style="border-bottom: 1px, solid #ecf0f1;">';
-        html += 'td style = "padding: 10px;">' + s.fecha + '</td>';
-        html += 'td style = "padding: 10px;">' + s.paciente + '</td>';
-        html += 'td style = "padding: 10px;">' + tratamientoCorto + '</td>';
+        let tratamientoCorto = s.tratamientoCorto.substring(0,50) + "...";
+        html += '<tr style="border-bottom: 1px solid #ecf0f1;">';
+        html += '<td style= "padding: 10px;">' + s.fecha + '</td>';
+        html += '<td style= "padding: 10px;">' + s.paciente + '</td>';
+        html += '<td style= "padding: 10px;">' + tratamientoCorto + '</td>';
         html += '</tr>';
 
     }
     html += '</tbody></table>';
     html += '<hr style="margin: 20px 0; ">';
-    html += '<div style = "background: #d4edda; padding: 20px; border-radius: 8px; margin-top: 20px;">';
+    html += '<div style= "background: #d4edda; padding: 20px; border-radius: 8px; margin-top: 20px;">';
     html += '<h3 style="color: #155724; margin: 0;"> TOTAL DE SESIONES:' + sesiones.length + '</h3>';
-    html += '<p style= "margin: 10px 0 0 0 ; color: #155724;"> Sesiones a facturar para este periodo</p>';
+    html += '<p style="margin: 10px 0 0 0 ; color: #155724;"> Sesiones a facturar para este periodo</p>';
     html += '</div>';
     html += '</div>';
 

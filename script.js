@@ -543,6 +543,20 @@ function generarReporteInasistencia(){
     });
 
     mostrarResultadoInasistencias(inasistencias, fechInicio, fechaFin);
+
+}
+
+function mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin,){
+    let div = document.getElementById("resultadoInasistencias");
+
+    if (inasistencias.length === 0) {
+        div.innerHTML = '<div style="background: #d4edda; padding: 20px, border-radius: 10px, color: #155724;">' +
+            '<h3>No hay inasistencias registradas</h3>' +
+            '<p> Todos los pacientes asistieron a sus citas en este periodo.</p>' +
+            '</div>';
+        return
+    }
+
     
 }
     

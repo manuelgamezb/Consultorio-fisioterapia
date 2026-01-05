@@ -524,8 +524,26 @@ function mostrarCitasControl(){
             "</tr>";
 
             tbody.innerHTML += fila;
-            
+
             }
+}
+function generarReporteInasistencia(){
+    let fechInicio = document.getElementById("inasistenciaFechaInicio").value;
+    let fechaFin = document.getElementById("inasistenciaFechaFin").value;
+
+    if (!fechInicio || !fechaFin) {
+        alert("Por favor selecciona las fechas");
+        return;
+    }
+
+    let inasistencias = citas.filter(function(cita){
+        return cita.asistencia === "no_asistio" &&
+        cita.fecha >= fechInicio &&
+        cita.fecha <= fechaFin;
+    });
+
+    mostrarResultadoInasistencias(inasistencias, fechInicio, fechaFin);
+    
 }
     
 

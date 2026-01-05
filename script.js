@@ -437,6 +437,7 @@ function mostrarCitas(){
         }
         guardarEnLocalStorage();
         mostrarCitas();
+        mostrarCitasControl();
         alert(asistio ? "Asistencia registrada" : "Inasistencia registrada");
         
     }
@@ -583,6 +584,15 @@ function mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin,){
 
         
     }
+    html += '</tbody></table>';
+    html += '<hr style="margin: 20px; 0;">';
+    html += '<div style=background: #f8d7da; padding: 20px; border-radius: 8px; border: 2px; solid #dc3545;">';
+    html += '<h3 style="color: #721c24; margin: 0;"> TOTAL DE INASISTENCIAS: ' + inasistencias.length + '</h3>';
+    html += '<p style="margin: 10px; 0 0 0; color: #721c24;"> Pacientes a reportar al sistema de salud</p>';
+    html += '</div>';
+    html += '</div>';
+
+    div.innerHTML = html;
 
 
 }

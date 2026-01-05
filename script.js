@@ -557,7 +557,34 @@ function mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin,){
         return
     }
 
-    
+    let html = '<div style= "background: white; padding: 30px; border-radius: 10px; box-shadow: 0  4px 15px  rgba(0, 0, 0, 0.1);">';
+    html += '<h3 style="color: #dc3545;> REPORTE DE INASISTENCIAS</h3>';
+    html += '<p><strong>Periodo:</strong> ' + fechaInicio + ' al ' + fechaFin + '</p>';
+    html += '<hr style="margin: 20px 0;">';
+
+    html += '<table style="width: 100%; border-collapse: collapse; ">';
+    html += '<thead><tr style=background: #f8d7da;">' +
+            '<th style="padding: 10px; border: 1px; solid #ddd;">Paciente</th>' +
+            '<th style="padding: 10px; border: 1px; solid #ddd;">Fecha</th>' +
+            '<th style="padding: 10px; border: 1px; solid #ddd;">Hora</th>' +
+            '<th style="padding: 10px; border: 1px; solid #ddd;">Tipo de Cita</th>' +
+            '<th style="padding: 10px; border: 1px; solid #ddd;">Motivo</th>' +
+            '</tr></thead>';
+    html += '<tbody>';
+
+    for (let i = 0; i < inasistencias.length; i++) {
+        html += '<tr>';
+        html += '<td style="padding: 10px; border: 1px; solid #ddd;">' + cita.paciente + '</td>';
+        html += '<td style="padding: 10px; border: 1px; solid #ddd;">' + cita.fecha + '</td>';
+        html += '<td style="padding: 10px; border: 1px; solid #ddd;">' + cita.hora + '</td>';
+        html += '<td style="padding: 10px; border: 1px; solid #ddd;">' + cita.tipo + '</td>';
+        html += '<td style="padding: 10px; border: 1px; solid #ddd;">' + cita.motivoInasistencia + '</td>';
+        html += '</tr>';
+
+        
+    }
+
+
 }
     
 

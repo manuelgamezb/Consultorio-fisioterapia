@@ -39,6 +39,12 @@
             <p> consulta reportes de asistencias</p>
             <button onclick="irAReportes()">Ir a Reportes </button>
         </div>
+
+        <div class="menu-card">
+            <h2> Asistencias</h2>
+            <p>Control de Asistencias e Inasistencias</p>
+            <button onclick="irAsistencias()">Ir a Asistencias</button>
+    </div>
     </div>
 
 <div id="seccionPacientes" style="display: none;">
@@ -225,7 +231,16 @@
 
                 <div id="resultadoReporte"></div>
         </div>
+     <!-- SECCION ASISTENCIAS -->
+        <div id="seccionAsistencias" style="display: none;">
+            <h2> Control de Asistencias del Dia</h2>
 
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+                <button onclick="mostrarCitasControl()" style="padding: 10px 20px; background: #007bff; color:white;border: none; border-radius: 5px; cursor: pointer;">Cargar Citas de Hoy</button>
+                <button onclick="cerrarAsistencias()" style="padding: 10px 20px; margin-left: 10px;">Cerrar</button>
+            </div>
+
+            
 
     <script src="script.js"></script>
     

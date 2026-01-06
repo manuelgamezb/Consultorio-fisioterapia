@@ -528,8 +528,8 @@ function mostrarCitasControl(){
 
             }
 }
-function generarReporteInasistencia(){
-    let fechInicio = document.getElementById("inasistenciaFechaInicio").value;
+function generarReporteInasistencias(){
+    let fechaInicio = document.getElementById("inasistenciaFechaInicio").value;
     let fechaFin = document.getElementById("inasistenciaFechaFin").value;
 
     if (!fechInicio || !fechaFin) {

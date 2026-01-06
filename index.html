@@ -240,7 +240,39 @@
                 <button onclick="cerrarAsistencias()" style="padding: 10px 20px; margin-left: 10px;">Cerrar</button>
             </div>
 
-            
+            <h3>Citas de Hoy</h3>
+            <table id="tablaControlAsistencias">
+                <thead>
+                    <tr>
+                        <th>Paciente</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Tipo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="listaControlAsistencias">
+                    <tr><td colspan="5" style="text-align: center;">Haz click en "Cargar Citas de Hoy"</td></tr>
+                </tbody>
+                </table>
+
+                <hr style="margin: 40px 0;">
+                <h2> Reporte de Inasistencias</h2>
+
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+                    <label for="InasistenciaFechaInicio">Desde: </label>
+                    <input type="date" id="InasistenciaFechaInicio">
+
+
+                    <label for="InasistenciaFechaFin" style="margin-left: 20px;">Hasta:</label>
+                    <input type="date" id="InasistenciaFechaFin">
+                    <br><br>
+
+                    <button onclick="generarReporteInasistencias()">Generar Reporte de Inasistencias</button>
+                </div>
+
+                <div id="resultadoReporteInasistencias"></div>
+                
 
     <script src="script.js"></script>
     

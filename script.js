@@ -118,7 +118,7 @@ function irAAsistencias(){
     document.getElementById("seccionReportes").style.display = "none";
 }
 function cerrarAsistencias(){
-    document.getElementById("seccionAsistencia").style.display = "none";
+    document.getElementById("seccionAsistencias").style.display = "none";
 }
 //          ===== pacientes ======  aqui me quede 12/30   >
 
@@ -324,7 +324,7 @@ function mostrarCitas(){
         document.getElementById("seccionPacientes").style.display = "none";
         document.getElementById("seccionCitas").style.display = "none";
         document.getElementById("seccionSesiones").style.display= "none";
-        document.getElementById("seccionAsistencia").style.display= "none";
+        document.getElementById("seccionAsistencias").style.display= "none";
         cargarSelectorPacientesReporte();
     }
 
@@ -528,52 +528,53 @@ function mostrarCitasControl(){
 
             }
 }
-function generarReporteInasistencias(){
+    function generarReporteInasistencias(){
     let fechaInicio = document.getElementById("inasistenciaFechaInicio").value;
     let fechaFin = document.getElementById("inasistenciaFechaFin").value;
 
-    if (!fechInicio || !fechaFin) {
+    if (!fechaInicio || !fechaFin) {
         alert("Por favor selecciona las fechas");
         return;
     }
 
     let inasistencias = citas.filter(function(cita){
         return cita.asistencia === "no_asistio" &&
-        cita.fecha >= fechInicio &&
+        cita.fecha >= fechaInicio &&
         cita.fecha <= fechaFin;
     });
 
-    mostrarResultadoInasistencias(inasistencias, fechInicio, fechaFin);
+    mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin);{
 
 }
 
-function mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin,){
+function mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin){
     let div = document.getElementById("resultadoInasistencias");
 
     if (inasistencias.length === 0) {
-        div.innerHTML = '<div style="background: #d4edda; padding: 20px, border-radius: 10px, color: #155724;">' +
+        div.innerHTML = '<div style="background: #d4edda; padding: 20px; border-radius: 10px, color: #155724;">' +
             '<h3>No hay inasistencias registradas</h3>' +
             '<p> Todos los pacientes asistieron a sus citas en este periodo.</p>' +
             '</div>';
         return
     }
 
-    let html = '<div style= "background: white; padding: 30px; border-radius: 10px; box-shadow: 0  4px 15px  rgba(0, 0, 0, 0.1);">';
-    html += '<h3 style="color: #dc3545;> REPORTE DE INASISTENCIAS</h3>';
+    let html = '<div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0  4px 15px  rgba(0, 0, 0, 0.1);">';
+    html += '<h3 style="color: #dc3545;"> REPORTE DE INASISTENCIAS</h3>';
     html += '<p><strong>Periodo:</strong> ' + fechaInicio + ' al ' + fechaFin + '</p>';
     html += '<hr style="margin: 20px 0;">';
 
     html += '<table style="width: 100%; border-collapse: collapse; ">';
-    html += '<thead><tr style=background: #f8d7da;">' +
-            '<th style="padding: 10px; border: 1px; solid #ddd;">Paciente</th>' +
-            '<th style="padding: 10px; border: 1px; solid #ddd;">Fecha</th>' +
-            '<th style="padding: 10px; border: 1px; solid #ddd;">Hora</th>' +
-            '<th style="padding: 10px; border: 1px; solid #ddd;">Tipo de Cita</th>' +
-            '<th style="padding: 10px; border: 1px; solid #ddd;">Motivo</th>' +
+    html += '<thead><tr "style=background: #f8d7da;">' +
+            '<th style="padding: 10px; border: 1px solid #ddd;">Paciente</th>' +
+            '<th style="padding: 10px; border: 1px solid #ddd;">Fecha</th>' +
+            '<th style="padding: 10px; border: 1px solid #ddd;">Hora</th>' +
+            '<th style="padding: 10px; border: 1px solid #ddd;">Tipo de Cita</th>' +
+            '<th style="padding: 10px; border: 1px solid #ddd;">Motivo</th>' +
             '</tr></thead>';
     html += '<tbody>';
 
     for (let i = 0; i < inasistencias.length; i++) {
+        let cita = inasistencias[i];
         html += '<tr>';
         html += '<td style="padding: 10px; border: 1px; solid #ddd;">' + cita.paciente + '</td>';
         html += '<td style="padding: 10px; border: 1px; solid #ddd;">' + cita.fecha + '</td>';
@@ -585,16 +586,16 @@ function mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin,){
         
     }
     html += '</tbody></table>';
-    html += '<hr style="margin: 20px; 0;">';
-    html += '<div style=background: #f8d7da; padding: 20px; border-radius: 8px; border: 2px; solid #dc3545;">';
+    html += '<hr style="margin: 20px 0;">';
+    html += '<div style="background: #f8d7da; padding: 20px; border-radius: 8px; border: 2px; solid #dc3545;">';
     html += '<h3 style="color: #721c24; margin: 0;"> TOTAL DE INASISTENCIAS: ' + inasistencias.length + '</h3>';
-    html += '<p style="margin: 10px; 0 0 0; color: #721c24;"> Pacientes a reportar al sistema de salud</p>';
+    html += '<p style="margin: 10px 0 0 0; color: #721c24;"> Pacientes a reportar al sistema de salud</p>';
     html += '</div>';
     html += '</div>';
 
     div.innerHTML = html;
 
-
+}
 }
     
 

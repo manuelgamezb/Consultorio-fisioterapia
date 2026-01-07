@@ -43,7 +43,7 @@
         <div class="menu-card">
             <h2> Asistencias</h2>
             <p>Control de Asistencias e Inasistencias</p>
-            <button onclick="irAsistencias()">Ir a Asistencias</button>
+            <button onclick="irAAsistencias()">Ir a Asistencias</button>
     </div>
     </div>
 
@@ -260,19 +260,19 @@
                 <h2> Reporte de Inasistencias</h2>
 
                 <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
-                    <label for="InasistenciaFechaInicio">Desde: </label>
-                    <input type="date" id="InasistenciaFechaInicio">
+                    <label for="inasistenciaFechaInicio">Desde: </label>
+                    <input type="date" id="inasistenciaFechaInicio">
 
 
-                    <label for="InasistenciaFechaFin" style="margin-left: 20px;">Hasta:</label>
-                    <input type="date" id="InasistenciaFechaFin">
+                    <label for="inasistenciaFechaFin" style="margin-left: 20px;">Hasta:</label>
+                    <input type="date" id="inasistenciaFechaFin">
                     <br><br>
 
                     <button onclick="generarReporteInasistencias()">Generar Reporte de Inasistencias</button>
                 </div>
 
-                <div id="resultadoReporteInasistencias"></div>
-                
+                <div id="resultadoInasistencias"></div>
+            </div>
 
     <script src="script.js"></script>
     

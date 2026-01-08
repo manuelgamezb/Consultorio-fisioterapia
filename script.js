@@ -548,7 +548,7 @@ function mostrarCitasControl(){
         cita.fecha <= fechaFin;
     });
 
-    mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin);{
+    mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin);
 
 }
 
@@ -601,7 +601,7 @@ function mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin){
     div.innerHTML = html;
 
 }
-}
+
     
 
 

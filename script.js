@@ -486,7 +486,12 @@ function mostrarCitas(){
     marcarAsistencia(index, false);
 }
 function mostrarCitasControl(){
-    let fechaHoy = new Date().toISOString().split('T')[0];
+    let hoy = new Date();
+    let year = hoy.getFullYear();
+    let month = String(hoy.getMonth() + 1).padStart(2, '0');
+    let day = String(hoy.getDate()).padStart(2, '0');
+    let fechaHoy = year + '-' + month  + '-'+ day;
+    
     let tbody = document.getElementById("listaControlAsistencias");
     tbody.innerHTML = "";
 

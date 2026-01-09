@@ -243,8 +243,29 @@ function mostrarCalendarioSemanal(){
     html += '<thead><tr style="background: #ecf0f1;">';
     // encabezados de dias//
     let diasSemana = ['LUN','MAR','MIE','JUE','VIE', 'SAB', 'DOM'];
+    html += '<th style="padding: 10px; border: 1px solid #ddd; width: 80px;">HORA</th>';
+    for(let i=0; i<7; i++){
+        let fecha = new Date(inicioSemana);
+        fecha.setDate(inicioSemana.getDate() + i);
+        let dia = fecha.getDate();
+        html +=  '<th style="padding: 10px; border: 1px solid #ddd;">' + diasSemana[i] + '<br>' + dia + '</th>';
+    }
+    html += '<tr></thead><tbody>';
+
+    // horarios (8 a 8 pm)
+    for (let hora=8; hora<=20; hora++){
+        html += '<tr>';
+        html += '<th style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background: #f8f9fa;">' +
+        (hora < 10 ? '0' + hora : hora) + ':00</td>';
+
+        //para cada dia de la semana//
+
+        
+
+    }
+
     
-    // ------ Sesiones -------//
+     // ------ Sesiones -------//
 
     function cargarSelectorPacientesSesion(){
         let select = document.getElementById("sesionPaciente");

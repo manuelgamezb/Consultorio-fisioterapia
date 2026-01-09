@@ -217,22 +217,33 @@ function agendarCita(){
 
 
 }
-
+//MOSTRAR CITAS TIPO AGENDA
 function mostrarCitas(){
-    let tbody = document.getElementById("listaCitas");
-    tbody.innerHTML = "";
-
-    for (let i=0; i <citas.length; i++){
-        let fila = "<tr>" +
-             "<td>" + citas[i].paciente + "</td>"+
-             "<td>" + citas[i].fecha + "</td>"+
-              "<td>" + citas[i].hora + "</td>"+
-              "<td>" + citas[i].tipo + "</td>"+
-             "</tr>";
-            
-        tbody.innerHTML += fila;
-    }
+    mostrarCalendarioSemanal();
 }
+function mostrarCalendarioSemanal(){
+    let contenedor = document.getElementById("calendarioSemanal");
+
+}// obtener semana actual
+    let diaSemana = hoy.getDay(); // 0 DOMINGO, 1 LUNES, ETC
+    let inicioSemana = new Date(hoy);
+    inicioSemana.setDate(hoy.getDate() - diaSemana + 1); //lunes
+    //Genera html calendario
+    let html = '<div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px rgba(0,0,0,0.1);">';
+
+    //titulo con navegacion//
+    html += '<div style=display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">';
+    html += '<button onclick="cambiarSemana(-1)" style="padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;"> Semana Anterior</button>';
+    html += '<h3 style="margin: 0;">Semana del ' + formatearFecha(inicioSemana)+ '</h3>';
+    html += '<button onclick="cambiarSemana(1)" style="padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;"> Semana Siguiente </button>';
+    html += '</div>';
+
+    //tabla de calendario
+    html += '<table style="width: 100%; border-collapse: collapse; text-align: center;">';
+    html += '<thead><tr style="background: #ecf0f1;">';
+    // encabezados de dias//
+    let diasSemana = ['LUN','MAR','MIE','JUE','VIE', 'SAB', 'DOM'];
+    
     // ------ Sesiones -------//
 
     function cargarSelectorPacientesSesion(){

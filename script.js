@@ -228,6 +228,7 @@ function mostrarCalendarioSemanal(){
     let diaSemana = hoy.getDay(); // 0 DOMINGO, 1 LUNES, ETC
     let inicioSemana = new Date(hoy);
     inicioSemana.setDate(hoy.getDate() - diaSemana + 1 + semanaOffset * 7); //lunes
+
     //Genera html calendario
     let html = '<div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px rgba(0,0,0,0.1);">';
 
@@ -305,22 +306,29 @@ function mostrarCalendarioSemanal(){
 
     html += '</tbody></table></div>';
 
+     let semanaOffset = 0;
+    function cambiarSemana(direccion){
+        semanaOffset += direccion;
+        mostrarCalendarioSemanal();
+
+    }
+
     contenedor.innerHTML = html;
 }
         //CORREGIDO HASTA AQUI TODO LO DE ARRIBA
-        
+
     function formatearFecha(fecha){
         let meses = ['Ene', 'Feb', 'Mar', 'Abr','May','Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
         return fecha.getDate() + ' ' + meses[fecha.getMonth()] + ' ' + fecha.getFullYear();
 
 }
 
-    let semanaOffset = 0;
     function cambiarSemana(direccion){
         semanaOffset += direccion;
         mostrarCalendarioSemanal();
-
+        
     }
+    
 
  
 

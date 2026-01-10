@@ -260,7 +260,21 @@ function mostrarCalendarioSemanal(){
 
         //para cada dia de la semana//
 
+    for (let dia=0; dia<7; dia++){
+        let fechaDia = new Data(inicioSemana);
+        fechaDia.setDate(inicioSemana.getDate() + dia);
+        let fechaStr = fechaDia.getFullYear() + '-' +
+            String(fechaDia.getMonth() + 1).padStart(2, '0') + '-' +
+            String(fechaDia.getDate()).padStart(2, '0');
+
+        // Buscar citas en este dia y hora
+        let citasEnHora = citas.filter(function(cita){
+            if(cita.fecha! == fechaStr) return false;
+            let horaCita= parseInt(cita.hora.split(':')[0]);
+            return horaCita === hora;
         
+        });
+    }
 
     }
 

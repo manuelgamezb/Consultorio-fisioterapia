@@ -255,7 +255,7 @@ function mostrarCalendarioSemanal(){
     // horarios (8 a 8 pm)
     for (let hora=8; hora<=20; hora++){
         html += '<tr>';
-        html += '<th style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background: #f8f9fa;">' +
+        html += '<td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background: #f8f9fa;">' +
         (hora < 10 ? '0' + hora : hora) + ':00</td>';
 
         //para cada dia de la semana//
@@ -282,16 +282,44 @@ function mostrarCalendarioSemanal(){
                 colorFondo = '#d4edda';
                 emoji = '✅';
             } else if(cita.asistencia === 'no_asistio') {
-                colorFondo = '#f8d7da'
+                colorFondo = '#f8d7da';
                 emoji = '❌' ;
 
             }
+            html += '<td style="padding: 10px; border: 1px solid #ddd; background:' + colorFondo + ';">';
+            html += '<strong>' = emoji + '' + cita.paciente + '</strong><br>';
+            html += '<small>' + cita.tipo + '</small>';
+            html += '</td>';
+        } else{
+            html += '<td style="padding: 10px; border: 1px solid #ddd; background: white;">-</td>';
+        }
+     }
+        html += '</tr>';
 
-        
-    
+         
     }
 
-    
+    html += '</tbody></table>';
+    html += '</div>';
+
+    contenedor.innerHTML = html;
+}
+
+    function formatearFecha(fecha){
+        let meses = ['Ene', 'Feb', 'Mar', 'Abr','May','Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+        return fecha.getDate() + '' + meses[fecha.getMonth()] + ' ' + fecha.getFullYear();
+
+    }
+
+    let semanaOffset = 0;
+    function cambiarSemana(direccion){
+        semanaOffset += direccion;
+        mostrarCalendarioSemanal();
+        
+    }
+
+ 
+
      // ------ Sesiones -------//
 
     function cargarSelectorPacientesSesion(){

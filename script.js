@@ -224,7 +224,9 @@ function mostrarCitas(){
 function mostrarCalendarioSemanal(){
     let contenedor = document.getElementById("calendarioSemanal");
 
-}// obtener semana actual
+}
+// obtener semana actual
+    let hoy = new Date();
     let diaSemana = hoy.getDay(); // 0 DOMINGO, 1 LUNES, ETC
     let inicioSemana = new Date(hoy);
     inicioSemana.setDate(hoy.getDate() - diaSemana + 1); //lunes
@@ -250,7 +252,7 @@ function mostrarCalendarioSemanal(){
         let dia = fecha.getDate();
         html +=  '<th style="padding: 10px; border: 1px solid #ddd;">' + diasSemana[i] + '<br>' + dia + '</th>';
     }
-    html += '<tr></thead><tbody>';
+    html += '</tr></thead><tbody>';
 
     // horarios (8 a 8 pm)
     for (let hora=8; hora<=20; hora++){
@@ -287,7 +289,7 @@ function mostrarCalendarioSemanal(){
 
             }
             html += '<td style="padding: 10px; border: 1px solid #ddd; background:' + colorFondo + ';">';
-            html += '<strong>' = emoji + '' + cita.paciente + '</strong><br>';
+            html += '<strong>' + emoji + '' + cita.paciente + '</strong><br>';
             html += '<small>' + cita.tipo + '</small>';
             html += '</td>';
         } else{
@@ -303,11 +305,11 @@ function mostrarCalendarioSemanal(){
     html += '</div>';
 
     contenedor.innerHTML = html;
-}
+
 
     function formatearFecha(fecha){
         let meses = ['Ene', 'Feb', 'Mar', 'Abr','May','Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
-        return fecha.getDate() + '' + meses[fecha.getMonth()] + ' ' + fecha.getFullYear();
+        return fecha.getDate() + ' ' + meses[fecha.getMonth()] + ' ' + fecha.getFullYear();
 
     }
 
@@ -315,7 +317,7 @@ function mostrarCalendarioSemanal(){
     function cambiarSemana(direccion){
         semanaOffset += direccion;
         mostrarCalendarioSemanal();
-        
+
     }
 
  

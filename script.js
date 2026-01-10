@@ -261,7 +261,7 @@ function mostrarCalendarioSemanal(){
         //para cada dia de la semana//
 
     for (let dia=0; dia<7; dia++){
-        let fechaDia = new Data(inicioSemana);
+        let fechaDia = new Date(inicioSemana);
         fechaDia.setDate(inicioSemana.getDate() + dia);
         let fechaStr = fechaDia.getFullYear() + '-' +
             String(fechaDia.getMonth() + 1).padStart(2, '0') + '-' +
@@ -269,13 +269,26 @@ function mostrarCalendarioSemanal(){
 
         // Buscar citas en este dia y hora
         let citasEnHora = citas.filter(function(cita){
-            if(cita.fecha! == fechaStr) return false;
+            if(cita.fecha !== fechaStr) return false;   
             let horaCita= parseInt(cita.hora.split(':')[0]);
             return horaCita === hora;
         
         });
-    }
+        if(citasEnHora.length > 0){
+            let cita = citasEnHora[0];
+            let colorFondo = '#e3f2fd';
+            let emoji = '📅';
+            if(cita.asistencia === 'asistio') {
+                colorFondo = '#d4edda';
+                emoji = '✅';
+            } else if(cita.asistencia === 'no_asistio') {
+                colorFondo = '#f8d7da'
+                emoji = '❌' ;
 
+            }
+
+        
+    
     }
 
     

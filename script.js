@@ -316,7 +316,8 @@ function mostrarCalendarioSemanal(){
     contenedor.innerHTML = html;
 }
         //CORREGIDO HASTA AQUI TODO LO DE ARRIBA
-
+    let semanaOffset = 0;
+    
     function formatearFecha(fecha){
         let meses = ['Ene', 'Feb', 'Mar', 'Abr','May','Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
         return fecha.getDate() + ' ' + meses[fecha.getMonth()] + ' ' + fecha.getFullYear();
@@ -326,7 +327,7 @@ function mostrarCalendarioSemanal(){
     function cambiarSemana(direccion){
         semanaOffset += direccion;
         mostrarCalendarioSemanal();
-        
+
     }
     
 

@@ -2,6 +2,8 @@
 let pacientes = [];
 let citas = [];
 let sesiones =[];
+let semanaOffset = 0;
+
 
 //cargar pacientes al iniciar la pagina//
 window.onload = function(){
@@ -241,8 +243,8 @@ function mostrarCalendarioSemanal(){
 
     //tabla de calendario
     html += '<table style="width: 100%; border-collapse: collapse; text-align: center;">';
-    html += '<thead><tr style="background: #ecf0f1;">';
-    html += '<th style="padding: 10px; border: 1px solid #ddd; width: 80px;">HORA</th>';
+    html += '<thead><tr style="background: #ecf0f1; color: #000;">';
+    html += '<th style="padding: 10px; border: 1px solid #ddd; width: 80px; color: #000;">HORA</th>';
 
     // encabezados de dias//
     let diasSemana = ['LUN','MAR','MIE','JUE','VIE', 'SAB', 'DOM'];
@@ -251,7 +253,7 @@ function mostrarCalendarioSemanal(){
         let fecha = new Date(inicioSemana);
         fecha.setDate(inicioSemana.getDate() + i);
         let dia = fecha.getDate();
-        html +=  '<th style="padding: 10px; border: 1px solid #ddd;">' + diasSemana[i] + '<br>' + dia + '</th>';
+        html +=  '<th style="padding: 10px; border: 1px solid #ddd; color: #000;">' + diasSemana[i] + '<br>' + dia + '</th>';
     }
     html += '</tr></thead><tbody>';
 
@@ -306,7 +308,7 @@ function mostrarCalendarioSemanal(){
 
     html += '</tbody></table></div>';
 
-     let semanaOffset = 0;
+     
     function cambiarSemana(direccion){
         semanaOffset += direccion;
         mostrarCalendarioSemanal();
@@ -316,8 +318,8 @@ function mostrarCalendarioSemanal(){
     contenedor.innerHTML = html;
 }
         //CORREGIDO HASTA AQUI TODO LO DE ARRIBA
-    let semanaOffset = 0;
     
+
     function formatearFecha(fecha){
         let meses = ['Ene', 'Feb', 'Mar', 'Abr','May','Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
         return fecha.getDate() + ' ' + meses[fecha.getMonth()] + ' ' + fecha.getFullYear();

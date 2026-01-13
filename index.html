@@ -16,6 +16,7 @@
     </header>
 
     <!-- Menu de secciones   -->
+     <div class="modal-overlay" id="modalOverlay" onclick="cerrarTodosLosModales()"></div>
     <div class="menu-container">
         <div class="menu-card">
             <h2> Pacientes</h2>
@@ -47,7 +48,17 @@
     </div>
     </div>
 
-<div id="seccionPacientes" style="display: none;">
+<div id="seccionPacientes" class="modal-container">
+    <div class="modal-header">
+        <h2>Gestion de Pacientes</h2>
+        <div class="modal-close-btn">
+            <button onclick="cerrarModal('seccionPacientes')">Menu</button>
+            <button onclick="cerrarModal('seccionPacientes')">❌</button>
+        </div>
+    </div>
+    <div class="modal-body">
+
+        <button onclick="cerrarPacientes()">X</button>
     <h2>Registrar Nuevo Paciente</h2>
     <form>
         <label>Nombre:</label>
@@ -116,6 +127,7 @@
      <div id="calendarioSemanal"></div>
 
 
+    </div>
     </div>
     <div id="seccionSesiones" style="display: none;">
         <h2>Registrar Sesion de Tratamiento</h2>

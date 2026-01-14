@@ -703,8 +703,19 @@ function mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin){
     div.innerHTML = html;
 
 }
+function cerrarModal(idModal){
+    document.getElementById(idModal).classList.remove("active");
+    document.getElementById("modalOverlay").classList.remove("active");
+}
+function cerrarTodosLosModales(){
+    let modales = document.querySelectorAll(".modal-container");
+    for (let i=0; i< modales.length; i++){
+        modales[i].classList.remove("active");
+}   
+    document.getElementById("modalOverlay").classList.remove("active");
 
-    
+}
+   
 
 
 

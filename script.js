@@ -68,14 +68,9 @@ function guardarEnLocalStorage(){
 
 //===== NAVEGACION ========//
 function irAPacientes(){
-    document.getElementById("seccionPacientes").style.display = "block";
-    document.getElementById("seccionCitas").style.display = "none";
-    document.getElementById("seccionSesiones").style.display = "none";
-    document.getElementById("seccionReportes").style.display = "none";
-    document.getElementById("seccionAsistencias").style.display = "none";
-
-
-
+    cerrarTodosLosModales();
+    document.getElementById("seccionPacientes").classList.add("active");
+    document.getElementById("modalOverlay").classList.remove("active");
 }
 
 function irACitas(){
@@ -715,7 +710,7 @@ function cerrarTodosLosModales(){
     document.getElementById("modalOverlay").classList.remove("active");
 
 }
-   
+
 
 
 

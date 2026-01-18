@@ -204,7 +204,16 @@
     </div>
 </div id="seccionReportes" style="display: none;">
        
-        <div id="seccionReportes" style="display: none;">
+        <div id="seccionReportes" class="modal-container">
+            <div class="modal-header">
+                <h2>Reportes de Asistencias</h2>
+                <div class="modal-close-btn">
+                    <button onclick="cerrarModal('seccionReportes')">Menu</button>
+                    <button onclick="cerrarModal('seccionReportes')">❌</button>
+                </div>
+            </div>
+            <div class="modal-body">
+
             <h2> Reporte de Asistencias</h2>
 
             <div style="background: #f8f9fa; padding: 30px; border-radius:  10px; margin-bottom: 30px;">
@@ -254,6 +263,7 @@
 
                 <div id="resultadoReporte"></div>
         </div>
+    </div>
      <!-- SECCION ASISTENCIAS -->
         <div id="seccionAsistencias" style="display: none;">
             <h2> Control de Asistencias del Dia</h2>

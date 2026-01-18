@@ -265,7 +265,16 @@
         </div>
     </div>
      <!-- SECCION ASISTENCIAS -->
-        <div id="seccionAsistencias" style="display: none;">
+        <div id="seccionAsistencias" class="modal-container">
+            <div class="modal-header">
+                <h2>Control de Asistencias e Inasistencias</h2>
+                <div class="modal-close-btn">
+                    <button onclick="cerrarModal('seccionAsistencias')">Menu</button>
+                    <button onclick="cerrarModal('seccionAsistencias')">❌</button>
+                </div>
+            </div>
+            <div class="modal-body">
+
             <h2> Control de Asistencias del Dia</h2>
 
             <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
@@ -306,6 +315,7 @@
 
                 <div id="resultadoInasistencias"></div>
             </div>
+        </div>
 
     <script src="script.js"></script>
     

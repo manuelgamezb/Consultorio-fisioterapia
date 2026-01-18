@@ -103,15 +103,14 @@ function cerrarSesiones(){
 }
 
 function irAAsistencias(){
-    document.getElementById("seccionAsistencias").style.display = "block";
-    document.getElementById("seccionPacientes").style.display = "none";
-    document.getElementById("seccionCitas").style.display = "none";
-    document.getElementById("seccionSesiones").style.display = "none";
-    document.getElementById("seccionReportes").style.display = "none";
-}
+    cerrarTodosLosModales();
+    document.getElementById("seccionAsistencias").classList.add("active");
+    document.getElementById("modalOverlay").classList.add("active");
+
 function cerrarAsistencias(){
-    document.getElementById("seccionAsistencias").style.display = "none";
-}
+    cerrarModal("seccionAsistencias");
+}}
+  
 //          ===== pacientes ======  aqui me quede 12/30   >
 
 

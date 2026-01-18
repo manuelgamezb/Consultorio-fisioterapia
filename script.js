@@ -82,11 +82,9 @@ function irACitas(){
 }
 
 function irASesiones(){
-    document.getElementById("seccionSesiones").style.display ="block";
-    document.getElementById("seccionPacientes").style.display ="none";
-    document.getElementById("seccionCitas").style.display = "none";
-    document.getElementById("seccionReportes").style.display = "none";
-    document.getElementById("seccionAsistencias").style.display = "none";
+    cerrarTodosLosModales();
+    document.getElementById("seccionSesiones").classList.add("active");
+    document.getElementById("modalOverlay").classList.add("active");
     cargarSelectorPacientesSesion();
 
 }  
@@ -100,7 +98,7 @@ function cerrarCitas(){
 }
 
 function cerrarSesiones(){
-    document.getElementById("seccionSesiones").style.display = "none";
+    cerrarModal("seccionSesiones");
 
 }
 
@@ -414,16 +412,14 @@ function mostrarCalendarioSemanal(){
     // reportes//
 
     function irAReportes(){
-        document.getElementById("seccionReportes").style.display = "block";
-        document.getElementById("seccionPacientes").style.display = "none";
-        document.getElementById("seccionCitas").style.display = "none";
-        document.getElementById("seccionSesiones").style.display= "none";
-        document.getElementById("seccionAsistencias").style.display= "none";
+        cerrarTodosLosModales();
+        document.getElementById("seccionReportes").classList.add("active");
+        document.getElementById("modalOverlay").classList.add("active");
         cargarSelectorPacientesReporte();
     }
 
     function cerrarReportes(){
-        document.getElementById("seccionReportes").style.display = "none";
+        cerrarModal("seccionReportes");
 
     }
     function cargarSelectorPacientesReporte(){

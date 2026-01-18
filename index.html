@@ -89,9 +89,18 @@
 </div>
             
 
-<div id="seccionCitas" style="display: none;">
+<div id="seccionCitas" class="modal-container">
+    <div class="modal-header">
+        <h2>Gestion de Citas</h2>
+        <div class="modal-close-btn">
+            <button onclick="cerrarModal('seccionCitas')">Menu</button>
+            <button onclick="cerrarModal('seccionCitas')">❌</button>
+        </div>
+    </div>
+    <div class="modal-body">
+
      <h2>Agendar Nueva Cita</h2>
-     <form>
+    <form>
         <label for="citaPaciente">Paciente:</label>
         <select id="citaPaciente">
             <option value=""> Seleccionar paciente</option>
@@ -130,9 +139,18 @@
 
     </div>
     </div>
-    <div id="seccionSesiones" style="display: none;">
-        <h2>Registrar Sesion de Tratamiento</h2>
+    <div id="seccionSesiones" class="modal-container">
+        <div class="modal-header">
+            <h2>Sesiones de Tratamiento</h2>
+            <div class="modal-close-btn">
+                <button onclick="cerrarModal('seccionSesiones')">Menu</button>
+                <button onclick="cerrarModal('seccionSesiones')">❌</button>
+            </div>
+        </div>
+        <div class="modal-body">
 
+
+        <h2>Gestion de Sesiones</h2>
         <form>
             <label for="sesionPaciente">Paciente:</label>
             <select id="sesionPaciente">
@@ -183,6 +201,8 @@
                 </tbody>
             </table>
         </div>
+    </div>
+</div id="seccionReportes" style="display: none;">
        
         <div id="seccionReportes" style="display: none;">
             <h2> Reporte de Asistencias</h2>

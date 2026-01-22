@@ -37,6 +37,38 @@ function cargarPacientes(){
     }
 
 }
+// EDITAR PACIENTES //
+    function editarPaciente(index){
+        let paciente = pacientes[index];
+        let nuevoNombre = prompt("Editar nombre del paciente:", paciente.nombre);
+        if (nuevoNombre === null) return; // usuario cancelo
+        let nuevoTelefono = prompt("Editar telefono del paciente:", paciente.telefono);
+        if (nuevoTelefono === null) return; // usuario cancelo
+        if (nuevoNombre === "" || nuevoTelefono === ""){
+            alert("Por favor llene todos los campos");
+            return;
+        }
+
+        pacientes[index].nombre = nuevoNombre;
+        pacientes[index].telefono = nuevoTelefono;
+        guardarEnLocalStorage();
+        mostrarPacientes();
+        alert("Paciente editado exitosamente");
+    }
+
+        //ELIMINAR PACIENTES//
+    function eliminarPaciente (index){
+    let confirmacion = confirm("¿Estas seguro de eliminar este paciente?"+paciente.nombre+"?");
+
+            if (!confirmacion) return;
+            pacientes.splice (index, 1);
+            guardarEnLocalStorage();
+            mostrarPacientes();
+            alert("Paciente eliminado exitosamente");
+    }
+
+
+
 
 function cargarCitas(){
     let datosGuardados = localStorage.getItem("citas");
@@ -151,10 +183,14 @@ function mostrarPacientes(){
     let tbody = document.getElementById("listaPacientes");
     tbody.innerHTML = "";
 
-    for (let i = 0; i <pacientes.length; i++){
-        let fila = "<tr><td>" + pacientes[i].nombre + "</td><td>" + pacientes[i].telefono + "</td></tr>";
+    for (let i=0; i< pacientes.length; i++){    
+        let fila = "<tr>" +
+            "<td>" + pacientes[i].nombre + "</td>" +
+            "<td>" + pacientes[i].telefono + "</td>" +
+            "<td><button onclick='editarPaciente(" + i + ")' style='background:#ffc107; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Editar</button>"
+            "<td><button onclick='eliminarPaciente(" + i + ")' style='background:#dc3545; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;'>Eliminar</button>"
+        "</td></tr>";
         tbody.innerHTML += fila;
-
     }
 
 }

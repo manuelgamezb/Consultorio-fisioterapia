@@ -58,6 +58,7 @@ function cargarPacientes(){
 
         //ELIMINAR PACIENTES//
     function eliminarPaciente (index){
+        let paciente = pacientes[index];
     let confirmacion = confirm("¿Estas seguro de eliminar este paciente?"+paciente.nombre+"?");
 
             if (!confirmacion) return;
@@ -187,9 +188,9 @@ function mostrarPacientes(){
         let fila = "<tr>" +
             "<td>" + pacientes[i].nombre + "</td>" +
             "<td>" + pacientes[i].telefono + "</td>" +
-            "<td><button onclick='editarPaciente(" + i + ")' style='background:#ffc107; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Editar</button>"
+            "<td><button onclick='editarPaciente(" + i + ")' style='background:#ffc107; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Editar</button>" +
             "<td><button onclick='eliminarPaciente(" + i + ")' style='background:#dc3545; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;'>Eliminar</button>"
-        "</td></tr>";
+        "</td>";
         tbody.innerHTML += fila;
     }
 

@@ -248,7 +248,65 @@ function agendarCita(){
 //MOSTRAR CITAS TIPO AGENDA
 function mostrarCitas(){
     mostrarCalendarioSemanal();
+    mostrarTablaCitas();
 }
+
+function mostrarTablaCitas(){
+    mostrarCalendarioSemanal();
+    mostrarTablaCitas();
+}
+function mostrarTablaCitas(){
+
+    let tbody = document.getElementById("listaCitas");
+    tbody.innerHTML = "";
+
+    for (let i=0; i< citas.length; i++){
+
+        let fila = "<tr>" +
+            "<td>" + citas[i].paciente + "</td>" +
+            "<td>" + citas[i].fecha + "</td>" +
+            "<td>" + citas[i].hora + "</td>" +
+            "<td>" + citas[i].tipo + "</td>" +
+            "<td><button onclick='editarCita(" + i + ")' style='background:#ffc107; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Editar</button>" +
+            "<button onclick='eliminarCita(" + i + ")' style='background:#dc3545; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;'>Eliminar</button>"+
+            "</td>"+ 
+            "</tr>";
+        tbody.innerHTML += fila;
+    }
+}
+
+//EDITAR CITAS//
+function editarCita(index){
+    let citas = citas[index];
+    let nuevaFecha = prompt("Editar fecha:" (YYYY-MM-DD) , cita.fecha);
+    if (nuevaFecha === null) return; // usuario cancelo
+    let nuevaHora = prompt("Editar hora (HH:MM):", cita.hora);
+    if (nuevaHora === null) return; // usuario cancelo
+    let nuevoTipo = prompt("Editar tipo de cita:", cita.tipo);
+    if (nuevoTipo === null) return; // usuario cancelo
+    if (nuevaFecha === "" || nuevaHora === ""){
+        alert("Fecha y hora son obligatorios");
+        return;
+    }
+    citas[index].fecha = nuevaFecha;
+    citas[index].hora = nuevaHora;
+    citas[index].tipo = nuevoTipo;
+    guardarEnLocalStorage();
+    mostrarCitas();
+    alert("Cita editada exitosamente");
+}
+
+//ELIMINAR CITAS//
+function eliminarCita(index){
+    let cita = citas[index];
+    let confirmacion = confirm("¿Estas seguro de eliminar la cita de " + cita.paciente + " del " + cita.fecha + "?");
+    if (!confirmacion) return;
+    citas.splice(index, 1);
+    guardarEnLocalStorage();
+    mostrarCitas();
+    alert("Cita eliminada exitosamente");
+}
+
 function mostrarCalendarioSemanal(){
     let contenedor = document.getElementById("calendarioSemanal");
 

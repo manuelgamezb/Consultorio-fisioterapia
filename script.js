@@ -256,7 +256,7 @@ function mostrarTablaCitas(){
     mostrarTablaCitas();
 }
 
-
+    function mostrarTablaCitas(){
     let tbody = document.getElementById("listaCitas");
     tbody.innerHTML = "";
 
@@ -273,7 +273,7 @@ function mostrarTablaCitas(){
             "</tr>";
         tbody.innerHTML += fila;
     }
-
+    }
 
 //EDITAR CITAS//
 function editarCita(index){

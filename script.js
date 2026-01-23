@@ -255,7 +255,7 @@ function mostrarTablaCitas(){
     mostrarCalendarioSemanal();
     mostrarTablaCitas();
 }
-function mostrarTablaCitas(){
+
 
     let tbody = document.getElementById("listaCitas");
     tbody.innerHTML = "";
@@ -273,12 +273,12 @@ function mostrarTablaCitas(){
             "</tr>";
         tbody.innerHTML += fila;
     }
-}
+
 
 //EDITAR CITAS//
 function editarCita(index){
-    let citas = citas[index];
-    let nuevaFecha = prompt("Editar fecha:" (YYYY-MM-DD) , cita.fecha);
+    let cita = citas[index];
+    let nuevaFecha = prompt("Editar fecha: (YYYY-MM-DD)" , cita.fecha);
     if (nuevaFecha === null) return; // usuario cancelo
     let nuevaHora = prompt("Editar hora (HH:MM):", cita.hora);
     if (nuevaHora === null) return; // usuario cancelo

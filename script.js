@@ -144,7 +144,7 @@ function cerrarAsistencias(){
     cerrarModal("seccionAsistencias");
 }}
   
-//          ===== pacientes ======  aqui me quede 12/30   >
+//          ===== pacientes ======  aqui me quede 12/30   //
 
 
 function guardarPaciente(){
@@ -246,14 +246,12 @@ function agendarCita(){
 
 }
 //MOSTRAR CITAS TIPO AGENDA
-
-
-function mostrarTablaCitas(){
+function mostrarCitas(){
     mostrarCalendarioSemanal();
     mostrarTablaCitas();
 }
 
-    function mostrarTablaCitas(){
+function mostrarTablaCitas(){
     let tbody = document.getElementById("listaCitas");
     tbody.innerHTML = "";
 

@@ -246,10 +246,7 @@ function agendarCita(){
 
 }
 //MOSTRAR CITAS TIPO AGENDA
-function mostrarCitas(){
-    mostrarCalendarioSemanal();
-    mostrarTablaCitas();
-}
+
 
 function mostrarTablaCitas(){
     mostrarCalendarioSemanal();

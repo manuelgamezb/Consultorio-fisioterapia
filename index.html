@@ -3,7 +3,7 @@
 <html>
 <head>
     <title> Consultorio de Fisioterapia</title>
-    <meta charset="UTF-8">
+    <meta charset="UTF-7">
    <link rel="stylesheet" href="estilos.css">
    
     
@@ -60,15 +60,32 @@
 
        
     <h2>Registrar Nuevo Paciente</h2>
-    <form>
+    <form style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap ;">
+        <div style="flex: 1;">
         <label>Nombre:</label>
-        <input type="text"  id="nombrePaciente">
-        <br><br>
+        <input type="text"  id="nombrePaciente" style="width: 200px;">
+        </div>
+        <div>
         <label>Telefono:</label>
         <input type="text"  id="telefonoPaciente">
-        <br><br>
+        </div>  
+    
+        <div style="display: flex; gap: 15px; width: 100%;">
+            <div style="flex: 2;">
+        <label>Direccion:</label>
+        <input type="text" id="direccionPaciente">
+            </div>
+            <div style="flex: 1;">
+        <label>Fecha de Nacimiento:</label>
+        <input type="date" id="nacimientoPaciente">
+            </div>  
+        </div>
+        <div style="width: 100%;">
         <button type="button"   onclick="guardarPaciente()">Guardar</button>
         <button type="button"   onclick="cerrarFormulario()">Cancelar</button>
+        </div>
+        <div>
+        
     </form>
     <!-- Tabla pacientes-->
      <h3>Pacientes Registrados</h3>
@@ -77,6 +94,8 @@
             <tr>
                 <th>Nombre</th>
                 <th>Telefono</th>
+                <th>Direccion</th>
+                <th>Fecha de Nac</th>
                 <th>Acciones</th>
 
             </tr>

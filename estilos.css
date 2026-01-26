@@ -24,7 +24,7 @@ body {
 
     header h1 {
         margin: 0;
-        font-size: 2.2em;
+        font-size: 1.2em;
     }
 
     /* contenedor del menu principal*/
@@ -40,11 +40,11 @@ body {
     .menu-card {
         background-color: white;
         border: none;
-        border-radius: 15px;
-        padding: 40px;
-        width: 280px;
+        border-radius: 10px;
+        padding: 20px;
+        width: 200px;
         text-align: center;
-        box-shadow: 0  8px   20px   rgba(0, 0, 0, 15);
+        box-shadow: 0  4px   10px   rgba(0, 0, 0, 15);
         transition: all 0.3s  ease;
     }
 
@@ -54,17 +54,27 @@ body {
 
     }
 
-    .menu-card {
-        color: #7f8c8d;
-        margin: #2c3e50;
-        font-size: 1.5em;
+    .menu-card h2 {
+        color: #2c3e50;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
     }
 
-    .menu-card  {
+    .menu-card p {
         color: #7f8c8d;
-        margin-bottom: 25px;
-        line-height: 1.6;
+        font-size: .85em;
+        margin-bottom: 15px;
     }
+    .menu-card button {
+        font-size: 0.85em;
+        padding: 8px 16px
+    }
+
+    .menu-card button:hover{
+        background: linear-gradient(135deg, #2980b9, #21618c);
+        transform: translateY(-2px);
+    }                                                          
+
     /*secciones principales*/
     #seccionPacientes,
     #seccionCitas,
@@ -190,17 +200,18 @@ thead{
 }
 
 th{
-    padding: 15px;
+    padding: 10px;
     text-align: left;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.9em;
+    font-size: 0.75em;
     letter-spacing: 0.5px;
 }
 
 td{
-    padding: 15px;
+    padding: 8px;
     border-bottom: 1px solid #ecf0f1;
+    font-size: 0.55em;
 }
 
 tbody tr {

@@ -198,8 +198,9 @@ function mostrarPacientes(){
         let fila = "<tr>" +
             "<td>" + pacientes[i].nombre + "</td>" +
             "<td>" + pacientes[i].telefono + "</td>" +
-            "<td>" + pacientes[i].direccion || "-" + "</td>" +
-            "<td>" + pacientes[i].fechaNac || "-" + "</td>" +
+            "<td>" + (pacientes[i].direccion || "-") + "</td>" +
+            "<td>" + (pacientes[i].fechaNac || "-") + "</td>" +
+            "<td>" +
             "<td><button onclick='editarPaciente(" + i + ")' style='background:#ffc107; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Editar</button>" +
             "<td><button onclick='eliminarPaciente(" + i + ")' style='background:#dc3545; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;'>Eliminar</button>"
         "</td>" +

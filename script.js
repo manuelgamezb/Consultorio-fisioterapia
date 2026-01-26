@@ -44,6 +44,11 @@ function cargarPacientes(){
         if (nuevoNombre === null) return; // usuario cancelo
         let nuevoTelefono = prompt("Editar telefono del paciente:", paciente.telefono);
         if (nuevoTelefono === null) return; // usuario cancelo
+        let nuevaDireccion = prompt("Editar direccion del paciente:", paciente.direccio || "");
+        if (nuevaDireccion === null) return; // usuario cancelo
+        let nuevaFechaNac = prompt("Editar fecha de nacimiento del paciente (YYYY-MM-DD):", paciente.fechaNac || "");
+        if (nuevaFechaNac === null) return; // usuario cancelo
+
         if (nuevoNombre === "" || nuevoTelefono === ""){
             alert("Por favor llene todos los campos");
             return;
@@ -51,6 +56,8 @@ function cargarPacientes(){
 
         pacientes[index].nombre = nuevoNombre;
         pacientes[index].telefono = nuevoTelefono;
+        pacientes[index].direccion = nuevaDireccion;
+        pacientes[index].fechaNac = nuevaFechaNac;
         guardarEnLocalStorage();
         mostrarPacientes();
         alert("Paciente editado exitosamente");
@@ -151,7 +158,8 @@ function guardarPaciente(){
 
     let nombre = document.getElementById("nombrePaciente").value;
     let telefono = document.getElementById("telefonoPaciente").value;
-
+    let direccion = document.getElementById("direccionPaciente").value;
+        let fechaNac = document.getElementById("nacimientoPaciente").value;
     if (nombre === ""|| telefono === "") {
         alert("por favor llene todos los campos");
         return;
@@ -159,7 +167,9 @@ function guardarPaciente(){
 
 let paciente = {
     nombre : nombre,
-    telefono : telefono
+    telefono : telefono,
+    direccion : direccion,
+    fechaNac : fechaNac
 
 
 };
@@ -188,9 +198,12 @@ function mostrarPacientes(){
         let fila = "<tr>" +
             "<td>" + pacientes[i].nombre + "</td>" +
             "<td>" + pacientes[i].telefono + "</td>" +
+            "<td>" + pacientes[i].direccion || "-" + "</td>" +
+            "<td>" + pacientes[i].fechaNac || "-" + "</td>" +
             "<td><button onclick='editarPaciente(" + i + ")' style='background:#ffc107; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Editar</button>" +
             "<td><button onclick='eliminarPaciente(" + i + ")' style='background:#dc3545; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;'>Eliminar</button>"
-        "</td>";
+        "</td>" +
+            "</tr>";
         tbody.innerHTML += fila;
     }
 

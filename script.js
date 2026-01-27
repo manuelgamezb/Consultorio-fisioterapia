@@ -201,8 +201,8 @@ function mostrarPacientes(){
             "<td>" + (pacientes[i].direccion || "-") + "</td>" +
             "<td>" + (pacientes[i].fechaNac || "-") + "</td>" +
             "<td>" +
-            "<td><button onclick='editarPaciente(" + i + ")' style='background:#ffc107; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Editar</button>" +
-            "<td><button onclick='eliminarPaciente(" + i + ")' style='background:#dc3545; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;'>Eliminar</button>"
+            "<button onclick='editarPaciente(" + i + ")' style='background:#ffc107; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Editar</button>" +
+            "<button onclick='eliminarPaciente(" + i + ")' style='background:#dc3545; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;'>Eliminar</button>" +
         "</td>" +
             "</tr>";
         tbody.innerHTML += fila;

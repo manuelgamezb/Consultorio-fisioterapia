@@ -186,12 +186,51 @@
 
 
         <h2>Gestion de Sesiones</h2>
-        <form>
-            <label for="sesionPaciente">Paciente:</label>
-            <select id="sesionPaciente">
-                <option value="">Seleccionar paciente...</option>
-            </select>
-            <br><br>
+        <form style="display: flex; gap: 15px; flex-wrap: wrap ;">
+            <div style="display: flex; gap: 15px; width: 100%;">
+                <div style="flex: 1;">
+                    <label for="sesionPaciente">Paciente:</label>
+                    <select id="sesionPaciente">
+                        <option value="">Seleccionar paciente...</option>
+                    </select>
+                </div>
+            <div style="flex:1;">
+            <label for="sesionFecha">Fecha:</label>
+            <input type="date"  id="sesionFecha">
+            </div>
+            </div>
+            <div style="display: flex; gap: 15px;  width: 100%;">
+            <div style="flex:1;">
+            <label for="sesionTratamiento">Tratamiento Aplicado:</label>
+            <textarea  id="sesionTratamiento" rows="2"></textarea>
+            </div>
+            <div style="flex:1;">
+            <label for="sesionEjercicios">Ejercicios Realizados:</label>
+            <textarea id="sesionEjercicios" rows="2"></textarea>
+            </div>
+            </div>
+            <div style="display: flex; gap: 15px;  width: 100%;">
+            <div style="flex:1;">
+            <label for="sesionObservaciones">Observaciones:</label>
+            <textarea id="sesionObservaciones" rows="2"></textarea>
+            </div>
+            <div style="flex:1;">
+            <label for="sesionEvolucion">Evolucion del paciente: </label>
+            <textarea id="sesionEvolucion" rows="2"></textarea>
+            </div>
+            </div>
+            <div style="display: flex; gap: 15px;  width: 100%;">
+            <div style="flex:1;">
+            <label for="sesionProximos">Proximos Pasos:</label>
+            <textarea id="sesionProximos" rows="2"></textarea>
+            </div>
+            </div>
+            <div style="width: 100%;">
+            <button type="button" onclick="registrarSesion()">Guardar Sesion</button>
+            <button type="button" onclick="cerrarSesiones()">Cancelar</button>
+            </div>
+            </form>
+
             <label for="sesionFecha">Fecha:</label>
             <input type="date"  id="sesionFecha">
             <br><br>

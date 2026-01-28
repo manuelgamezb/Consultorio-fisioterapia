@@ -325,19 +325,22 @@ function mostrarCalendarioSemanal(){
     inicioSemana.setDate(hoy.getDate() - diaSemana + 1 + semanaOffset * 7); //lunes
 
     //Genera html calendario
-    let html = '<div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px rgba(0,0,0,0.1);">';
+    let html = '<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px  rgba(0,0,0,0.2);">';
+
 
     //titulo y botones de  navegacion//
     html += '<div style=display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">';
-    html += '<button onclick="cambiarSemana(-1)" style="padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;"> Semana Anterior</button>';
-    html += '<h3 style="margin: 0;">Semana del ' + formatearFecha(inicioSemana)+ '</h3>';
-    html += '<button onclick="cambiarSemana(1)" style="padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;"> Semana Siguiente </button>';
+    html += '<button onclick="cambiarSemana(-1)" style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border-radius: 8px; cursor: pointer;" font-weight:bold;"> Semana Anterior</button>';
+    html += '<h3 style="margin: 0; color: white; font-size: 1.3em;">Semana del ' + formatearFecha(inicioSemana)+ '</h3>';
+    html += '<button onclick="cambiarSemana(1)" style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border-radius: 8px; cursor: pointer;" font-weight:bold;"> Semana Siguiente </button>';
     html += '</div>';
 
     //tabla de calendario
-    html += '<table style="width: 100%; border-collapse: collapse; text-align: center;">';
-    html += '<thead><tr style="background: #ecf0f1; color: #000;">';
-    html += '<th style="padding: 10px; border: 1px solid #ddd; width: 80px; color: #000;">HORA</th>';
+    html += '<div style=background: white; border-radius: 10px; overflow: hidden;">'; 
+    html += '<table style="width: 100%; border-collapse: collapse; text-align: center;font-size:0.85em;">';
+    html += '<thead><tr style="background: linear-gradient(135deg, #2c3e50, #34495e);">';
+    html += '<th style="padding: 12px 8px; color:white; width: 60px; font-size: 0.85em;">HORA</th>';
+    
 
     // encabezados de dias//
     let diasSemana = ['LUN','MAR','MIE','JUE','VIE', 'SAB', 'DOM'];

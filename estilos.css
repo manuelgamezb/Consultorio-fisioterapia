@@ -228,8 +228,8 @@ tbody tr:last-child td {
 
 /*botones dentro de las tablas*/
 table button {
-    padding: 8px 20px;
-    font-size: 0.9em;
+    padding: 4px 10px;
+    font-size: 0.75em;
     margin: 0;
 }
 /* SISTEMAS MODALES ===== */

@@ -318,9 +318,13 @@ function editarCita(index){
 
 function mostrarCalendarioSemanal(){
     let contenedor = document.getElementById("calendarioSemanal");
-    let hoy = new Day();
+    let hoy = new Date();
+    let diaSemana = hoy.getDay(); // 0 (domingo) a 6 (sabado)
+    if (diaSemana === 0) diaSemana = 7; // ajustar domingo a 7
     let inicioSemana = new Date(hoy);
     inicioSemana.setDate(hoy.getDate() - diaSemana + 1 + (semanaOffset * 7)); // lunes de la semana actual + offset
+
+
     let html = '<div style="backgroud: linear-gradient(135deg, #667eea 0% #764ba2 100%);  padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">';
 
     html += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">';
@@ -378,9 +382,9 @@ function mostrarCalendarioSemanal(){
         }
 
         if (citaEncontrada){
-            let colorFondo = '#e8f5e9';
+            let colorFondo = '#e3f2fd';
             let emoji = '📅';
-            let colorBorde = '#4caf50';
+            let colorBorde = '#2196f3';
 
             if(citaEncontrada.asistencia === 'asistio') {
                 colorFondo = '#e8f5e9';
@@ -409,70 +413,11 @@ function mostrarCalendarioSemanal(){
     contenedor.innerHTML = html;
 }
 
-function mostrarCalendarioSemanal(){
-    let contenedor = document.getElementById("calendarioSemanal");
-    let hoy = new Date();
-    let inicioSemana = new Date(hoy);
-    let diaSemana = hoy.getDay(); // 0 (domingo) a 6 (sabado)
-    if (diaSemana === 0) diaSemana = 7; // ajustar domingo a 7
-    inicioSemana.setDate(hoy.getDate() - diaSemana + 1 + (semanaOffset * 7)); // lunes de la semana actual + offset
-    let html = '<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">';
-
-   
-
-        //para cada dia de la semana//
-
-    for (let dia=0; dia<7; dia++){
-        let fechaDia = new Date(inicioSemana);
-        fechaDia.setDate(inicioSemana.getDate() + dia);
-        let fechaStr = fechaDia.getFullYear() + '-' +
-            String(fechaDia.getMonth() + 1).padStart(2, '0') + '-' +
-            String(fechaDia.getDate()).padStart(2, '0');
-
-        // Buscar citas en este dia y hora
-        let citasEnHora = citas.filter(function(cita){
-            if(cita.fecha !== fechaStr) return false;   
-            let horaCita= parseInt(cita.hora.split(':')[0]);
-            return horaCita === hora;
         
-        });
-
-
-        if(citasEnHora.length > 0){
-            let cita = citasEnHora[0];
-            let colorFondo = '#e3f2fd';
-            let emoji = '📅';
-            if(cita.asistencia === 'asistio') {
-                colorFondo = '#d4edda';
-                emoji = '✅';
-            } else if(cita.asistencia === 'no_asistio') {
-                colorFondo = '#f8d7da';
-                emoji = '❌' ;
-
-            }
-            html += '<td style="padding: 10px; border: 1px solid #ddd; background:' + colorFondo + ';">';
-            html += '<strong>' + emoji + ' ' + cita.paciente + '</strong><br>';
-            html += '<small>' + cita.tipo + '</small>';
-            html += '</td>';
-        } else{
-            html += '<td style="padding: 10px; border: 1px solid #ddd; background: white;">-</td>';
-        }
-     }
-        html += '</tr>';
+     
 
          
-    }
-
-    html += '</tbody></table></div>';
-
-     
-    function cambiarSemana(direccion){
-        semanaOffset += direccion;
-        mostrarCalendarioSemanal();
-
-    }
-
-    contenedor.innerHTML = html;
+   
 
 
     //fomratear fecha a//

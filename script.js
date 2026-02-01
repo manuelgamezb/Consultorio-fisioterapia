@@ -305,33 +305,47 @@ function editarCita(index){
     alert("Cita editada exitosamente");
 }
 
-//ELIMINAR CITAS//
-function eliminarCita(index){
-    let cita = citas[index];
-    let confirmacion = confirm("¿Estas seguro de eliminar la cita de " + cita.paciente + " del " + cita.fecha + "?");
-    if (!confirmacion) return;
-    citas.splice(index, 1);
-    guardarEnLocalStorage();
-    mostrarCitas();
-    alert("Cita eliminada exitosamente");
-}
+//ELIMINAR CITAS a//
+    function eliminarCita(index){
+        let cita = citas[index];
+        let confirmacion = confirm("¿Estas seguro de eliminar esta cita de " + cita.paciente + " del " + cita.fecha + "?");
+            if (!confirmacion) return;
+            citas.splice(index, 1);
+            guardarEnLocalStorage();
+            mostrarCitas();
+            alert("Cita eliminada exitosamente");
+    }
 
+function mostrarCalendarioSemanal(){
+    let contenedor = document.getElementById("calendarioSemanal");
+    let hoy = new Day();
+    let inicioSemana = new Date(hoy);
+    inicioSemana.setDate(hoy.getDate() - diaSemana + 1 + (semanaOffset * 7)); // lunes de la semana actual + offset
+    let html = '<div style="backgroud: linear-gradient(135deg, #667eea 0% #764ba2 100%);  padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">';
 
+    html += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">';
+    html += '<button onclick="cambiarSemana(-1)" style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 8px; cursor: pointer; font-weight: bold;">Anterior</button>';
+    html += '<h3 style= "margin: 0; color: white; font-size: 1.3em;">Semana del ' + formatearFecha(inicioSemana) + '</h3>';
+    html += '<button onclick="cambiarSemana(1)" style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 8px; cursor: pointer; font-weight: bold;">Siguiente</button>';
+    html += '</div>';
+    html += '<div style="background: white; border-radius: 10px; overflow: hidden;">';
 
-    //tabla de calendario
-    html += '<div style=background: white; border-radius: 10px; overflow: hidden;">'; 
+  
+
     html += '<table style="width: 100%; border-collapse: collapse; text-align: center;font-size:0.85em;">';
     html += '<thead><tr style="background: linear-gradient(135deg, #2c3e50, #34495e);">';
     html += '<th style="padding: 12px 8px; color:white; width: 60px; font-size: 0.85em;">HORA</th>';
     
 
-    // encabezados de dias//
+    // encabezados de dias a//
     let diasSemana = ['LUN','MAR','MIE','JUE','VIE'];
    
     for(let i=0; i<5; i++){
         let fecha = new Date(inicioSemana);
         fecha.setDate(inicioSemana.getDate() + i);
         let dia = fecha.getDate();
+        let esHoy = fecha.toDateString() === hoy.toDateString();
+        let bgColor = esHoy ? '#3498db' : 'transparent';
         html +=  '<th style="padding: 12px 8px; color: white; background: ' + bgColor+ ';  border-radius:' + (esHoy ? '8px' : '0') + diasSemana[i] + '<br><span style="font-size: 1.2em;">' + dia +  '</span></th>';
     }
     html += '</tr></thead><tbody>';
@@ -341,6 +355,7 @@ function eliminarCita(index){
         for (let minuto=0; minuto<60; minuto += 15){
             let horaStr = (hora < 10 ? '0' + hora : hora) + ':' + (minuto === 0 ? '00' : minuto);
             let esCadaHora = minuto === 0;
+
             html += '<tr style= "border-bottom: ' + (esCadaHora ? '2px solid #3498db' : '1px solid #ecf0f1') + ';">';
             html += '<td style="padding: 6px; font-weight:' + (esCadaHora ? 'bold' : 'normal') + '; background: #f8f9fa; color:' + (esCadaHora ? '#2c3e50' : '#95a5a6') + '; font-size: ' + (esCadaHora ? '0.85em' : '0.75em')  + ';">' + horaStr + '</td>';
 
@@ -375,9 +390,7 @@ function eliminarCita(index){
                 colorFondo = '#ffebee';
                 emoji = '❌';
                 colorBorde = '#f44336';
-            } else {
-                colorFondo = '#e3f2fd';
-                colorBorde = '#2196f3';
+            
             }
             html += '<td style="padding: 4px; background:' + colorFondo + '; border-left: 3px solid ' + colorBorde + ';">';
             html += '<div style="font-size: 0.75em; font-weight: bold; color: #2c3e50;">'  + emoji + ' ' + citaEncontrada.paciente.split('')[0] +'</div>';
@@ -393,11 +406,19 @@ function eliminarCita(index){
     }
     html += '</tbody></table></div>';
 
-    // horarios (8 a 8 pm)
-    for (let hora=8; hora<=20; hora++){
-        html += '<tr>';
-        html += '<td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background: #f8f9fa;">' +
-        (hora < 10 ? '0' + hora : hora) + ':00</td>';
+    contenedor.innerHTML = html;
+}
+
+function mostrarCalendarioSemanal(){
+    let contenedor = document.getElementById("calendarioSemanal");
+    let hoy = new Date();
+    let inicioSemana = new Date(hoy);
+    let diaSemana = hoy.getDay(); // 0 (domingo) a 6 (sabado)
+    if (diaSemana === 0) diaSemana = 7; // ajustar domingo a 7
+    inicioSemana.setDate(hoy.getDate() - diaSemana + 1 + (semanaOffset * 7)); // lunes de la semana actual + offset
+    let html = '<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">';
+
+   
 
         //para cada dia de la semana//
 
@@ -453,15 +474,14 @@ function eliminarCita(index){
 
     contenedor.innerHTML = html;
 
-        //CORREGIDO HASTA AQUI TODO LO DE ARRIBA
-    
 
+    //fomratear fecha a//
     function formatearFecha(fecha){
         let meses = ['Ene', 'Feb', 'Mar', 'Abr','May','Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
         return fecha.getDate() + ' ' + meses[fecha.getMonth()] + ' ' + fecha.getFullYear();
 
 }
-
+    //cambiar semana a//
     function cambiarSemana(direccion){
         semanaOffset += direccion;
         mostrarCalendarioSemanal();

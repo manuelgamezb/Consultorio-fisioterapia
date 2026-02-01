@@ -316,24 +316,7 @@ function eliminarCita(index){
     alert("Cita eliminada exitosamente");
 }
 
-function mostrarCalendarioSemanal(){
-    let contenedor = document.getElementById("calendarioSemanal");
 
-    let hoy = new Date();
-    let diaSemana = hoy.getDay(); // 0 DOMINGO, 1 LUNES, ETC
-    let inicioSemana = new Date(hoy);
-    inicioSemana.setDate(hoy.getDate() - diaSemana + 1 + semanaOffset * 7); //lunes
-
-    //Genera html calendario
-    let html = '<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px  rgba(0,0,0,0.2);">';
-
-
-    //titulo y botones de  navegacion//
-    html += '<div style=display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">';
-    html += '<button onclick="cambiarSemana(-1)" style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border-radius: 8px; cursor: pointer;" font-weight:bold;"> Semana Anterior</button>';
-    html += '<h3 style="margin: 0; color: white; font-size: 1.3em;">Semana del ' + formatearFecha(inicioSemana)+ '</h3>';
-    html += '<button onclick="cambiarSemana(1)" style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border-radius: 8px; cursor: pointer;" font-weight:bold;"> Semana Siguiente </button>';
-    html += '</div>';
 
     //tabla de calendario
     html += '<div style=background: white; border-radius: 10px; overflow: hidden;">'; 
@@ -343,15 +326,72 @@ function mostrarCalendarioSemanal(){
     
 
     // encabezados de dias//
-    let diasSemana = ['LUN','MAR','MIE','JUE','VIE', 'SAB', 'DOM'];
+    let diasSemana = ['LUN','MAR','MIE','JUE','VIE'];
    
-    for(let i=0; i<7; i++){
+    for(let i=0; i<5; i++){
         let fecha = new Date(inicioSemana);
         fecha.setDate(inicioSemana.getDate() + i);
         let dia = fecha.getDate();
-        html +=  '<th style="padding: 10px; border: 1px solid #ddd; color: #000;">' + diasSemana[i] + '<br>' + dia + '</th>';
+        html +=  '<th style="padding: 12px 8px; color: white; background: ' + bgColor+ ';  border-radius:' + (esHoy ? '8px' : '0') + diasSemana[i] + '<br><span style="font-size: 1.2em;">' + dia +  '</span></th>';
     }
     html += '</tr></thead><tbody>';
+
+    //filas cada 15 minutos 8:00 a 20:00//
+    for (let hora=8; hora<=20; hora++){
+        for (let minuto=0; minuto<60; minuto += 15){
+            let horaStr = (hora < 10 ? '0' + hora : hora) + ':' + (minuto === 0 ? '00' : minuto);
+            let esCadaHora = minuto === 0;
+            html += '<tr style= "border-bottom: ' + (esCadaHora ? '2px solid #3498db' : '1px solid #ecf0f1') + ';">';
+            html += '<td style="padding: 6px; font-weight:' + (esCadaHora ? 'bold' : 'normal') + '; background: #f8f9fa; color:' + (esCadaHora ? '#2c3e50' : '#95a5a6') + '; font-size: ' + (esCadaHora ? '0.85em' : '0.75em')  + ';">' + horaStr + '</td>';
+
+            //columnas lunes a viernes//
+
+    for (let dia=0; dia<5; dia++){
+        let fechaDia = new Date(inicioSemana);
+        fechaDia.setDate(inicioSemana.getDate() + dia);
+        let fechaStr = fechaDia.getFullYear() + '-' +
+            String(fechaDia.getMonth() + 1).padStart(2, '0') + '-' +
+            String(fechaDia.getDate()).padStart(2, '0');
+
+        //buscar citas en este dia y hora//
+        let citaEncontrada = null;
+        for (let c = 0; c < citas.length; c++){       
+            if(citas[c].fecha === fechaStr && citas[c].hora === horaStr){
+                citaEncontrada = citas[c];
+                break;
+            }
+        }
+
+        if (citaEncontrada){
+            let colorFondo = '#e8f5e9';
+            let emoji = '📅';
+            let colorBorde = '#4caf50';
+
+            if(citaEncontrada.asistencia === 'asistio') {
+                colorFondo = '#e8f5e9';
+                emoji = '✅';
+                colorBorde = '#4caf50';
+            } else if (citaEncontrada.asistencia === 'no_asistio'){
+                colorFondo = '#ffebee';
+                emoji = '❌';
+                colorBorde = '#f44336';
+            } else {
+                colorFondo = '#e3f2fd';
+                colorBorde = '#2196f3';
+            }
+            html += '<td style="padding: 4px; background:' + colorFondo + '; border-left: 3px solid ' + colorBorde + ';">';
+            html += '<div style="font-size: 0.75em; font-weight: bold; color: #2c3e50;">'  + emoji + ' ' + citaEncontrada.paciente.split('')[0] +'</div>';
+            html += '<div style="font-size: 0.65em; color: #7f8c8d;">' + citaEncontrada.tipo + '</div>';
+            html += '</td>';
+        } else {
+            let bgColor = esCadaHora ? '#fafafa' : 'white';
+            html += '<td style="padding: 6px; background:' + bgColor + ';"></td>';
+        }
+    }
+            html += '</tr>';
+        }
+    }
+    html += '</tbody></table></div>';
 
     // horarios (8 a 8 pm)
     for (let hora=8; hora<=20; hora++){
@@ -412,7 +452,7 @@ function mostrarCalendarioSemanal(){
     }
 
     contenedor.innerHTML = html;
-}
+
         //CORREGIDO HASTA AQUI TODO LO DE ARRIBA
     
 

@@ -145,11 +145,12 @@ function cerrarSesiones(){
 function irAAsistencias(){
     cerrarTodosLosModales();
     document.getElementById("seccionAsistencias").classList.add("active");
-    document.getElementById("modalOverlay").classList.add("active");
+}
+   
 
 function cerrarAsistencias(){
     cerrarModal("seccionAsistencias");
-}}
+}
   
 //          ===== pacientes ======  aqui me quede 12/30   //
 
@@ -325,7 +326,7 @@ function mostrarCalendarioSemanal(){
     inicioSemana.setDate(hoy.getDate() - diaSemana + 1 + (semanaOffset * 7)); // lunes de la semana actual + offset
 
 
-    let html = '<div style="backgroud: linear-gradient(135deg, #667eea 0% #764ba2 100%);  padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">';
+    let html = '<div style="background: linear-gradient(135deg, #667eea 0% #764ba2 100%);  padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">';
 
     html += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">';
     html += '<button onclick="cambiarSemana(-1)" style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 8px; cursor: pointer; font-weight: bold;">Anterior</button>';
@@ -350,7 +351,8 @@ function mostrarCalendarioSemanal(){
         let dia = fecha.getDate();
         let esHoy = fecha.toDateString() === hoy.toDateString();
         let bgColor = esHoy ? '#3498db' : 'transparent';
-        html +=  '<th style="padding: 12px 8px; color: white; background: ' + bgColor+ ';  border-radius:' + (esHoy ? '8px' : '0') + diasSemana[i] + '<br><span style="font-size: 1.2em;">' + dia +  '</span></th>';
+        html +=  '<th style="padding: 12px 8px; color: white; background: ' + bgColor+ ';  border-radius:' + borderRadius + ';">' + 
+        diasSemana[i] + '<br><span style="font-size: 1.2em;">' + dia +  '</span></th>'; 
     }
     html += '</tr></thead><tbody>';
 
@@ -397,7 +399,7 @@ function mostrarCalendarioSemanal(){
             
             }
             html += '<td style="padding: 4px; background:' + colorFondo + '; border-left: 3px solid ' + colorBorde + ';">';
-            html += '<div style="font-size: 0.75em; font-weight: bold; color: #2c3e50;">'  + emoji + ' ' + citaEncontrada.paciente.split('')[0] +'</div>';
+            html += '<div style="font-size: 0.75em; font-weight: bold; color: #2c3e50;">'  + emoji + ' ' + citaEncontrada.paciente.split(' ')[0] +'</div>';
             html += '<div style="font-size: 0.65em; color: #7f8c8d;">' + citaEncontrada.tipo + '</div>';
             html += '</td>';
         } else {

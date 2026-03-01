@@ -413,8 +413,8 @@ function mostrarCalendarioSemanal(){
             html += '<div style="font-size: 0.65em; color: #7f8c8d;">' + citaEncontrada.tipo + '</div>';
             html += '</td>';
         } else {
-            let bgColor = esCadaHora ? '#fafafa' : 'white';
-            html += '<td style="padding: 6px; background:' + bgColor + ';"></td>';
+            let celdaColor = esCadaHora ? '#fafafa' : 'white';
+            html += '<td style="padding: 6px; background:' + celdaColor + ';"></td>';
         }
     }
             html += '</tr>';

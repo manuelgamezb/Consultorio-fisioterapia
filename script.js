@@ -105,6 +105,13 @@ function guardarEnLocalStorage(){
     localStorage.setItem("citas", JSON.stringify(citas));
     localStorage.setItem("sesiones",JSON.stringify(sesiones));
 }
+function actualizarTodosLosSelectores(){
+    cargarSelectorPacientes();
+    mostrarCalendarioSemanal();
+    cargarSelectorPacientesSesion();
+        cargarSelectorPacientesReporte();
+}
+
 
 //===== NAVEGACION ========//
 function irAPacientes(){
@@ -145,6 +152,7 @@ function cerrarSesiones(){
 function irAAsistencias(){
     cerrarTodosLosModales();
     document.getElementById("seccionAsistencias").classList.add("active");
+    document.getElementById("modalOverlay").classList.add("active");
 }
    
 
@@ -182,7 +190,7 @@ pacientes.push(paciente);
 guardarEnLocalStorage();
 
 mostrarPacientes();
-
+actualizarTodosLosSelectores();
 document.getElementById("nombrePaciente").value = "";
 document.getElementById("telefonoPaciente").value = "";
 
@@ -343,7 +351,7 @@ function mostrarCalendarioSemanal(){
     
 
     // encabezados de dias a//
-    let diasSemana = ['LUN','MAR','MIE','JUE','VIE'];
+    let diasNombres = ['LUN','MAR','MIE','JUE','VIE'];
    
     for(let i=0; i<5; i++){
         let fecha = new Date(inicioSemana);
@@ -352,7 +360,9 @@ function mostrarCalendarioSemanal(){
         let esHoy = fecha.toDateString() === hoy.toDateString();
         let bgColor = esHoy ? '#3498db' : 'transparent';
        let borderRadius = esHoy ? '8px' : '0';
-        html += '<th style="padding:12px 8px; color:white; background:'+ bgColor + '; border-radius:' + borderRadius + ';">' + diasNombres[i] + '<br><span style="font-size: 1.2em;">' + dia + '</span></th>';
+       html += '<th style= "padding : 12px 8px; color: white; background: '+ bgcolor + '; border-Radius:' + borderRadius + ';">'+
+       diasNombres[i] + '<br><span> style="font-size: 1.2em;">' + dia + '</span></th>';
+      
     }
     
 

@@ -351,10 +351,10 @@ function mostrarCalendarioSemanal(){
         let dia = fecha.getDate();
         let esHoy = fecha.toDateString() === hoy.toDateString();
         let bgColor = esHoy ? '#3498db' : 'transparent';
-        html +=  '<th style="padding: 12px 8px; color: white; background: ' + bgColor+ ';  border-radius:' + borderRadius + ';">' + 
-        diasSemana[i] + '<br><span style="font-size: 1.2em;">' + dia +  '</span></th>'; 
+       let borderRadius = esHoy ? '8px' : '0';
+        html += '<th style="padding:12px 8px; color:white; background:'+ bgColor + '; border-radius:' + borderRadius + ';">' + diasNombres[i] + '<br><span style="font-size: 1.2em;">' + dia + '</span></th>';
     }
-    html += '</tr></thead><tbody>';
+    
 
     //filas cada 15 minutos 8:00 a 20:00//
     for (let hora=8; hora<=20; hora++){

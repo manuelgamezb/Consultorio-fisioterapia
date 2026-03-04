@@ -44,7 +44,7 @@ function cargarPacientes(){
         if (nuevoNombre === null) return; // usuario cancelo
         let nuevoTelefono = prompt("Editar telefono del paciente:", paciente.telefono);
         if (nuevoTelefono === null) return; // usuario cancelo
-        let nuevaDireccion = prompt("Editar direccion del paciente:", paciente.direccio || "");
+        let nuevaDireccion = prompt("Editar direccion del paciente:", paciente.direccion || "");
         if (nuevaDireccion === null) return; // usuario cancelo
         let nuevaFechaNac = prompt("Editar fecha de nacimiento del paciente (YYYY-MM-DD):", paciente.fechaNac || "");
         if (nuevaFechaNac === null) return; // usuario cancelo
@@ -334,7 +334,7 @@ function mostrarCalendarioSemanal(){
     inicioSemana.setDate(hoy.getDate() - diaSemana + 1 + (semanaOffset * 7)); // lunes de la semana actual + offset
 
 
-    let html = '<div style="background: linear-gradient(135deg, #667eea 0% #764ba2 100%);  padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">';
+    let html = '<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);  padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">';
 
     html += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">';
     html += '<button onclick="cambiarSemana(-1)" style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 8px; cursor: pointer; font-weight: bold;">Anterior</button>';
@@ -347,7 +347,7 @@ function mostrarCalendarioSemanal(){
 
     html += '<table style="width: 100%; border-collapse: collapse; text-align: center;font-size:0.85em;">';
     html += '<thead><tr style="background: linear-gradient(135deg, #2c3e50, #34495e);">';
-    html += '<th style="padding: 12px 8px; color:white; width: 60px; font-size: 0.85em;">HORA</th>';
+    html += '<th style="padding:12px 8px; color:white; width: 60px; font-size: 0.85em;">HORA</th>';
     
 
     // encabezados de dias a//
@@ -360,8 +360,9 @@ function mostrarCalendarioSemanal(){
         let esHoy = fecha.toDateString() === hoy.toDateString();
         let bgColor = esHoy ? '#3498db' : 'transparent';
        let borderRadius = esHoy ? '8px' : '0';
-       html += '<th style= "padding : 12px 8px; color: white; background: '+ bgcolor + '; border-Radius:' + borderRadius + ';">'+
-       diasNombres[i] + '<br><span> style="font-size: 1.2em;">' + dia + '</span></th>';
+       
+       html += '<th style= "padding :12px 8px; color: white; background:' + bgColor + '; border-radius:' + borderRadius + ';">'+
+       diasNombres[i] + '<br><span style="font-size: 1.2em;">' + dia + '</span></th>';
       
     }
     
@@ -512,7 +513,7 @@ function mostrarCalendarioSemanal(){
                 "<td>" + tratamientoCorto + "</td>" +
                 "<td><button onclick= 'verDetalleSesion(" + i + ")'>ver</button></td>" +
                 "</tr>";
-            tbody.innerHTML += fila;
+            tbody.insertAdjacentHTML("beforeend", fila);
 
         }
 
@@ -769,7 +770,7 @@ function mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin){
     let div = document.getElementById("resultadoInasistencias");
 
     if (inasistencias.length === 0) {
-        div.innerHTML = '<div style="background: #d4edda; padding: 20px; border-radius: 10px, color: #155724;">' +
+        div.innerHTML = '<div style="background: #d4edda; padding: 20px; border-radius: 10px; color: #155724;">' +
             '<h3>No hay inasistencias registradas</h3>' +
             '<p> Todos los pacientes asistieron a sus citas en este periodo.</p>' +
             '</div>';
@@ -794,11 +795,11 @@ function mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin){
     for (let i = 0; i < inasistencias.length; i++) {
         let cita = inasistencias[i];
         html += '<tr>';
-        html += '<td style="padding: 10px; border: 1px; solid #ddd;">' + cita.paciente + '</td>';
-        html += '<td style="padding: 10px; border: 1px; solid #ddd;">' + cita.fecha + '</td>';
-        html += '<td style="padding: 10px; border: 1px; solid #ddd;">' + cita.hora + '</td>';
-        html += '<td style="padding: 10px; border: 1px; solid #ddd;">' + cita.tipo + '</td>';
-        html += '<td style="padding: 10px; border: 1px; solid #ddd;">' + cita.motivoInasistencia + '</td>';
+        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.paciente + '</td>';
+        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.fecha + '</td>';
+        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.hora + '</td>';
+        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.tipo + '</td>';
+        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.motivoInasistencia + '</td>';
         html += '</tr>';
 
         

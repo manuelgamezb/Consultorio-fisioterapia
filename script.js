@@ -512,6 +512,7 @@ function mostrarCalendarioSemanal(){
                 "<td>" + sesiones[i].fecha + "</td>" +
                 "<td>" + tratamientoCorto + "</td>" +
                 "<td><button onclick= 'verDetalleSesion(" + i + ")'>ver</button></td>" +
+                "<td><button onclick= 'verExpediente(\"" + sesiones[i].paciente + "\")'>Expediente</button></td>" +
                 "</tr>";
             tbody.insertAdjacentHTML("beforeend", fila);
 

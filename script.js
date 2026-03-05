@@ -784,7 +784,7 @@ function mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin){
     html += '<hr style="margin: 20px 0;">';
 
     html += '<table style="width: 100%; border-collapse: collapse; ">';
-    html += '<thead><tr "style=background: #f8d7da;">' +
+    html += '<thead><tr style="background: #f8d7da;">' +
             '<th style="padding: 10px; border: 1px solid #ddd;">Paciente</th>' +
             '<th style="padding: 10px; border: 1px solid #ddd;">Fecha</th>' +
             '<th style="padding: 10px; border: 1px solid #ddd;">Hora</th>' +
@@ -807,7 +807,7 @@ function mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin){
     }
     html += '</tbody></table>';
     html += '<hr style="margin: 20px 0;">';
-    html += '<div style="background: #f8d7da; padding: 20px; border-radius: 8px; border: 2px; solid #dc3545;">';
+    html += '<div style="background: #f8d7da; padding: 20px; border-radius: 8px; border: 2px solid #dc3545;">';
     html += '<h3 style="color: #721c24; margin: 0;"> TOTAL DE INASISTENCIAS: ' + inasistencias.length + '</h3>';
     html += '<p style="margin: 10px 0 0 0; color: #721c24;"> Pacientes a reportar al sistema de salud</p>';
     html += '</div>';
@@ -827,7 +827,31 @@ function cerrarTodosLosModales(){
 }   
     document.getElementById("modalOverlay").classList.remove("active");
 
+    function verExpediente(nombrePaciente){
+        let historial= "";
+        for (let i=0; i< sesiones.length; i++){
+
+            if (sesiones[i].paciente === nombrePaciente){
+                historial += 
+                "Fecha: " + sesiones[i].fecha + "\n" +
+                "Tratamiento: " + sesiones[i].tratamiento + "\n" +
+                "Evolucion: " + sesiones[i].evolucion + "\n" +
+            
+        }   
+
+    }
+    if (historial === ""){
+        alert("No hay sesiones registradas para este paciente");
+    return;
+    }
+    alert(
+        "EXPEDIENTE CLINICO\n\n" +
+        historial
+    );
 }
+}
+
+ 
 
 
 

@@ -826,7 +826,7 @@ function cerrarTodosLosModales(){
         modales[i].classList.remove("active");
 }   
     document.getElementById("modalOverlay").classList.remove("active");
-}
+    }
     function verExpediente(nombrePaciente){
         let historial= "";
         for (let i=0; i< sesiones.length; i++){
@@ -835,7 +835,7 @@ function cerrarTodosLosModales(){
                 historial += 
                 "Fecha: " + sesiones[i].fecha + "\n" +
                 "Tratamiento: " + sesiones[i].tratamiento + "\n" +
-                "Evolucion: " + sesiones[i].evolucion + "\n" +
+                "Evolucion: " + sesiones[i].evolucion + "\n" ;
             
             }
 

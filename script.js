@@ -828,27 +828,74 @@ function cerrarTodosLosModales(){
     document.getElementById("modalOverlay").classList.remove("active");
     }
     function verExpediente(nombrePaciente){
-        let historial= "";
+        let historial = "";
+        let contenido ="";
+
         for (let i=0; i< sesiones.length; i++){
 
             if (sesiones[i].paciente === nombrePaciente){
-                historial += 
-                "Fecha: " + sesiones[i].fecha + "\n" +
-                "Tratamiento: " + sesiones[i].tratamiento + "\n" +
-                "Evolucion: " + sesiones[i].evolucion + "\n" ;
-            
+                contenido +='<div style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 15px;">';
+                contenido += '<p><strong>Fecha:</strong> ' + sesiones[i].fecha + '</p>';
+                contenido += '<p><strong>Tratamiento:</strong> ' + sesiones[i].tratamiento + '</p>';
+                contenido += '<P><strong>Ejercicios:</strong> ' + sesiones[i].ejercicios + '</p>';
+                contenido += '<p><strong>Observaciones:</strong> ' + sesiones[i].observaciones + '</p>';
+                contenido += '<p><strong>Evolucion:</strong> ' + sesiones[i].evolucion + '</p>';
+                contenido += '<p><strong>Proximos pasos:</strong> ' + sesiones[i].proximos + '</p>';
+                contenido += '</div>';
+                historial= "encontrado";
             }
-
         }
+
+              
+        
+
+        
     if (historial === ""){
         alert("No hay sesiones registradas para este paciente");
         return;
     }
+    document.getElementById("tituloExpediente").textContent = "Expediente Clinico de " + nombrePaciente;
+    document.getElementById("cuerpoExpediente").innerHTML = contenido;
+    document.getElementById("modalExpediente").classList.add("active");
+    document.getElementById("modalOverlay").classList.add("active");
+
+
+    }
+
+    function imprimirExpediente(){
+        let titulo = document.getElementById("tituloExpediente").textContent;
+        let cuerpo = document.getElementById("cuerpoExpediente").innerHTML;
+
+        let ventana = window.open("", "_blank");
+        ventana.document.write(
+            <html>
+            <head>
+                <title>${titulo}</title>
+                <style>
+                    body {font-family: Arial, sans-serif; padding: 30px;}
+                    h2 {color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;}
+                    div {border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 15px;}
+                    p {margin: 5px 0;}
+                    strong {color: #2c3e50;}
+
+                </style>
+            </head>
+            <body>
+                <h2>${titulo}</h2>
+                ${cuerpo}
+            </body>
+            </html>
+    }
+
+
+
+
+
     alert(
         "EXPEDIENTE CLINICO\n\n" +
         historial
     );
-}
+
 
 
  

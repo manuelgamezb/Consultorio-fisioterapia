@@ -867,12 +867,12 @@ function cerrarTodosLosModales(){
         let cuerpo = document.getElementById("cuerpoExpediente").innerHTML;
 
         let ventana = window.open("", "_blank");
-        ventana.document.write(
+            ventana.document.write(`
             <html>
             <head>
                 <title>${titulo}</title>
                 <style>
-                    body {font-family: Arial, sans-serif; padding: 30px;}
+                    body { font-family: Arial, sans-serif; padding: 30px;}
                     h2 {color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;}
                     div {border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 15px;}
                     p {margin: 5px 0;}
@@ -885,16 +885,18 @@ function cerrarTodosLosModales(){
                 ${cuerpo}
             </body>
             </html>
+        `);     
+    
+        ventana.document.close();
+        ventana.print();
     }
 
 
 
 
 
-    alert(
-        "EXPEDIENTE CLINICO\n\n" +
-        historial
-    );
+  
+
 
 
 

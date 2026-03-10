@@ -63,7 +63,7 @@
     <form style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap ;">
         <div style="flex: 1;">
         <label>Nombre:</label>
-        <input type="text"  id="nombrePaciente" style="width: 200px;">
+        <input type="text"  id="nombrePaciente" style="width: 100%;">
         </div>
         <div>
         <label>Telefono:</label>
@@ -373,6 +373,19 @@
                 <div id="resultadoInasistencias"></div>
             </div>
         </div>
+
+        <div id="modalExpediente" class="modal-container">
+    <div class="modal-header">
+        <h2 id="tituloExpediente">Expediente Clinico</h2>
+        <div class="modal-close-btn">
+            <button onclick="imprimirExpediente()">Imprimir</button>
+            <button onclick="cerrarModal('modalExpediente')">&#10060;</button>
+        </div>
+    </div>
+    <div class="modal-body" id="cuerpoExpediente">
+    </div>
+ </div>
+        <!-- Aqui se mostrara el contenido del expediente -->
 
     <script src="script.js"></script>
     

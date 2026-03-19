@@ -3,6 +3,82 @@ let pacientes = [];
 let citas = [];
 let sesiones =[];
 let semanaOffset = 0;
+let idioma = "es";
+
+let traducciones = {
+    es: {
+        tituloPagina: "Sistema de Gestion - Consultorio de Fisioterapia",
+        btnIdioma: "English",
+        menuTitulo1: "Pacientes", menuDesc1: "Gestiona la informacion de tus pacientes", menuBtn1:"Ir a Pacientes",
+        menuTitulo2: "Citas", menuDesc2: "Agenda y controla las citas", menuBtn2:"Ir a Citas",
+        menuTitulo3: "Sesiones", menuDesc3: "Registra las sesiones del tratamiento", menuBtn3:"Ir a Sesiones",
+        menuTitulo4: "Reportes", menuDesc4: "Consulta reportes de asistencias", menuBtn4:"Ir a Reportes",
+        menuTitulo5: "Asistencias", menuDesc5: "Control de Asistencias e Inasistencias", menuBtn5:"Ir a Asistencias",
+        btnGuardar: "Guardar", btnCancelar: "Cancelar", btnEditar: "Editar", btnEliminar: "Eliminar",
+        btnAgendar:"Agendar", btnGuardarSesion:"Guardar Sesion",
+        msgPacienteGuardado: "Paciente guardado exitosamente",
+        msgCitaAgendada: "Cita agendada exitosamente",
+        msgSesionGuardada: "Sesion registrada exitosamente",
+        msgLlenarCampos: "Por favor llene todos los campos",
+        diaSemana: ['LUN','MAR','MIE','JUE','VIE'],
+        meses:['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+        CalAnterior: "Anterior", CalSiguiente: "Siguiente", CalSemana: "Semana del"
+    },
+    en: {
+        tituloPagina: "Management System - Physiotherapy Clinic",
+        btnIdioma: "Español",
+        menuTitulo1: "Patients", menuDesc1: "Manage your patients' information", menuBtn1:"Go to Patients",
+        menuTitulo2: "Appointments", menuDesc2: "Schedule and manage appointments", menuBtn2:"Go to Appointments",
+        menuTitulo3: "Sessions", menuDesc3: "Record treatment sessions", menuBtn3:"Go to Sessions",
+        menuTitulo4: "Reports", menuDesc4: "View attendance reports", menuBtn4:"Go to Reports",
+        menuTitulo5: "Attendance", menuDesc5: "Manage attendance and absences", menuBtn5:"Go to Attendance",
+        btnGuardar: "Save", btnCancelar: "Cancel", btnEditar: "Edit", btnEliminar: "Delete",
+        btnAgendar:"Schedule", btnGuardarSesion:"Save Session",
+        msgPacienteGuardado: "Patient saved successfully",
+        msgCitaAgendada: "Appointment scheduled successfully",
+        msgSesionGuardada: "Session recorded successfully",
+        msgLlenarCampos: "Please fill in all fields",
+        diaSemana: ['MON','TUE','WED','THU','FRI'],
+        meses:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        CalAnterior: "Previous", CalSiguiente: "Next", CalSemana: "Week of"
+    }
+};
+
+function cambiarIdioma() {
+    idioma = (idioma === "es") ? "en" : "es";
+    let tr = traducciones[idioma];
+    document.getElementById("tituloSistema").textContent = tr.tituloPagina;
+    document.getElementById("btnIdioma").textContent = tr.btnIdioma;
+
+    document.getElementbyId("menuTitulo1").textContent = tr.menuTitulo1;
+    document.getElementById("menuDesc1").textContent = tr.menuDesc1;
+    document.getElementById("menuBtn1").textContent = tr.menuBtn1;
+
+    document.getElementById("menuTitulo2").textContent = tr.menuTitulo2;
+    document.getElementById("menuDesc2").textContent = tr.menuDesc2;
+    document.getElementById("menuBtn2").textContent = tr.menuBtn2;
+
+    document.getElementById("menuTitulo3").textContent = tr.menuTitulo3;
+    document.getElementById("menuDesc3").textContent = tr.menuDesc3;
+    document.getElementById("menuBtn3").textContent = tr.menuBtn3;
+
+    document.getElementById("menuTitulo4").textContent = tr.menuTitulo4;
+    document.getElementById("menuDesc4").textContent = tr.menuDesc4;
+    document.getElementById("menuBtn4").textContent = tr.menuBtn4;
+
+    document.getElementById("menuTitulo5").textContent = tr.menuTitulo5;
+    document.getElementById("menuDesc5").textContent = tr.menuDesc5;
+    document.getElementById("menuBtn5").textContent = tr.menuBtn5;
+
+    mostrarPacientes();
+    mostrarTablaCitas();
+    mostrarSesiones();
+    mostrarCalendarioSemanal();
+
+
+
+
+}
 
 
 //cargar pacientes al iniciar la pagina//

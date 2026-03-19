@@ -14,41 +14,42 @@
     <header> 
         <div style="display: flex; justify-content: space-between; align-items: center;">
         <h1 id="tituloSistema">Sistema de Gestion - Consultorio de Fisioterapia</h1>
-        <button onclick="cambiarIdioma()" id="btnIdioma" style="font-size: 1em; background: transparent; border-radius: 8px 16px; cursor: pointer; color: white; font-weight: bold;">English</button>
+        <button onclick="cambiarIdioma()" id="btnIdioma" style="font-size: 1em;background: transparent; border: 2px solid white; border-radius: 8px; padding; 8px 16px; cursor:pointer; color: white; font-weight: bold; ">English</button>
         </div>
-    </header>
 
-    <!-- Menu de secciones   -->
-     <div class="modal-overlay" id="modalOverlay" onclick="cerrarTodosLosModales()"></div>
+
+    </header>
+    <div class="modal-overlay" id="modalOverlay" onclick="cerrarTodosLosModales()"></div>
     <div class="menu-container">
         <div class="menu-card">
-            <h2> Pacientes</h2>
-            <p>Gestiona la informacion de tus pacientes</p>
-            <button onclick="irAPacientes()">Ir a Pacientes</button>
+            <h2 id="menuTitulo1">Pacientes</h2>
+            <p id="menuDesc1">Gestiona la informacion de tus pacientes</p>
+            <button onclick="irAPacientes()" id="menuBtn1">Ir a Pacientes</button>
+        </div>
+
+
+        <div class="menu-card">
+            <h2 id="menuTitulo2">Citas</h2>
+            <p id="menuDesc2">Agenda y controla las citas</p>
+            <button onclick="irACitas()" id="menuBtn2">Ir a citas</button>
         </div>
 
         <div class="menu-card">
-            <h2>Citas</h2>
-            <p>Agenda y controla las citas</p>
-           <button onclick="irACitas()">Ir a Citas</button>
+            <h2 id="menuTitulo3">Sesiones</h2>
+            <p id="menuDesc3">Registra las sesiones de tratamiento</p>
+            <button onclick="irASesiones()" id="menuBtn3">Ir a sesiones</button>
         </div>
 
         <div class="menu-card">
-            <h2>Sesiones</h2>
-            <p>Registra las sesiones del tratamiento</p>
-            <button onclick="irASesiones()" >Ir a Sesiones</button>
+            <h2 id="menuTitulo4">Reportes</h2>
+            <p id="menuDesc4">Genera reportes de asistencias e inasistencias</p>
+            <button onclick="irAReportes()" id="menuBtn4">Ir a reportes</button>
         </div>
         <div class="menu-card">
-            <h2> Reportes</h2>
-            <p> consulta reportes de asistencias</p>
-            <button onclick="irAReportes()">Ir a Reportes </button>
+            <h2 id="menuTitulo5">Asistencias</h2>
+            <p id="menuDesc5">Control de Asistencias e Inasistencias</p>
+            <button onclick="irAAsistencias()" id="menuBtn5">Ir a asistencias</button>
         </div>
-
-        <div class="menu-card">
-            <h2> Asistencias</h2>
-            <p>Control de Asistencias e Inasistencias</p>
-            <button onclick="irAAsistencias()">Ir a Asistencias</button>
-    </div>
     </div>
 
 <div id="seccionPacientes" class="modal-container">

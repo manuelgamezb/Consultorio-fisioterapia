@@ -63,14 +63,14 @@
     <div class="modal-body">
 
        
-    <h2>Registrar Nuevo Paciente</h2>
+    <h2 id="formPacienteTitulo">Registrar Nuevo Paciente</h2>
     <form style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap ;">
         <div style="flex: 1;">
-        <label>Nombre:</label>
+        <label id="labelNombre">Nombre:</label>
         <input type="text"  id="nombrePaciente" style="width: 100%;">
         </div>
         <div>
-        <label>Telefono:</label>
+        <label id="labelTelefono">Telefono:</label>
         <input type="text"  id="telefonoPaciente">
         </div>  
     
@@ -80,27 +80,27 @@
         <input type="text" id="direccionPaciente">
             </div>
             <div style="flex: 1;">
-        <label>Fecha de Nacimiento:</label>
+        <label id="labelFechaNac">Fecha de Nacimiento:</label>
         <input type="date" id="nacimientoPaciente">
             </div>  
         </div>
         <div style="width: 100%;">
-        <button type="button"   onclick="guardarPaciente()">Guardar</button>
+        <button type="button"   onclick="guardarPaciente()" id="btnGuardarPaciente">Guardar</button>
         <button type="button"   onclick="cerrarFormulario()">Cancelar</button>
         </div>
         
         
     </form>
     <!-- Tabla pacientes-->
-     <h3>Pacientes Registrados</h3>
+     <h3 id="tituloPacientesRegistrados">Pacientes Registrados</h3>
      <table id="tablaPacientes">
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Telefono</th>
-                <th>Direccion</th>
-                <th>Fecha de Nac</th>
-                <th>Acciones</th>
+                <th id="thNombre">Nombre</th>
+                <th id="thTelefono">Telefono</th>
+                <th id="thDireccion">Direccion</th>
+                <th id="thFechaNac">Fecha de Nacimiento</th>
+                <th id="thAcciones">Acciones</th>
 
             </tr>
         </thead>

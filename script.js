@@ -22,7 +22,20 @@ let traducciones = {
         msgLlenarCampos: "Por favor llene todos los campos",
         diaSemana: ['LUN','MAR','MIE','JUE','VIE'],
         meses:['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
-        CalAnterior: "Anterior", CalSiguiente: "Siguiente", CalSemana: "Semana del"
+        CalAnterior: "Anterior", CalSiguiente: "Siguiente", CalSemana: "Semana del",
+
+        formPacienteTitulo: "Registrar nuevo paciente",
+        labelNombre:"Nombre:",
+        labelTelefono: "Telefono:",
+        labelDireccion: "Direccion:",
+        labelFechaNac: "Fecha de nacimiento:",
+        btnGuardarPaciente: "Guardar",
+        btnCancelarPaciente: "Cancelar",
+        tituloPacientesRegistrados: "Pacientes registrados",
+        thNombre: "Nombre", thTelefono: "Telefono", thDireccion: "Direccion", thFechaNac: "Fecha de nacimiento", thAcciones: "Acciones"
+
+
+
     },
     en: {
         tituloPagina: "Management System - Physiotherapy Clinic",
@@ -40,7 +53,17 @@ let traducciones = {
         msgLlenarCampos: "Please fill in all fields",
         diaSemana: ['MON','TUE','WED','THU','FRI'],
         meses:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-        CalAnterior: "Previous", CalSiguiente: "Next", CalSemana: "Week of"
+        CalAnterior: "Previous", CalSiguiente: "Next", CalSemana: "Week of",
+        formPacienteTitulo: "Register New Patient",
+        labelNombre:"Name:",
+        labelTelefono: "Phone:",
+        labelDireccion: "Address:",
+        labelFechaNac: "Date of Birth:",
+        btnGuardarPaciente: "Save",
+        btnCancelarPaciente: "Cancel",
+        tituloPacientesRegistrados: "Registered Patients",
+        thNombre: "Name", thTelefono: "Phone", thDireccion: "Address", thFechaNac: "Date of Birth", thAcciones: "Actions"
+
     }
 };
 
@@ -50,7 +73,7 @@ function cambiarIdioma() {
     document.getElementById("tituloSistema").textContent = tr.tituloPagina;
     document.getElementById("btnIdioma").textContent = tr.btnIdioma;
 
-    document.getElementbyId("menuTitulo1").textContent = tr.menuTitulo1;
+    document.getElementById("menuTitulo1").textContent = tr.menuTitulo1;
     document.getElementById("menuDesc1").textContent = tr.menuDesc1;
     document.getElementById("menuBtn1").textContent = tr.menuBtn1;
 
@@ -74,6 +97,20 @@ function cambiarIdioma() {
     mostrarTablaCitas();
     mostrarSesiones();
     mostrarCalendarioSemanal();
+
+    document.getElementById("formPacienteTitulo").textContent = tr.formPacienteTitulo;
+    document.getElementById("labelNombre").textContent = tr.labelNombre;
+    document.getElementById("labelTelefono").textContent = tr.labelTelefono;
+    document.getElementById("labelDireccion").textContent = tr.labelDireccion;  
+    document.getElementById("labelFechaNac").textContent = tr.labelFechaNac;
+    document.getElementById("btnGuardarPaciente").textContent = tr.btnGuardarPaciente;
+    document.getElementById("btnCancelarPaciente").textContent = tr.btnCancelarPaciente;
+    document.getElementById("tituloPacientesRegistrados").textContent = tr.tituloPacientesRegistrados;
+    document.getElementById("thNombre").textContent = tr.thNombre;
+    document.getElementById("thTelefono").textContent = tr.thTelefono;
+    document.getElementById("thDireccion").textContent = tr.thDireccion;
+    document.getElementById("thFechaNac").textContent = tr.thFechaNac;
+    document.getElementById("thAcciones").textContent = tr.thAcciones;
 
 
 
@@ -241,10 +278,10 @@ function cerrarAsistencias(){
 
 function guardarPaciente(){
 
-    let nombre = document.getElementById("nombrePaciente").value;
-    let telefono = document.getElementById("telefonoPaciente").value;
-    let direccion = document.getElementById("direccionPaciente").value;
-        let fechaNac = document.getElementById("nacimientoPaciente").value;
+    let nombre = document.getElementById("nombre").value;
+    let telefono = document.getElementById("telefono").value;
+    let direccion = document.getElementById("direccion").value;
+        let fechaNac = document.getElementById("fechaNac").value;
     if (nombre === ""|| telefono === "") {
         alert("por favor llene todos los campos");
         return;

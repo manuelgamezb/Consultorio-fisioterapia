@@ -123,15 +123,15 @@
     </div>
     <div class="modal-body">
 
-     <h2>Agendar Nueva Cita</h2>
+     <h2 id="formCitasTitulo">Agendar Nueva Cita</h2>
     <form>
-        <label for="citaPaciente">Paciente:</label>
+        <label for="citaPaciente" id="labelCitaPaciente">Paciente:</label>
         <select id="citaPaciente">
             <option value=""> Seleccionar paciente</option>
         </select>
         <br><br>
 
-        <label for="citaFecha">Fecha:</label>
+        <label for="citaFecha" id="labelCitaFecha">Fecha:</label>
         <input type="date" id="citaFecha">
         <br><br>
 
@@ -139,7 +139,7 @@
         <input type="time"  id="citaHora">
         <br><br>
 
-        <label for="citaTipo">Tipo de cita:</label>
+        <label for="citaTipo" id="labelCitaTipo">Tipo de cita:</label>
         <select id="citaTipo">
             <option>Evaluacion inicial</option>
             <option>Seguimiento</option>
@@ -152,22 +152,22 @@
         <textarea id="citaNotas" rows="3"></textarea>
         <br><br>
 
-        <button type="button" onclick="agendarCita()">Agendar</button>
-        <button type="button" onclick="cerrarCitas()">Cancelar</button>
+        <button type="button" onclick="agendarCita()" id="btnAgendarCita">Agendar</button>
+        <button type="button" onclick="cerrarCitas()" id="btnCancelarCita">Cancelar</button>
 
      </form>
      
-     <h3> Calendario de Citas</h3>
+     <h3 id="tituloCalendario"> Calendario de Citas</h3>
      <div id="calendarioSemanal"></div>
-     <h3>Lista de Citas</h3>
+     <h3 id="tituloListaCitas">Lista de Citas</h3>
      <table id="tablaCitas">
         <thead>
             <tr>
-                <th>Paciente</th>
-                <th>Fecha</th>
-                <th>Hora</th>
-                <th>Tipo</th>
-                <th>Acciones</th>
+                <th id="thCitaPaciente">Paciente</th>
+                <th id="thCitaFecha">Fecha</th>
+                <th id="thCitaHora">Hora</th>
+                <th id="thCitaTipo">Tipo</th>
+                <th id="thCitaAcciones">Acciones</th>
             </tr>
         </thead>
         <tbody id="listaCitas">

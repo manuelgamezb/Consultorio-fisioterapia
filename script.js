@@ -32,7 +32,20 @@ let traducciones = {
         btnGuardarPaciente: "Guardar",
         btnCancelarPaciente: "Cancelar",
         tituloPacientesRegistrados: "Pacientes registrados",
-        thNombre: "Nombre", thTelefono: "Telefono", thDireccion: "Direccion", thFechaNac: "Fecha de nacimiento", thAcciones: "Acciones"
+        thNombre: "Nombre", thTelefono: "Telefono", thDireccion: "Direccion", thFechaNac: "Fecha de nacimiento", thAcciones: "Acciones",
+
+         formCitasTitulo: "Agendar Nueva Cita",
+         labelCitaPaciente: "Paciente:",
+        labelCitaFecha: "Fecha:",
+        labelCitaHora: "Hora:",
+        labelCitaTipo: "Tipo de Cita:",
+        labelCitaNotas: "Notas:",
+        labelAgendarCita: "Agendar",
+        btnCancelarCita: "Cancelar",
+        tituloCalendario: "Calendario de Citas:",
+        tituloListaCitas: "Lista de Citas",
+        thCitaPaciente: "Paciente", thCitaFecha: "Fecha", thCitaHora: "Hora", thCitaTipo: "Tipo", thCitaAcciones: "Acciones"
+
 
 
 
@@ -111,6 +124,11 @@ function cambiarIdioma() {
     document.getElementById("thDireccion").textContent = tr.thDireccion;
     document.getElementById("thFechaNac").textContent = tr.thFechaNac;
     document.getElementById("thAcciones").textContent = tr.thAcciones;
+
+   
+
+
+
 
 
 

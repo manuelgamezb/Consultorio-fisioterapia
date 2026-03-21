@@ -75,7 +75,20 @@ let traducciones = {
         btnGuardarPaciente: "Save",
         btnCancelarPaciente: "Cancel",
         tituloPacientesRegistrados: "Registered Patients",
-        thNombre: "Name", thTelefono: "Phone", thDireccion: "Address", thFechaNac: "Date of Birth", thAcciones: "Actions"
+        thNombre: "Name", thTelefono: "Phone", thDireccion: "Address", thFechaNac: "Date of Birth", thAcciones: "Actions",
+
+        formCitasTitulo: "Schedule New Appointment",
+        labelCitaPaciente: "Patient:",
+        labelCitaFecha: "Date:",
+        labelCitaHora: "Time:",
+        labelCitaTipo: "Appointment Type:",
+        labelCitaNotas: "Notes:",
+        labelAgendarCita: "Schedule",
+        btnCancelarCita: "Cancel",
+        tituloCalendario: "Appointment Calendar:",
+        tituloListaCitas: "List of Appointments",
+        thCitaPaciente: "Patient", thCitaFecha: "Date", thCitaHora: "Time", thCitaTipo: "Type", thCitaAcciones: "Actions"
+
 
     }
 };
@@ -125,7 +138,23 @@ function cambiarIdioma() {
     document.getElementById("thFechaNac").textContent = tr.thFechaNac;
     document.getElementById("thAcciones").textContent = tr.thAcciones;
 
-   
+    //citas//
+
+    document.getElementById("formCitasTitulo").textContent = tr.formCitasTitulo;
+    document.getElementById("labelCitaPaciente").textContent= tr.labelCitaPaciente;
+    document.getElementById("labelCitaFecha").textContent = tr.labelCitaFecha;
+    document.getElementById("labelCitaHora").textContent = tr.labelCitaHora;
+    document.getElementById("labelCitaTipo").textContent = tr.labelCitaTipo;
+    document.getElementById("labelCitaNotas").textContent = tr.labelCitaNotas;
+    document.getElementById("labelAgendarCita").textContent = tr.labelAgendarCita;
+    document.getElementById("btnCancelarCita").textContent = tr.btnCancelarCita;
+    document.getElementById("tituloCalendario").textContent = tr.tituloCalendario;
+    document.getElementById("tituloListaCitas").textContent = tr.tituloListaCitas;
+    document.getElementById("thCitaPaciente").textContent = tr.thCitaPaciente;
+    document.getElementById("thCitaFecha").textContent = tr.thCitaFecha;
+    document.getElementById("thCitaHora").textContent = tr.thCitaHora;
+    document.getElementById("thCitaTipo").textContent = tr.thCitaTipo;
+    document.getElementById("thCitaAcciones").textContent = tr.thCitaAcciones;
 
 
 

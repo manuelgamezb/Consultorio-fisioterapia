@@ -76,7 +76,7 @@
     
         <div style="display: flex; gap: 15px; width: 100%;">
             <div style="flex: 2;">
-        <label>Direccion:</label>
+        <label id="labelDireccion">Direccion:</label>
         <input type="text" id="direccionPaciente">
             </div>
             <div style="flex: 1;">
@@ -86,7 +86,7 @@
         </div>
         <div style="width: 100%;">
         <button type="button"   onclick="guardarPaciente()" id="btnGuardarPaciente">Guardar</button>
-        <button type="button"   onclick="cerrarFormulario()">Cancelar</button>
+        <button type="button"   onclick="cerrarFormulario()" id="btnCancelarPaciente">Cancelar</button>
         </div>
         
         
@@ -135,7 +135,7 @@
         <input type="date" id="citaFecha">
         <br><br>
 
-        <label for="citaHora">Hora:</label>
+        <label for="citaHora" id="labelCitaHora">Hora:</label>
         <input type="time"  id="citaHora">
         <br><br>
 
@@ -148,11 +148,11 @@
         </select>
         <br><br>
 
-        <label for="citaNotas">Notas:</label>
+        <label for="citaNotas" id="labelCitaNotas">Notas:</label>
         <textarea id="citaNotas" rows="3"></textarea>
         <br><br>
 
-        <button type="button" onclick="agendarCita()" id="btnAgendarCita">Agendar</button>
+        <button type="button" onclick="agendarCita()" id="labelAgendarCita">Agendar</button>
         <button type="button" onclick="cerrarCitas()" id="btnCancelarCita">Cancelar</button>
 
      </form>
@@ -189,49 +189,49 @@
         <div class="modal-body">
 
 
-        <h2>Gestion de Sesiones</h2>
+        <h2 id="formSesionesTitulo">Gestion de Sesiones</h2>
         <form style="display: flex; gap: 15px; flex-wrap: wrap ;">
             <div style="display: flex; gap: 15px; width: 100%;">
                 <div style="flex: 2;">
-                    <label for="sesionPaciente">Paciente:</label>
+                    <label for="sesionPaciente" id="labelSesionPaciente">Paciente:</label>
                     <select id="sesionPaciente" style="width: 100%;">
                         <option value="">Seleccionar paciente...</option>
                     </select>
                 </div>
             <div style="flex:1;">
-            <label for="sesionFecha">Fecha:</label>
+            <label for="sesionFecha" id="labelSesionFecha">Fecha:</label>
             <input type="date"  id="sesionFecha" style="width: 100%;">
           </div>
             </div>
             <div style="display: flex; gap: 15px;  width: 100%;">
             <div style="flex:2;">
-            <label for="sesionTratamiento">Tratamiento Aplicado:</label>
+            <label for="sesionTratamiento" id="labelSesionTratamiento">Tratamiento Aplicado:</label>
             <textarea  id="sesionTratamiento" rows="2"></textarea>
             </div>
             <div style="flex:1;">
-            <label for="sesionEjercicios">Ejercicios Realizados:</label>
+            <label for="sesionEjercicios" id="labelSesionEjercicios">Ejercicios Realizados:</label>
             <textarea id="sesionEjercicios" rows="2"></textarea>
             </div>
             </div>
             <div style="display: flex; gap: 15px;  width: 100%;">
             <div style="flex:1;">
-            <label for="sesionObservaciones">Observaciones:</label>
+            <label for="sesionObservaciones" id="labelSesionObservaciones">Observaciones:</label>
             <textarea id="sesionObservaciones" rows="2"></textarea>
             </div>
             <div style="flex:1;">
-            <label for="sesionEvolucion">Evolucion del paciente: </label>
+            <label for="sesionEvolucion" id="labelSesionEvolucion">Evolucion del paciente: </label>
             <textarea id="sesionEvolucion" rows="2"></textarea>
             </div>
             </div>
             <div style="display: flex; gap: 15px;  width: 100%;">
             <div style="flex:1;">
-            <label for="sesionProximos">Proximos Pasos:</label>
+            <label for="sesionProximos" id="labelSesionProximos">Proximos Pasos:</label>
             <textarea id="sesionProximos" rows="2"></textarea>
             </div>
             </div>
             <div style="width: 100%;">
-            <button type="button" onclick="registrarSesion()">Guardar Sesion</button>
-            <button type="button" onclick="cerrarSesiones()">Cancelar</button>
+            <button type="button" onclick="registrarSesion()" id="btnGuardarSesion">Guardar Sesion</button>
+            <button type="button" onclick="cerrarSesiones()" id="btnCancelarSesion">Cancelar</button>
             </div>
             </form>
 
@@ -247,15 +247,15 @@
             
 
 
-            <h3>Sesiones Registradas</h3>
+            <h3 id="tituloSesionesRegistradas">Sesiones Registradas</h3>
             <table id="tablaSesiones">
                 <thead>
                     <tr>
-                        <th>Pacientes</th>
-                        <th>Fecha</th>
-                        <th>Tratamiento</th>
-                        <th>Ver Detalles</th>
-                        <th>Expediente</th>
+                        <th id="thSesionPacientes">Pacientes</th>
+                        <th id="thSesionFecha">Fecha</th>
+                        <th id="thSesionTratamiento">Tratamiento</th>
+                        <th id="thSesionDetalles">Ver Detalles</th>
+                        <th id="thSesionExpediente">Expediente</th>
                     </tr>
 
                 </thead>

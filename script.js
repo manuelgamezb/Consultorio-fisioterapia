@@ -56,7 +56,7 @@ let traducciones = {
         labelSesionProximos: "Proximos pasos:",
         btnGuardarSesion: "GuardarSesion",
         btnCancelarSesion: "Cancelar",
-        titulosSesionesRegistradas: "Sesiones Registradas",
+        tituloSesionesRegistradas: "Sesiones Registradas",
         thSesionTratamiento:"Tratamiento", thSesionDetalles: "Ver Detalles", thSesionExpediente: "Expediente"
 
 
@@ -113,8 +113,8 @@ let traducciones = {
         labelSesionProximos: "Next Steps:",
         btnGuardarSesion: "Save Session",
         btnCancelarSesion: "Cancel",
-        titulosSesionesRegistradas: "Registered Sessions",
-        thSesionPaciente: "Patients", thSesionFecha: "Date", thSesionDetalles: "View Details", thSesionExpediente: "Record"
+        tituloSesionesRegistradas: "Registered Sessions",
+        thSesionPaciente: "Patients", thSesionFecha: "Date", thSesionDetalles: "View Details", thSesionExpediente: "Record",thSesionTratamiento: "Treatment",
 
 
     }
@@ -187,7 +187,7 @@ function cambiarIdioma() {
 
     document.getElementById("formSesionesTitulo").textContent = tr.formSesionesTitulo;
     document.getElementById("labelSesionPaciente").textContent = tr.labelSesionPaciente;
-    document.getElementById("labelSesionFecha").textContent=labelSesionFecha;
+    document.getElementById("labelSesionFecha").textContent= tr.labelSesionFecha;
     document.getElementById("labelSesionTratamiento").textContent = tr.labelSesionTratamiento;
     document.getElementById("labelSesionEjercicios").textContent = tr.labelSesionEjercicios;
     document.getElementById("labelSesionObservaciones").textContent = tr.labelSesionObservaciones;
@@ -376,7 +376,7 @@ function guardarPaciente(){
     let nombre = document.getElementById("nombrePaciente").value;
     let telefono = document.getElementById("telefonoPaciente").value;
     let direccion = document.getElementById("direccionPaciente").value;
-        let fechaNac = document.getElementById("fechaNacPaciente").value;
+        let fechaNac = document.getElementById("nacimientoPaciente").value;
     if (nombre === ""|| telefono === "") {
         alert("por favor llene todos los campos");
         return;
@@ -545,7 +545,7 @@ function mostrarCalendarioSemanal(){
 
     let html = '<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);  padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">';
 
-    html = '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">';
+    html += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">';
     html += '<button onclick="cambiarSemana(-1)" style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 8px; cursor: pointer; font-weight: bold;">' + tr.CalAnterior +'</button>';
     html += '<h3 style= "margin: 0; color: white; font-size: 1.3em;">' + tr.CalSemana + ' ' + formatearFecha(inicioSemana) + '</h3>';
     html += '<button onclick="cambiarSemana(1)" style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 8px; cursor: pointer; font-weight: bold;">' + tr.CalSiguiente + '</button>';

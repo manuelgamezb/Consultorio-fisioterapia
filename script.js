@@ -57,7 +57,19 @@ let traducciones = {
         btnGuardarSesion: "GuardarSesion",
         btnCancelarSesion: "Cancelar",
         tituloSesionesRegistradas: "Sesiones Registradas",
-        thSesionTratamiento:"Tratamiento", thSesionDetalles: "Ver Detalles", thSesionExpediente: "Expediente"
+        thSesionTratamiento:"Tratamiento", thSesionDetalles: "Ver Detalles", thSesionExpediente: "Expediente",
+
+        //reportes//
+        formReportesTitulo: "Reporte de Asistencias",
+        labelReportePaciente: "Seleccionar Paciente: ",
+        labelReportePeriodo: "Periodo: ",
+        labelQuincenal: "Quincenal",
+        labelMensual: "Mensual",
+        labelReporteQuincena: "Quincena: ",
+        labelReporteMes: "Mes:",
+        labelReporteAnio: "Anio: ",
+        btnGenerarReporte: "Generar Reporte",
+        btnCerrarReportes: "Cerrar",
 
 
 
@@ -116,6 +128,17 @@ let traducciones = {
         tituloSesionesRegistradas: "Registered Sessions",
         thSesionPaciente: "Patients", thSesionFecha: "Date", thSesionDetalles: "View Details", thSesionExpediente: "Record",thSesionTratamiento: "Treatment",
 
+        //reportes//
+        formReportesTitulo: "Attendance Report",
+        labelReportePaciente: "Select Patient: ",
+        labelReportePeriodo: "Period: ",
+        labelQuincenal: "Biweekly",
+        labelMensual: "Monthly",
+        labelReporteQuincena: "Biweek: ",
+        labelReporteMes: "Month:",
+        labelReporteAnio: "Year: ",
+        btnGenerarReporte: "Generate Report",
+        btnCerrarReportes: "Close",
 
     }
 };
@@ -201,6 +224,19 @@ function cambiarIdioma() {
     document.getElementById("thSesionTratamiento").textContent = tr.thSesionTratamiento;
     document.getElementById("thSesionDetalles").textContent= tr.thSesionDetalles;
     document.getElementById("thSesionExpediente").textContent= tr.thSesionExpediente;
+
+    //reportes//
+    document.getElementById("formReportesTitulo").textContent = tr.formReportesTitulo;
+    document.getElementById("labelReportePaciente").textContent = tr.labelReportePaciente;
+    document.getElementById("labelReportePeriodo").textContent = tr.labelReportePeriodo;
+    document.getElementById("labelQuincenal").textContent = tr.labelQuincenal;
+    document.getElementById("labelMensual").textContent = tr.labelMensual;
+    document.getElementById("labelReporteQuincena").textContent = tr.labelReporteQuincena;
+    document.getElementById("labelReporteMes").textContent = tr.labelReporteMes;
+    document.getElementById("labelReporteAnio").textContent = tr.labelReporteAnio;
+    document.getElementById("btnGenerarReporte").textContent = tr.btnGenerarReporte;
+    document.getElementById("btnCerrarReportes").textContent = tr.btnCerrarReportes;
+
 
 
 

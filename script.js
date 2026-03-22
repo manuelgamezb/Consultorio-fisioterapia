@@ -186,7 +186,7 @@ function cambiarIdioma() {
     //sesiones//
 
     document.getElementById("formSesionesTitulo").textContent = tr.formSesionesTitulo;
-    document.getElementById("labelSesionesPaciente").textContent = tr.labelSesionPaciente;
+    document.getElementById("labelSesionPaciente").textContent = tr.labelSesionPaciente;
     document.getElementById("labelSesionFecha").textContent=labelSesionFecha;
     document.getElementById("labelSesionTratamiento").textContent = tr.labelSesionTratamiento;
     document.getElementById("labelSesionEjercicios").textContent = tr.labelSesionEjercicios;
@@ -195,14 +195,14 @@ function cambiarIdioma() {
     document.getElementById("labelSesionProximos").textContent = tr.labelSesionProximos;
     document.getElementById("btnGuardarSesion").textContent = tr.btnGuardarSesion;
     document.getElementById("btnCancelarSesion").textContent = tr.btnCancelarSesion;
-    document.getElementById("titulosSesionesRegistradas").textContent = tr.titulosSesionesRegistradas;
+    document.getElementById("tituloSesionesRegistradas").textContent = tr.tituloSesionesRegistradas;
     document.getElementById("thSesionPaciente").textContent = tr.thSesionPaciente;
     document.getElementById("thSesionFecha").textContent = tr.thSesionFecha;
     document.getElementById("thSesionTratamiento").textContent = tr.thSesionTratamiento;
-    document.getElementById("thsesionDetalles").textContent= tr.thSesionDetalles;
+    document.getElementById("thSesionDetalles").textContent= tr.thSesionDetalles;
     document.getElementById("thSesionExpediente").textContent= tr.thSesionExpediente;
 
-    
+
 
 
 
@@ -541,15 +541,18 @@ function mostrarCalendarioSemanal(){
     let inicioSemana = new Date(hoy);
     inicioSemana.setDate(hoy.getDate() - diaSemana + 1 + (semanaOffset * 7)); // lunes de la semana actual + offset
 
+    let tr= traducciones[idioma];
 
     let html = '<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);  padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">';
 
-    html += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">';
-    html += '<button onclick="cambiarSemana(-1)" style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 8px; cursor: pointer; font-weight: bold;">Anterior</button>';
-    html += '<h3 style= "margin: 0; color: white; font-size: 1.3em;">Semana del ' + formatearFecha(inicioSemana) + '</h3>';
-    html += '<button onclick="cambiarSemana(1)" style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 8px; cursor: pointer; font-weight: bold;">Siguiente</button>';
+    html = '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">';
+    html += '<button onclick="cambiarSemana(-1)" style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 8px; cursor: pointer; font-weight: bold;">' + tr.CalAnterior +'</button>';
+    html += '<h3 style= "margin: 0; color: white; font-size: 1.3em;">' + tr.CalSemana + ' ' + formatearFecha(inicioSemana) + '</h3>';
+    html += '<button onclick="cambiarSemana(1)" style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 8px; cursor: pointer; font-weight: bold;">' + tr.CalSiguiente + '</button>';
     html += '</div>';
     html += '<div style="background: white; border-radius: 10px; overflow: hidden;">';
+
+
 
   
 
@@ -559,7 +562,7 @@ function mostrarCalendarioSemanal(){
     
 
     // encabezados de dias a//
-    let diasNombres = ['LUN','MAR','MIE','JUE','VIE'];
+    let diasNombres = traducciones[idioma].diaSemana;
    
     for(let i=0; i<5; i++){
         let fecha = new Date(inicioSemana);

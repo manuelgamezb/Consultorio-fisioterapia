@@ -44,7 +44,21 @@ let traducciones = {
         btnCancelarCita: "Cancelar",
         tituloCalendario: "Calendario de Citas:",
         tituloListaCitas: "Lista de Citas",
-        thCitaPaciente: "Paciente", thCitaFecha: "Fecha", thCitaHora: "Hora", thCitaTipo: "Tipo", thCitaAcciones: "Acciones"
+        thCitaPaciente: "Paciente", thCitaFecha: "Fecha", thCitaHora: "Hora", thCitaTipo: "Tipo", thCitaAcciones: "Acciones",
+
+        formSesionesTitulo: "Gestion de Sesiones",
+        labelSesionPaciente: "Paciente:",
+        labelSesionFecha: "Fecha:",
+        labelSesionTratamiento: "Tratamiento aplicado:",
+        labelSesionEjercicios: "Ejercicios realizados:",
+        labelSesionObservaciones: "Observaciones:",
+        labelSesionEvolucion: "Evolucion del paciente:",
+        labelSesionProximos: "Proximos pasos:",
+        btnGuardarSesion: "GuardarSesion",
+        btnCancelarSesion: "Cancelar",
+        titulosSesionesRegistradas: "Sesiones Registradas",
+        thSesionTratamiento:"Tratamiento", thSesionDetalles: "Ver Detalles", thSesionExpediente: "Expediente"
+
 
 
 
@@ -87,7 +101,20 @@ let traducciones = {
         btnCancelarCita: "Cancel",
         tituloCalendario: "Appointment Calendar:",
         tituloListaCitas: "List of Appointments",
-        thCitaPaciente: "Patient", thCitaFecha: "Date", thCitaHora: "Time", thCitaTipo: "Type", thCitaAcciones: "Actions"
+        thCitaPaciente: "Patient", thCitaFecha: "Date", thCitaHora: "Time", thCitaTipo: "Type", thCitaAcciones: "Actions",
+
+        formSesionesTitulo: "Session Management",
+        labelSesionPaciente: "Patient:",
+        labelSesionFecha: "Date:",
+        labelSesionTratamiento: "Applied Treatment:",
+        labelSesionEjercicios: "Performed Exercises:",
+        labelSesionObservaciones: "Observations:",
+        labelSesionEvolucion: "Patient Progress:",
+        labelSesionProximos: "Next Steps:",
+        btnGuardarSesion: "Save Session",
+        btnCancelarSesion: "Cancel",
+        titulosSesionesRegistradas: "Registered Sessions",
+        thSesionPaciente: "Patients", thSesionFecha: "Date", thSesionDetalles: "View Details", thSesionExpediente: "Record"
 
 
     }
@@ -155,6 +182,27 @@ function cambiarIdioma() {
     document.getElementById("thCitaHora").textContent = tr.thCitaHora;
     document.getElementById("thCitaTipo").textContent = tr.thCitaTipo;
     document.getElementById("thCitaAcciones").textContent = tr.thCitaAcciones;
+
+    //sesiones//
+
+    document.getElementById("formSesionesTitulo").textContent = tr.formSesionesTitulo;
+    document.getElementById("labelSesionesPaciente").textContent = tr.labelSesionPaciente;
+    document.getElementById("labelSesionFecha").textContent=labelSesionFecha;
+    document.getElementById("labelSesionTratamiento").textContent = tr.labelSesionTratamiento;
+    document.getElementById("labelSesionEjercicios").textContent = tr.labelSesionEjercicios;
+    document.getElementById("labelSesionObservaciones").textContent = tr.labelSesionObservaciones;
+    document.getElementById("labelSesionEvolucion").textContent = tr.labelSesionEvolucion;
+    document.getElementById("labelSesionProximos").textContent = tr.labelSesionProximos;
+    document.getElementById("btnGuardarSesion").textContent = tr.btnGuardarSesion;
+    document.getElementById("btnCancelarSesion").textContent = tr.btnCancelarSesion;
+    document.getElementById("titulosSesionesRegistradas").textContent = tr.titulosSesionesRegistradas;
+    document.getElementById("thSesionPaciente").textContent = tr.thSesionPaciente;
+    document.getElementById("thSesionFecha").textContent = tr.thSesionFecha;
+    document.getElementById("thSesionTratamiento").textContent = tr.thSesionTratamiento;
+    document.getElementById("thsesionDetalles").textContent= tr.thSesionDetalles;
+    document.getElementById("thSesionExpediente").textContent= tr.thSesionExpediente;
+
+    
 
 
 
@@ -325,10 +373,10 @@ function cerrarAsistencias(){
 
 function guardarPaciente(){
 
-    let nombre = document.getElementById("nombre").value;
-    let telefono = document.getElementById("telefono").value;
-    let direccion = document.getElementById("direccion").value;
-        let fechaNac = document.getElementById("fechaNac").value;
+    let nombre = document.getElementById("nombrePaciente").value;
+    let telefono = document.getElementById("telefonoPaciente").value;
+    let direccion = document.getElementById("direccionPaciente").value;
+        let fechaNac = document.getElementById("fechaNacPaciente").value;
     if (nombre === ""|| telefono === "") {
         alert("por favor llene todos los campos");
         return;

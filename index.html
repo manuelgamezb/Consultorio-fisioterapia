@@ -287,7 +287,7 @@
                     <input type="radio" name="periodo" value="quincenal" id="quincenal">
                     <label for="quincenal" id="labelQuincenal">Quincenal</label>
                     <input type="radio" name="periodo" value="mensual" id="mensual" checked>
-                    <label for="mensual">Mensual</label>
+                    <label for="mensual" id="labelMensual">Mensual</label>
                     <br><br>
 
             <div id="divQuincena"  style="display: none;">
@@ -336,22 +336,22 @@
             </div>
             <div class="modal-body">
 
-            <h2> Control de Asistencias del Dia</h2>
+            <h2 id="formAsistenciasTitulo"> Control de Asistencias del Dia</h2>
 
             <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
-                <button onclick="mostrarCitasControl()" style="padding: 10px 20px; background: #007bff; color:white;border: none; border-radius: 5px; cursor: pointer;">Cargar Citas de Hoy</button>
-                <button onclick="cerrarAsistencias()" style="padding: 10px 20px; margin-left: 10px;">Cerrar</button>
+                <button onclick="mostrarCitasControl()" id="btnCargarCitas" style="padding: 10px 20px; background: #007bff; color:white; border:none; border-radius: 5px; cursor: pointer;">Cargar Citas de Hoy</button>
+                <button onclick="cerrarAsistencias()" id="btnCerrarAsistencias" style="padding: 10px 20px; margin-left: 10px;">Cerrar</button>
             </div>
 
-            <h3>Citas de Hoy</h3>
+            <h3 id="tituloCitasHoy">Citas de Hoy</h3>
             <table id="tablaControlAsistencias">
                 <thead>
                     <tr>
-                        <th>Paciente</th>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Tipo</th>
-                        <th>Acciones</th>
+                        <th id="thAsistenciaPaciente">Paciente</th>
+                        <th id="thAsistenciaFecha">Fecha</th>
+                        <th id="thAsistenciaHora">Hora</th>
+                        <th id="thAsistenciaTipo">Tipo</th>
+                        <th id="thAsistenciaAcciones">Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="listaControlAsistencias">
@@ -360,18 +360,18 @@
                 </table>
 
                 <hr style="margin: 40px 0;">
-                <h2> Reporte de Inasistencias</h2>
+                <h2 id="tituloReporteInasistencia"> Reporte de Inasistencias</h2>
 
                 <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
-                    <label for="inasistenciaFechaInicio">Desde: </label>
+                    <label for="inasistenciaFechaInicio" id="labelFechaInicio">Desde: </label>
                     <input type="date" id="inasistenciaFechaInicio">
 
 
-                    <label for="inasistenciaFechaFin" style="margin-left: 20px;">Hasta:</label>
+                    <label for="inasistenciaFechaFin" id="labelFechaFin" style="margin-left: 20px;">Hasta:</label>
                     <input type="date" id="inasistenciaFechaFin">
                     <br><br>
 
-                    <button onclick="generarReporteInasistencias()">Generar Reporte de Inasistencias</button>
+                    <button onclick="generarReporteInasistencias()" id="btnGenerarInasistencias">Generar Reporte de Inasistencias</button>
                 </div>
 
                 <div id="resultadoInasistencias"></div>

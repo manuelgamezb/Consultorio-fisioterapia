@@ -71,6 +71,22 @@ let traducciones = {
         btnGenerarReporte: "Generar Reporte",
         btnCerrarReportes: "Cerrar",
 
+        //asistencias
+
+        formAsistenciasTitulo: "Control de Asistencias del Dia",
+        btnCargarCitas: "Cargar Citas de Hoy",
+        btnCerrarAsistencias: "Cerrar",
+        tituloCitasHoy: "Citas de Hoy",
+        thAsistenciasPaciente: "Paciente", thAsistenciaFecha: "Fecha",
+        thAsistenciaHora: "Hora", thAsistenciaTipo: "Tipo", thAsistenciaAcciones: "Acciones",
+        tituloReporteInasistencias: "Reporte de Inasistencias",
+        labelFechaInicio: "Desde",
+        labelFechaFin: "Hasta:",
+        btnGenerarInasistencias: "Generar Reporte de Inasistencias"
+
+        
+
+
 
 
 
@@ -139,6 +155,17 @@ let traducciones = {
         labelReporteAnio: "Year: ",
         btnGenerarReporte: "Generate Report",
         btnCerrarReportes: "Close",
+
+        formAsistenciasTitulo: "Daily Attendance Control",
+        btnCargarCitas: "Load Today's Appointments",
+        btnCerrarAsistencias: "Close",
+        tituloCitasHoy: "Today's Appointments",
+        thAsistenciasPaciente: "Patient", thAsistenciaFecha: "Date",
+        thAsistenciaHora: "Time", thAsistenciaTipo: "Type", thAsistenciaAcciones: "Actions",
+        tituloReporteInasistencias: "Absence Report",
+        labelFechaInicio: "From",
+        labelFechaFin: "To:",
+        btnGenerarInasistencias: "Generate Absence Report"
 
     }
 };
@@ -237,8 +264,20 @@ function cambiarIdioma() {
     document.getElementById("btnGenerarReporte").textContent = tr.btnGenerarReporte;
     document.getElementById("btnCerrarReportes").textContent = tr.btnCerrarReportes;
 
-
-
+    //asistencias//
+    document.getElementById("formAsistenciasTitulo").textContent = tr.formAsistenciasTitulo;
+    document.getElementById("btnCargarCitas").textContent = tr.btnCargarCitas;
+    document.getElementById("btnCerrarAsistencias").textContent = tr.btnCerrarAsistencias;
+    document.getElementById("tituloCitasHoy").textContent = tr.tituloCitasHoy;
+    document.getElementById("thAsistenciaPaciente").textContent = tr.thAsistenciaPaciente;
+    document.getElementById("thAsistenciaFecha").textContent = tr.thAsistenciaFecha;
+    document.getElementById("thAsistenciaHora").textContent = tr.thAsistenciaHora;
+    document.getElementById("thAsistenciaTipo").textContent = tr.thAsistenciaTipo;
+    document.getElementById("thAsistenciaAcciones").textContent = tr.thAsistenciaAcciones;
+    document.getElementById("tituloReporteInasistencia").textContent = tr.tituloReporteInasistencia;
+    document.getElementById("labelFechaInicio").textContent = tr.labelFechaInicio;
+    document.getElementById("labelFechaFin").textContent = tr.labelFechaFin;
+    document.getElementById("btnGenerarInasistencias").textContent = tr.btnGenerarInasistencias;
 
 
 

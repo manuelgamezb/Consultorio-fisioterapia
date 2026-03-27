@@ -278,7 +278,9 @@
             <h2 id="formReportesTitulo"> Reporte de Asistencias</h2>
 
             <div style="background: #f8f9fa; padding: 30px; border-radius:  10px; margin-bottom: 30px;">
-                <label for="reportePaciente" id="labelReportePaciente">Seleccionar Paciente: </label>
+                <label for="reportePaciente" id="
+                
+                Paciente">Seleccionar Paciente: </label>
                 <select id="reportePaciente">
                     <option value="">Todos los pacientes</option>
                     </select>
@@ -315,7 +317,7 @@
                         <option value="12">Diciembre</option>
                     </select>
                     <label for="reporteAnio">Año:</label>
-                    <input type="number" id="labelReporteAnio">Anio: </label>
+                    <input type="number" id="reporteAnio" value="2026" min="2000" max="2100">
                     <br><br>
 
                     <button onclick="generarReporte()" id="btnGenerarReporte">Generar Reporte</button>
@@ -371,7 +373,7 @@
                     <input type="date" id="inasistenciaFechaFin">
                     <br><br>
 
-                    <button type="button" onclick="generarReporte()" id="btnGenerarReporte">Generar Reporte</button>
+                    <button type="button" onclick="generarReporteInasistencias()" id="btnGenerarInasistencias">Generar Reporte de Inasistencias</button>
                 </div>
 
                 <div id="resultadoInasistencias"></div>

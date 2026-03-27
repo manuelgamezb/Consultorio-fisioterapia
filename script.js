@@ -77,7 +77,7 @@ let traducciones = {
         btnCargarCitas: "Cargar Citas de Hoy",
         btnCerrarAsistencias: "Cerrar",
         tituloCitasHoy: "Citas de Hoy",
-        thAsistenciasPaciente: "Paciente", thAsistenciaFecha: "Fecha",
+        thAsistenciaPaciente: "Paciente", thAsistenciaFecha: "Fecha",
         thAsistenciaHora: "Hora", thAsistenciaTipo: "Tipo", thAsistenciaAcciones: "Acciones",
         tituloReporteInasistencias: "Reporte de Inasistencias",
         labelFechaInicio: "Desde",
@@ -160,7 +160,7 @@ let traducciones = {
         btnCargarCitas: "Load Today's Appointments",
         btnCerrarAsistencias: "Close",
         tituloCitasHoy: "Today's Appointments",
-        thAsistenciasPaciente: "Patient", thAsistenciaFecha: "Date",
+        thAsistenciaPaciente: "Patient", thAsistenciaFecha: "Date",
         thAsistenciaHora: "Time", thAsistenciaTipo: "Type", thAsistenciaAcciones: "Actions",
         tituloReporteInasistencias: "Absence Report",
         labelFechaInicio: "From",
@@ -274,7 +274,7 @@ function cambiarIdioma() {
     document.getElementById("thAsistenciaHora").textContent = tr.thAsistenciaHora;
     document.getElementById("thAsistenciaTipo").textContent = tr.thAsistenciaTipo;
     document.getElementById("thAsistenciaAcciones").textContent = tr.thAsistenciaAcciones;
-    document.getElementById("tituloReporteInasistencia").textContent = tr.tituloReporteInasistencia;
+    document.getElementById("tituloReporteInasistencia").textContent = tr.tituloReporteInasistencias;
     document.getElementById("labelFechaInicio").textContent = tr.labelFechaInicio;
     document.getElementById("labelFechaFin").textContent = tr.labelFechaFin;
     document.getElementById("btnGenerarInasistencias").textContent = tr.btnGenerarInasistencias;

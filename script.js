@@ -476,6 +476,8 @@ mostrarPacientes();
 actualizarTodosLosSelectores();
 document.getElementById("nombrePaciente").value = "";
 document.getElementById("telefonoPaciente").value = "";
+document.getElementById("direccionPaciente").value = "";
+document.getElementById("nacimientoPaciente").value = "";
 
 alert("Paciente guardado exitosamente");
 
@@ -656,7 +658,7 @@ function mostrarCalendarioSemanal(){
     //filas cada 15 minutos 8:00 a 20:00//
     for (let hora=8; hora<=20; hora++){
         for (let minuto=0; minuto<60; minuto += 15){
-            let horaStr = (hora < 10 ? '0' + hora : hora) + ':' + (minuto === 0 ? '00' : minuto);
+            let horaStr = (hora < 10 ? '0' + hora : hora) + ':' + (minuto < 10 ? '0' + minuto : minuto);
             let esCadaHora = minuto === 0;
 
             html += '<tr style= "border-bottom: ' + (esCadaHora ? '2px solid #3498db' : '1px solid #ecf0f1') + ';">';

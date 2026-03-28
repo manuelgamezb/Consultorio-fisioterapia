@@ -929,6 +929,15 @@ function mostrarCalendarioSemanal(){
     html += '</div>';
 
     div.innerHTML = html;
+
+
+
+
+
+
+
+
+
     }
     function marcarAsistencia(index, asistio){
         if(asistio){
@@ -1101,6 +1110,7 @@ function mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin){
     html += '</div>';
     html += '</div>';
 
+    html += '<br><button type="button" onclick="imprimirReporte(\'resultadoInasistencias\')" style="background: #dc3545; color: white; padding: 12px 30px;border: none; border-radius: 8px; cursor: pointer; font-size 1em; margin-top: 10px;">Imprimir Reporte</button>';
     div.innerHTML = html;
 
 }
@@ -1178,7 +1188,31 @@ function cerrarTodosLosModales(){
         ventana.document.close();
         ventana.print();
     }
+    function imprimirReporte(idDiv){
+        let contenido = document.getElementById(idDiv).innerHTML;
+        let ventana = window.open("", "_blank");
+        ventana.document.write(`
+            <html> 
+            <head>
+                <title>Reporte</title>
+                <style>
 
+                    body { font-family: Arial, sans-serif; padding: 30px;}
+                    h3 {color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;}
+                    table {width: 100%; border-collapse: collapse; margin-top: 15px;}
+                    th {background: #ecf0f1; padding: 10px;text-align: left;}
+                    td {padding: 10px; border-bottom: 1px solid #ddd;}
+                    button {display: none;}
+                </style>
+            </head>
+            <body>
+                ${contenido}
+            </body>
+            </html>
+        `);
+        ventana.document.close();
+        ventana.print();
+    }
 
 
 

@@ -393,7 +393,30 @@
  </div>
         <!-- Aqui se mostrara el contenido del expediente -->
 
+    <script src= "https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src= "https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script>
+        // Configuracion de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyC0l2z7tgPU7esJFDusZ2eB-hU8vfq-qfg",
+            authDomain: "consultorio-fisioterapia.firebaseapp.com",
+            databaseURL: "https://consultorio-fisioterapia-default-rtdb.firebaseio.com",
+            projectId: "consultorio-fisioterapia",
+            storageBucket: "consultorio-fisioterapia.firebasestorage.app",
+            messagingSenderId: "57706928287",
+            appId: "1:57706928287:web:6e8d044327e7ac59d0eaaa",
+            measuramentId: "G-EEMRVHNL52"
+        };
+
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+    </script>
+
+
     <script src="script.js"></script>
     
+
+
 </body>
 </html>

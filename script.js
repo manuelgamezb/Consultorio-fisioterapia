@@ -313,11 +313,15 @@ window.onload = function(){
 };
 
 function cargarPacientes(){
-    let datosGuardados = localStorage.getItem("pacientes");
-    if(datosGuardados) {
-        pacientes = JSON.parse(datosGuardados);
+    database.ref("pacientes").on("value", function(snapshot){
+        if (snapshot.val()){
+            pacientes = snapshot.val();
+        } else {
+            pacientes = [];
+        }
         mostrarPacientes();
-    }
+        actualizarTodosLosSelectores();
+    });
 
 }
 // EDITAR PACIENTES //
@@ -362,13 +366,17 @@ function cargarPacientes(){
 
 
 function cargarCitas(){
-    let datosGuardados = localStorage.getItem("citas");
-    if (datosGuardados){
-        citas = JSON.parse(datosGuardados);
-        mostrarCitas();
-
+    database.ref("citas").on("value", function(snapshot){
+        if (snapshot.val()){
+            citas = snapshot.val();
+    } else {
+        citas = [];
     }
+    mostrarCitas();
+    });
 }
+
+
 function cargarSesiones(){
     let datosGuardados = localStorage.getItem("sesiones");
     if(datosGuardados){
@@ -384,9 +392,9 @@ function cargarSesiones(){
 function guardarEnLocalStorage(){
 
 
-    localStorage.setItem("pacientes",JSON.stringify(pacientes));
-    localStorage.setItem("citas", JSON.stringify(citas));
-    localStorage.setItem("sesiones",JSON.stringify(sesiones));
+    database.ref("pacientes").set(pacientes);
+    database("citas").set(citas);
+    database("sesiones").set(sesiones);
 }
 function actualizarTodosLosSelectores(){
     cargarSelectorPacientes();
@@ -927,6 +935,7 @@ function mostrarCalendarioSemanal(){
     html += '<p style="margin: 10px 0 0 0 ; color: #155724;"> Sesiones a facturar para este periodo</p>';
     html += '</div>';
     html += '</div>';
+    html += '<br><button type="button" onclick="imprimirReporte(\'resultadoReporte\')" style="background: #2c3e50; color: white; padding: 12px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; margin-top: 10px;">Imprimir Reporte</button>';
 
     div.innerHTML = html;
 

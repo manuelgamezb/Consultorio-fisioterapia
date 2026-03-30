@@ -314,8 +314,14 @@ window.onload = function(){
 
 function cargarPacientes(){
     database.ref("pacientes").on("value", function(snapshot){
-        if (snapshot.val()){
-            pacientes = snapshot.val();
+        let datos = snapshot.val();
+        if (datos) {
+            pacientes = Object.keys(datos).map(function(key){
+                let p = datos[key];
+                p.key = key; // guardar la clave de firebase para futuras referencias
+                return p;
+       
+    });
         } else {
             pacientes = [];
         }
@@ -367,35 +373,75 @@ function cargarPacientes(){
 
 function cargarCitas(){
     database.ref("citas").on("value", function(snapshot){
-        if (snapshot.val()){
-            citas = snapshot.val();
-    } else {
-        citas = [];
-    }
-    mostrarCitas();
+        let datos = snapshot.val();
+        if (datos) {
+            citas = Object.keys(datos).map(function(key){
+                let c = datos[key];
+                c.key = key; // guardar la clave de firebase para futuras referencias
+                return c;
+            });
+        } else {
+            citas = [];
+        }
+        mostrarCitas();
     });
+
+    //cargarSesiones
+
+    
 }
 
 
 function cargarSesiones(){
-    let datosGuardados = localStorage.getItem("sesiones");
-    if(datosGuardados){
-        sesiones = JSON.parse(datosGuardados);
-        mostrarSesiones();
+    database.ref("sesiones").on("value", function(snapshot){
+        if (snapshot.val()){
+            sesiones = snapshot.val();
+    } else {
+        sesiones = [];
+
     }
+    mostrarSesiones();
+    });
+
 
 }
 
-
-
-
-function guardarEnLocalStorage(){
-
-
-    database.ref("pacientes").set(pacientes);
-    database("citas").set(citas);
-    database("sesiones").set(sesiones);
+// Pacientes
+function guardarPacienteEnFirebase(paciente){
+    return database.ref("pacientes").push(paciente);
 }
+function actualizarPacienteEnFirebase(key,datos){
+    return database.ref("pacientes/" + key).update(datos);
+}
+
+function eliminarPacienteDeFirebase(key){
+    return database.ref("pacientes/" + key).remove();
+
+}
+
+// citas
+function guardarCitaEnFirebase(cita){
+    return database.ref("citas").push(cita);
+}
+function actualizarCitaEnFirebase(key,datos){
+    return database.ref("citas/" + key).update(datos);
+}
+
+function eliminarCitaDeFirebase(key){
+    return database.ref("citas/" + key).remove();   
+}
+
+//sesiones
+function guardarSesionEnFirebase(sesion){
+    return database.ref("sesiones").push(sesion);
+}
+function actualizarSesionEnFirebase(key,datos){
+    return database.ref("sesiones/" + key).update(datos);
+}
+function eliminarSesionDeFirebase(key){
+    return database.ref("sesiones/" + key).remove();
+}
+
 function actualizarTodosLosSelectores(){
     cargarSelectorPacientes();
     mostrarCalendarioSemanal();

@@ -388,6 +388,7 @@ function cargarCitas(){
 
     //cargarSesiones
 
+
     
 }
 
@@ -520,20 +521,19 @@ let paciente = {
 
 };
 
+guardarPacienteEnFirebase(paciente).then(function(){
+    document.getElementById("nombrePaciente").value = "";
+    document.getElementById("telefonoPaciente").value = "";
+    document.getElementById("direccionPaciente").value = "";
+    document.getElementById("nacimientoPaciente").value = "";
+    alert("Paciente guardado exitosamente");
+}).catch(function(error){
+    alert("Error al guardar: " + error.message);
+});
 
-pacientes.push(paciente);
 
 
-guardarEnLocalStorage();
 
-mostrarPacientes();
-actualizarTodosLosSelectores();
-document.getElementById("nombrePaciente").value = "";
-document.getElementById("telefonoPaciente").value = "";
-document.getElementById("direccionPaciente").value = "";
-document.getElementById("nacimientoPaciente").value = "";
-
-alert("Paciente guardado exitosamente");
 
 }
 

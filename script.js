@@ -331,8 +331,10 @@ function cargarPacientes(){
 
 }
 // EDITAR PACIENTES //
-    function editarPaciente(index){
-        let paciente = pacientes[index];
+    function editarPaciente(key){
+        let paciente = pacientes.find(function(p){ return p._key === key; });
+        if (!paciente) return;
+
         let nuevoNombre = prompt("Editar nombre del paciente:", paciente.nombre);
         if (nuevoNombre === null) return; // usuario cancelo
         let nuevoTelefono = prompt("Editar telefono del paciente:", paciente.telefono);
@@ -346,26 +348,27 @@ function cargarPacientes(){
             alert("Por favor llene todos los campos");
             return;
         }
+        actualizarPacienteEnFirebase(key, {
+            nombre: nuevoNombre,
+            telefono: nuevoTelefono,
+            direccion: nuevaDireccion,
+            fechaNac: nuevaFechaNac
+        })
+        .then(function(){ alert("Paciente editado exitosamente"); })
+        .catch(function(error){ alert("Error: " + error.message); });
 
-        pacientes[index].nombre = nuevoNombre;
-        pacientes[index].telefono = nuevoTelefono;
-        pacientes[index].direccion = nuevaDireccion;
-        pacientes[index].fechaNac = nuevaFechaNac;
-        guardarEnLocalStorage();
-        mostrarPacientes();
-        alert("Paciente editado exitosamente");
     }
 
         //ELIMINAR PACIENTES//
-    function eliminarPaciente (index){
-        let paciente = pacientes[index];
-    let confirmacion = confirm("¿Estas seguro de eliminar este paciente?"+paciente.nombre+"?");
+    function eliminarPaciente (key){
+        let paciente = pacientes.find(function(p){ return p._key === key; });
+        if (!paciente) return;
+    let confirmacion = confirm("¿Estas seguro de eliminar a: " + paciente.nombre + "?");
+     if (!confirmacion) return;
 
-            if (!confirmacion) return;
-            pacientes.splice (index, 1);
-            guardarEnLocalStorage();
-            mostrarPacientes();
-            alert("Paciente eliminado exitosamente");
+        eliminarPacienteDeFirebase(key)
+            .then(function(){ alert("Paciente eliminado exitosamente"); })
+            .catch(function(error){ alert("Error al eliminar: " + error.message); });
     }
 
 
@@ -636,7 +639,7 @@ function mostrarTablaCitas(){
     }
 
 //EDITAR CITAS//
-function editarCita(index){
+function editarCita(key){
     let cita = citas.find(function(c){ return c._key ===key; });
     if (!cita)return;
 

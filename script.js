@@ -84,14 +84,7 @@ let traducciones = {
         labelFechaFin: "Hasta:",
         btnGenerarInasistencias: "Generar Reporte de Inasistencias"
 
-        
-
-
-
-
-
-
-    },
+         },
     en: {
         tituloPagina: "Management System - Physiotherapy Clinic",
         btnIdioma: "Español",
@@ -278,13 +271,6 @@ function cambiarIdioma() {
     document.getElementById("labelFechaInicio").textContent = tr.labelFechaInicio;
     document.getElementById("labelFechaFin").textContent = tr.labelFechaFin;
     document.getElementById("btnGenerarInasistencias").textContent = tr.btnGenerarInasistencias;
-
-
-
-
-
-
-
 }
 
 
@@ -371,9 +357,6 @@ function cargarPacientes(){
             .catch(function(error){ alert("Error al eliminar: " + error.message); });
     }
 
-
-
-
 function cargarCitas(){
     database.ref("citas").on("value", function(snapshot){
         let datos = snapshot.val();
@@ -388,13 +371,8 @@ function cargarCitas(){
         }
         mostrarCitas();
     });
-
-    //cargarSesiones
-
-
     
 }
-
 
 function cargarSesiones(){
     database.ref("sesiones").on("value", function(snapshot){
@@ -535,10 +513,6 @@ guardarPacienteEnFirebase(paciente).then(function(){
     alert("Error al guardar: " + error.message);
 });
 
-
-
-
-
 }
 
 function mostrarPacientes(){
@@ -594,7 +568,7 @@ function agendarCita(){
         tipo: tipo,
         notas: notas,
         estado: "programada",
-        asistencia: null,
+        asistencia: "pendiente",
         motivoInasistencia: ""
      };
 
@@ -780,14 +754,7 @@ function mostrarCalendarioSemanal(){
     contenedor.innerHTML = html;
 }
 
-        
-     
-
-         
-   
-
-
-    //fomratear fecha a//
+         //fomratear fecha a//
     function formatearFecha(fecha){
         let meses = ['Ene', 'Feb', 'Mar', 'Abr','May','Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
         return fecha.getDate() + ' ' + meses[fecha.getMonth()] + ' ' + fecha.getFullYear();
@@ -799,11 +766,7 @@ function mostrarCalendarioSemanal(){
         mostrarCalendarioSemanal();
 
     }
-    
-
- 
-
-     // ------ Sesiones -------//
+    // ------ Sesiones -------//
 
     function cargarSelectorPacientesSesion(){
         let select = document.getElementById("sesionPaciente");
@@ -839,8 +802,6 @@ function mostrarCalendarioSemanal(){
         evolucion: evolucion,
         proximos: proximos
     };
-
-    
     guardarSesionEnFirebase(sesion).then(function(){
     document.getElementById("sesionPaciente").value = "";
     document.getElementById("sesionFecha").value = "";
@@ -861,12 +822,12 @@ function mostrarCalendarioSemanal(){
         tbody.innerHTML = "";
 
         for (let i= 0; i< sesiones.length; i++){
-            let tratamientoCorto = sesiones[i].tratamiento.substring(0,50) + "....";
+            let tratamientoCorto = (sesiones[i].tratamiento || ".").substring(0,50) + "...."; // mostrar solo los primeros 20 caracteres
             let fila = "<tr>" +
                 "<td>" + sesiones[i].paciente + "</td>" +
                 "<td>" + sesiones[i].fecha + "</td>" +
                 "<td>" + tratamientoCorto + "</td>" +
-                "<td><button onclick= 'verDetalleSesion(" + i + ")'>ver</button></td>" +
+                "<td><button onclick= 'verDetalleSesion(\"" + sesiones[i].key  + "\")'>ver</button></td>" +
                 "<td><button onclick= 'verExpediente(\"" + sesiones[i].paciente + "\")'>Expediente</button></td>" +
                 "</tr>";
             tbody.insertAdjacentHTML("beforeend", fila);
@@ -875,8 +836,10 @@ function mostrarCalendarioSemanal(){
 
     }
 
-    function verDetalleSesion(index){
-        let sesion = sesiones[index];
+    function verDetalleSesion(key){
+        let sesion = sesiones.find(function(s){ return s._key === key; });
+        if (!sesion) return;
+
         let mensaje = "SESION COMPLETA:\n\n" +
             "Paciente: " + sesion.paciente + "\n\n" +
             "Fecha:" + sesion.fecha + "\n\n" +
@@ -979,7 +942,7 @@ function mostrarCalendarioSemanal(){
 
     for (let i=0; i<sesiones.length; i++){
         let s= sesiones[i];
-        let tratamientoCorto = s.tratamiento.substring(0,50) + "...";
+        let tratamientoCorto = (s.tratamiento || ".").substring(0,50) + "...."; // mostrar solo los primeros 20 caracteres
         html += '<tr style="border-bottom: 1px solid #ecf0f1;">';
         html += '<td style="padding: 10px;">' + s.fecha + '</td>';
         html += '<td style="padding: 10px;">' + s.paciente + '</td>';
@@ -1082,7 +1045,7 @@ function mostrarCitasControl(){
         let cita = citasHoy[i];
 
         let estadoHTML = "";
-        if (cita.asistencia === null){
+        if (cita.asistencia === "pendiente" || !cita.asistencia) {
             estadoHTML = '<button onclick= "marcarAsistencia(\'' + cita._key + '\', true)" style= "background: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 5px;"> Asistio</button>' +
                         '<button onclick= "registrarMotivo(\'' + cita._key + '\')" style= "background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 5px;"> No Asistio</button>';
 
@@ -1205,10 +1168,6 @@ function cerrarTodosLosModales(){
             }
         }
 
-              
-        
-
-        
     if (historial === ""){
         alert("No hay sesiones registradas para este paciente");
         return;

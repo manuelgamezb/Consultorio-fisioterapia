@@ -318,7 +318,7 @@ function cargarPacientes(){
         if (datos) {
             pacientes = Object.keys(datos).map(function(key){
                 let p = datos[key];
-                p.key = key; // guardar la clave de firebase para futuras referencias
+                p._key = key; // guardar la clave de firebase para futuras referencias
                 return p;
        
     });
@@ -377,7 +377,7 @@ function cargarCitas(){
         if (datos) {
             citas = Object.keys(datos).map(function(key){
                 let c = datos[key];
-                c.key = key; // guardar la clave de firebase para futuras referencias
+                c._key = key; // guardar la clave de firebase para futuras referencias
                 return c;
             });
         } else {
@@ -395,16 +395,17 @@ function cargarCitas(){
 
 function cargarSesiones(){
     database.ref("sesiones").on("value", function(snapshot){
-        if (snapshot.val()){
-            sesiones = snapshot.val();
-    } else {
-        sesiones = [];
-
-    }
+        let datos = snapshot.val();
+        if (datos) {
+            sesiones = Object.keys(datos).map(function(key){
+                let s = datos[key];
+                s._key = key; // guardar la clave de firebase para futuras referencias
+                return s;
+            });
+        } else {            sesiones = [];
+        }
     mostrarSesiones();
     });
-
-
 }
 
 // Pacientes
@@ -594,16 +595,18 @@ function agendarCita(){
         motivoInasistencia: ""
      };
 
-     citas.push(cita);
-     guardarEnLocalStorage();
-     mostrarCitas();
-
+    
+        guardarCitaEnFirebase(cita).then(function(){
         document.getElementById("citaPaciente").value = "";
         document.getElementById("citaFecha").value = "";
         document.getElementById("citaHora").value = "";
         document.getElementById("citaNotas").value = "";
+        alert("Cita agendada exitosamente");
+    }).catch(function(error){
+        alert("Error al agendar cita: " + error.message);
+    });
 
-        alert("Cita Agendada exitosamente");
+        
 
 
 }
@@ -624,8 +627,8 @@ function mostrarTablaCitas(){
             "<td>" + citas[i].fecha + "</td>" +
             "<td>" + citas[i].hora + "</td>" +
             "<td>" + citas[i].tipo + "</td>" +
-            "<td><button onclick='editarCita(" + i + ")' style='background:#ffc107; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Editar</button>" +
-            "<button onclick='eliminarCita(" + i + ")' style='background:#dc3545; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;'>Eliminar</button>"+
+            "<td><button onclick=\"editarCita('" + citas[i]._key + "')\" style='background:#ffc107; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Editar</button>" +
+            "<button onclick=\"eliminarCita('" + citas[i]._key + "')\" style='background:#dc3545; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;'>Eliminar</button>"+
             "</td>"+ 
             "</tr>";
         tbody.innerHTML += fila;
@@ -634,34 +637,39 @@ function mostrarTablaCitas(){
 
 //EDITAR CITAS//
 function editarCita(index){
-    let cita = citas[index];
-    let nuevaFecha = prompt("Editar fecha: (YYYY-MM-DD)" , cita.fecha);
+    let cita = citas.find(function(c){ return c._key === citas[index]._key; });
+    if (!cita)return;
+    let nuevaFecha = prompt("Editar fecha (YYYY-MM-DD):", cita.fecha);
     if (nuevaFecha === null) return; // usuario cancelo
     let nuevaHora = prompt("Editar hora (HH:MM):", cita.hora);
     if (nuevaHora === null) return; // usuario cancelo
     let nuevoTipo = prompt("Editar tipo de cita:", cita.tipo);
     if (nuevoTipo === null) return; // usuario cancelo
-    if (nuevaFecha === "" || nuevaHora === ""){
+
+    if (nuevaFecha === "" || nuevaHora === "") {
         alert("Fecha y hora son obligatorios");
         return;
     }
-    citas[index].fecha = nuevaFecha;
-    citas[index].hora = nuevaHora;
-    citas[index].tipo = nuevoTipo;
-    guardarEnLocalStorage();
-    mostrarCitas();
-    alert("Cita editada exitosamente");
+    actualizarCitaEnFirebase(key, {
+        fecha: nuevaFecha,
+        hora: nuevaHora,
+        tipo: nuevoTipo
+    })
+        .then(function(){ alert("Cita editada exitosamente"); })
+        .catch(function(error){ alert("Error: " + error.message); });
 }
 
+
 //ELIMINAR CITAS a//
-    function eliminarCita(index){
-        let cita = citas[index];
-        let confirmacion = confirm("¿Estas seguro de eliminar esta cita de " + cita.paciente + " del " + cita.fecha + "?");
-            if (!confirmacion) return;
-            citas.splice(index, 1);
-            guardarEnLocalStorage();
-            mostrarCitas();
-            alert("Cita eliminada exitosamente");
+    function eliminarCita(key){
+        let cita = citas.find(function(c){ return c._key === key; });
+        if (!cita) return;
+        let confirmacion = confirm("¿Eliminar la cita de " + cita.paciente + " del " + cita.fecha + " ? ");
+        if (!confirmacion) return;
+
+        eliminarCitaDeFirebase(key)
+            .then(function(){ alert("Cita eliminada exitosamente"); })
+            .catch(function(error){ alert("Error: " + error.message); });
     }
 
 function mostrarCalendarioSemanal(){
@@ -828,10 +836,8 @@ function mostrarCalendarioSemanal(){
         proximos: proximos
     };
 
-    sesiones.push(sesion);
-    guardarEnLocalStorage();
-    mostrarSesiones();
-
+    
+    guardarSesionEnFirebase(sesion).then(function(){
     document.getElementById("sesionPaciente").value = "";
     document.getElementById("sesionFecha").value = "";
     document.getElementById("sesionTratamiento").value = "";
@@ -839,8 +845,11 @@ function mostrarCalendarioSemanal(){
     document.getElementById("sesionObservaciones").value = "";
     document.getElementById("sesionEvolucion").value = "";
     document.getElementById("sesionProximos").value = "";
-
     alert("Sesion registrada exitosamente");
+}).catch(function(error){
+    alert("Error al registrar sesion: " + error.message);
+});
+    
     }
 
     function mostrarSesiones(){
@@ -984,30 +993,17 @@ function mostrarCalendarioSemanal(){
     html += '<br><button type="button" onclick="imprimirReporte(\'resultadoReporte\')" style="background: #2c3e50; color: white; padding: 12px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; margin-top: 10px;">Imprimir Reporte</button>';
 
     div.innerHTML = html;
+ }
 
-
-
-
-
-
-
-
-
+    function marcarAsistencia(key, asistio){
+        actualizarCitaEnFirebase(key, {
+            asistencia: asistio ? "asistio" : "no_asistio"
+        })
+        .then(function(){ alert(asistio ? "Asistencia registrada" : "Inasistencia registrada"); })
+        .catch(function(error){ alert("Error: " + error.message); });
     }
-    function marcarAsistencia(index, asistio){
-        if(asistio){
-            citas[index].asistencia = "asistio";
-            citas[index].motivoInasistencia = "";
 
-        } else {
-            citas[index].asistencia = "no_asistio";
-        }
-        guardarEnLocalStorage();
-        mostrarCitas();
-        mostrarCitasControl();
-        alert(asistio ? "Asistencia registrada" : "Inasistencia registrada");
-        
-    }
+
     function registrarMotivo(index){
         let motivo = prompt(
             "Seleccione el motivo de inasistencia: \n\n" +
@@ -1049,9 +1045,16 @@ function mostrarCalendarioSemanal(){
         alert("Opcion invalida");
         return;
     }
-    citas [index].motivoInasistencia = motivoTexto;
-    marcarAsistencia(index, false);
+    actualizarCitaEnFirebase(key, {
+        asistencia: "no_asistio",
+        motivoInasistencia: motivoTexto
+    })
+    .then(function(){ alert("Inasistencia registrada" + motivoTexto); })
+    .catch(function(error){ alert("Error: " + error.message); });
+
 }
+
+
 function mostrarCitasControl(){
     let hoy = new Date();
     let year = hoy.getFullYear();
@@ -1073,12 +1076,11 @@ function mostrarCitasControl(){
     }
     for (let i = 0; i<citasHoy.length; i++){
         let cita = citasHoy[i];
-        let indexOriginal = citas.indexOf(cita);
 
         let estadoHTML = "";
         if (cita.asistencia === null){
-            estadoHTML = '<button onclick= "marcarAsistencia(' + indexOriginal + ', true)"> Asistio</button>' +
-                        '<button onclick= "registrarMotivo(' + indexOriginal + ')"> No Asistio</button>';
+            estadoHTML = '<button onclick= "marcarAsistencia(\'' + cita._key + '\', true)" style= "background: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 5px;"> Asistio</button>' +
+                        '<button onclick= "registrarMotivo(\'' + cita._key + '\')" style= "background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 5px;"> No Asistio</button>';
 
         }   else if (cita.asistencia === "asistio") {
             estadoHTML = '<span style= "color: green;"> ASISITIO</span>';

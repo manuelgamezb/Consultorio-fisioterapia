@@ -550,8 +550,8 @@ function mostrarPacientes(){
             "<td>" + (pacientes[i].direccion || "-") + "</td>" +
             "<td>" + (pacientes[i].fechaNac || "-") + "</td>" +
             "<td>" +
-            "<button onclick='editarPaciente(" + i + ")' style='background:#ffc107; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Editar</button>" +
-            "<button onclick='eliminarPaciente(" + i + ")' style='background:#dc3545; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;'>Eliminar</button>" +
+            "<button onclick=\"editarPaciente('" + pacientes[i]._key + "')\" style='background:#ffc107; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Editar</button>" +
+            "<button onclick=\"eliminarPaciente('" + pacientes[i]._key + "')\" style='background:#dc3545; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;'>Eliminar</button>" +
         "</td>" +
             "</tr>";
         tbody.innerHTML += fila;
@@ -637,8 +637,9 @@ function mostrarTablaCitas(){
 
 //EDITAR CITAS//
 function editarCita(index){
-    let cita = citas.find(function(c){ return c._key === citas[index]._key; });
+    let cita = citas.find(function(c){ return c._key ===key; });
     if (!cita)return;
+
     let nuevaFecha = prompt("Editar fecha (YYYY-MM-DD):", cita.fecha);
     if (nuevaFecha === null) return; // usuario cancelo
     let nuevaHora = prompt("Editar hora (HH:MM):", cita.hora);
@@ -1004,7 +1005,7 @@ function mostrarCalendarioSemanal(){
     }
 
 
-    function registrarMotivo(index){
+    function registrarMotivo(key){
         let motivo = prompt(
             "Seleccione el motivo de inasistencia: \n\n" +
             "1. Cancelo con aviso\n" +

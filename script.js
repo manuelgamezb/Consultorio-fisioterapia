@@ -157,7 +157,9 @@ let traducciones = {
         tituloReporteInasistencias: "Reporte de Inasistencias",
         labelFechaInicio: "Desde",
         labelFechaFin: "Hasta:",
-        btnGenerarInasistencias: "Generar Reporte de Inasistencias"
+        btnGenerarInasistencias: "Generar Reporte de Inasistencias",
+        document.getElementById("btnCerrarSesion").textContent = tr.btnCerrarSesion;
+    
 
          },
     en: {
@@ -233,7 +235,8 @@ let traducciones = {
         tituloReporteInasistencias: "Absence Report",
         labelFechaInicio: "From",
         labelFechaFin: "To:",
-        btnGenerarInasistencias: "Generate Absence Report"
+        btnGenerarInasistencias: "Generate Absence Report",
+        btnCerrarSesion: "Close Session"
 
     }
 };

@@ -11,6 +11,61 @@
 </head>
 <body>
 
+    <!--pantalla de login-->
+
+    <div id="pantallaLogin" style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;">
+
+        <div style="background: white; padding: 40px;
+         border-radius: 15px; width: 350px;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+          text-align: center;">
+
+
+
+            <h2 style="color: #2c3e50; margin-bottom: 10px;">
+                Consultorio de Fisioterapia</h2>
+
+                Iniciar Sesion</h2>
+                <p style="color: #7f8c8d; margin-bottom: 30px;">
+                    Ingresa tus Credenciales 
+                </p>
+
+            <input type="email" id="emailLogin" placeholder="Correo Electronico" 
+            style="width: 100%; padding: 12px; margin-bottom: 15px;
+             border: 2px solid #ddd; border-radius: 8px;"
+             font-size: 1em; box-sizing: border-box;">
+
+            <input type="password" id="passwordLogin" placeholder="Contraseña"
+             style="width: 100%; padding: 12px; margin-bottom: 20px;
+              border: 2px solid #ddd; border-radius: 8px;"
+              font-size: 1em; box-sizing: border-box;">
+              
+              <p id="loginError" style="color: #dc3545; margin-bottom: 15px; display: none;">
+                correo o contraseña incorrectos
+                 <!--Aqui se mostraran los errores de login-->
+                </p>
+
+            <button onclick="iniciarSesion()" id="btnLogin" style="width: 100%; 
+            padding: 12px; background: -o-linear-gradient(135deg, #667eea, #764ba2);
+             color: white; border: none; border-radius: 8px; 
+             font-size: 1em; font-weight: bold; cursor: pointer;">
+                Iniciar Sesion
+            </button>
+        </div>
+        
+    
+    </div>
+
     <header> 
         <div style="display: flex; justify-content: space-between; align-items: center;">
         <h1 id="tituloSistema">Sistema de Gestion - Consultorio de Fisioterapia</h1>
@@ -394,6 +449,7 @@
         <!-- Aqui se mostrara el contenido del expediente -->
 
     <script src= "https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src= "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src= "https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
     <script>
         // Configuracion de Firebase
@@ -411,6 +467,7 @@
         // Inicializar Firebase
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
+        const auth = firebase.auth();
     </script>
 
 

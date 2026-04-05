@@ -10,7 +10,7 @@ function iniciarSesion(){
         document.getElementById('loginError').textContent = "Por favor llene todos los campos";
         return;
 }
-    Auth.signInWithEmailAndPassword(email, password)
+    auth.signInWithEmailAndPassword(email, password)
         .then(function() {
             document.getElementById('pantallaLogin').style.display = 'none';
             
@@ -22,7 +22,7 @@ function iniciarSesion(){
 }
 
 function cerrarSesion(){
-    Auth.signOut().then(function() {
+    auth.signOut().then(function() {
         document.getElementById('pantallaLogin').style.display = 'flex';
         cerrarTodosLosModales();
     });
@@ -30,7 +30,7 @@ function cerrarSesion(){
 }
 
 // verifica si ya hay sesion activa al cdargar la pagina
-Auth.onAuthStateChanged(function(user) {
+auth.onAuthStateChanged(function(user) {
     if (user) { // Usuario autenticado
         document.getElementById('pantallaLogin').style.display = 'none';
     } else { // No hay usuario autenticado
@@ -158,7 +158,7 @@ let traducciones = {
         labelFechaInicio: "Desde",
         labelFechaFin: "Hasta:",
         btnGenerarInasistencias: "Generar Reporte de Inasistencias",
-        document.getElementById("btnCerrarSesion").textContent = tr.btnCerrarSesion;
+        btnCerrarSesion: "Cerrar Sesion"
     
 
          },
@@ -349,6 +349,7 @@ function cambiarIdioma() {
     document.getElementById("labelFechaInicio").textContent = tr.labelFechaInicio;
     document.getElementById("labelFechaFin").textContent = tr.labelFechaFin;
     document.getElementById("btnGenerarInasistencias").textContent = tr.btnGenerarInasistencias;
+    document.getElementById("btnCerrarSesion").textContent = tr.btnCerrarSesion;
 }
 
 

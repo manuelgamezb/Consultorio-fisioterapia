@@ -1,3 +1,45 @@
+
+//====== AUTENTICACION ======//
+function iniciarSesion(){
+    let email = document.getElementById('loginEmail').value;
+    let password = document.getElementById('loginPassword').value;
+
+    // Simulación de autenticación (reemplazar con lógica real)
+    if (email === "" || password === "") {
+        document.getElementById('loginError').style.display = "block";
+        document.getElementById('loginError').textContent = "Por favor llene todos los campos";
+        return;
+}
+    Auth.signInWithEmailAndPassword(email, password)
+        .then(function() {
+            document.getElementById('pantallaLogin').style.display = 'none';
+            
+        })
+        .catch(function(error) {
+            document.getElementById('loginError').style.display = 'block';
+            document.getElementById('loginError').textContent = "Correo o contraseña incorrectos";
+        });
+}
+
+function cerrarSesion(){
+    Auth.signOut().then(function() {
+        document.getElementById('pantallaLogin').style.display = 'flex';
+        cerrarTodosLosModales();
+    });
+
+}
+
+// verifica si ya hay sesion activa al cdargar la pagina
+Auth.onAuthStateChanged(function(user) {
+    if (user) { // Usuario autenticado
+        document.getElementById('pantallaLogin').style.display = 'none';
+    } else { // No hay usuario autenticado
+        document.getElementById('pantallaLogin').style.display = 'flex';
+    }
+});
+
+
+
 //arrays para guardar pacientes//
 let pacientes = [];
 let citas = [];

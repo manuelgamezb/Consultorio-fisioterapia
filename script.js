@@ -38,6 +38,39 @@ Auth.onAuthStateChanged(function(user) {
     }
 });
 
+function iniciarSesion(){
+    let email = document.getElementById('loginEmail').value;
+    let password = document.getElementById('loginPassword').value;
+
+        if (email === "" || password === "") {
+        document.getElementById('loginError').style.display = "block";
+        document.getElementById('loginError').textContent = "Por favor llene todos los campos";
+        return;
+    }
+    auth.signInWithEmailAndPassword(email, password)
+        .then(function() {
+            document.getElementById('pantallaLogin').style.display = 'none';
+        })
+        .catch(function(error) {
+            document.getElementById('loginError').style.display = 'block';
+            document.getElementById('loginError').textContent = "Correo o contraseña incorrectos";
+        });
+}
+
+    function cerrarSesion(){
+    auth.signOut().then(function(){ 
+        document.getElementById('pantallaLogin').style.display = 'flex';
+        cerrarTodosLosModales();
+    });
+}
+
+auth.onAuthStateChanged(function(user) {
+    if (user) {
+        document.getElementById('pantallaLogin').style.display = 'none';
+    } else {
+        document.getElementById('pantallaLogin').style.display = 'flex';
+    }
+});
 
 
 //arrays para guardar pacientes//

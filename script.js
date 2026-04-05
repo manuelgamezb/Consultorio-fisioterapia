@@ -508,7 +508,7 @@ function actualizarTodosLosSelectores(){
     cargarSelectorPacientes();
     mostrarCalendarioSemanal();
     cargarSelectorPacientesSesion();
-        cargarSelectorPacientesReporte();
+    cargarSelectorPacientesReporte();
 }
 
 
@@ -524,6 +524,9 @@ function irACitas(){
     document.getElementById("seccionCitas").classList.add("active");
     document.getElementById("modalOverlay").classList.add("active");
     cargarSelectorPacientes();
+    setTimeout(function() {
+        cargarSelectorPacientes();
+    }, 500); // pequeño retraso para asegurar que el modal esté visible antes de cargar el calendario
 
 }
 

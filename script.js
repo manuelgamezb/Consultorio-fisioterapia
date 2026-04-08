@@ -742,7 +742,7 @@ function mostrarCalendarioSemanal(){
 
     let tr= traducciones[idioma];
 
-    let html = '<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);  padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">';
+    let html = '<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);  padding: 20px; border-radius: 15px; overflow-x: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">';
 
     html += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">';
     html += '<button onclick="cambiarSemana(-1)" style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 8px; cursor: pointer; font-weight: bold;">' + tr.CalAnterior +'</button>';
@@ -755,7 +755,7 @@ function mostrarCalendarioSemanal(){
 
   
 
-    html += '<table style="width: 100%; border-collapse: collapse; text-align: center;font-size:0.85em;">';
+    html += '<table style="width: 100%;min-width: 800px; border-collapse: collapse; text-align: center;font-size:0.85em;">';
     html += '<thead><tr style="background: linear-gradient(135deg, #2c3e50, #34495e);">';
     html += '<th style="padding:12px 8px; color:white; width: 60px; font-size: 0.85em;">HORA</th>';
     
@@ -771,7 +771,7 @@ function mostrarCalendarioSemanal(){
         let bgColor = esHoy ? '#3498db' : 'transparent';
        let borderRadius = esHoy ? '8px' : '0';
        
-       html += '<th style= "padding :12px 8px; color: white; background:' + bgColor + '; border-radius:' + borderRadius + ';">'+
+       html += '<th style= "padding :15px 12px; color: white; min-width: 140px; background:' + bgColor + '; border-radius:' + borderRadius + ';">'+
        diasNombres[i] + '<br><span style="font-size: 1.2em;">' + dia + '</span></th>';
       
     }
@@ -784,7 +784,7 @@ function mostrarCalendarioSemanal(){
             let esCadaHora = minuto === 0;
 
             html += '<tr style= "border-bottom: ' + (esCadaHora ? '2px solid #3498db' : '1px solid #ecf0f1') + ';">';
-            html += '<td style="padding: 6px; font-weight:' + (esCadaHora ? 'bold' : 'normal') + '; background: #f8f9fa; color:' + (esCadaHora ? '#2c3e50' : '#95a5a6') + '; font-size: ' + (esCadaHora ? '0.85em' : '0.75em')  + ';">' + horaStr + '</td>';
+            html += '<td style="padding: 8px 4px; min-width: 50px; font-weight:' + (esCadaHora ? 'bold' : 'normal') + '; background: #f8f9fa; color:' + (esCadaHora ? '#2c3e50' : '#95a5a6') + '; font-size: ' + (esCadaHora ? '0.85em' : '0.75em')  + ';">' + horaStr + '</td>';
 
             //columnas lunes a viernes//
 
@@ -820,7 +820,7 @@ function mostrarCalendarioSemanal(){
             
             }
             html += '<td style="padding: 4px; background:' + colorFondo + '; border-left: 3px solid ' + colorBorde + ';">';
-            html += '<div style="font-size: 0.75em; font-weight: bold; color: #2c3e50;">'  + emoji + ' ' + citaEncontrada.paciente.split(' ')[0] +'</div>';
+            html += '<div style="font-size: 0.75em; font-weight: bold; color: #2c3e50;">'  + emoji + ' ' + citaEncontrada.paciente +'</div>';
             html += '<div style="font-size: 0.65em; color: #7f8c8d;">' + citaEncontrada.tipo + '</div>';
             html += '</td>';
         } else {

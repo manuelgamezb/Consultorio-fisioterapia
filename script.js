@@ -994,7 +994,7 @@ function mostrarCalendarioSemanal(){
                 
           mostrarResultadoReporte(sesionesFiltradas, pacienteSeleccionado, mes, anio);
 }
-        function mostrarResultadoReporte(sesiones, paciente, mes, anio) {
+        function mostrarResultadoReporte(sesionesFiltradas, paciente, mes, anio) {
         let div = document.getElementById("resultadoReporte");
         let tr = traducciones[idioma];
         if (sesiones.length === 0) {
@@ -1007,7 +1007,7 @@ function mostrarCalendarioSemanal(){
         let nombresMeses = {
             es: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
             en: ["January","February","March","April","May","June","July","August","September","October","November","December"]};
-            let meses = nombresMeses[idioma];
+            let meses= nombresMeses[idioma];
 
             if (sesionesFiltradas.length === 0) {
                 div.innerHTML = '<div style="background: #fff3cd; padding: 20px; border-radius: 10px; color: #856404;">' +
@@ -1065,8 +1065,8 @@ function mostrarCalendarioSemanal(){
         html += '<thead><tr style="background: #ecf0f1;"><th style="padding: 10px; text-align: left;">Fecha</th><th style="padding: 10px; text-align: left;">Paciente</th><th style="padding: 10px; text-align: left;">Tratamiento</th></tr></thead>';
         html += '<tbody>';
 
-    for (let i=0; i<sesiones.length; i++){
-        let s= sesiones[i];
+    for (let i=0; i<sesionesFiltradas.length; i++){
+        let s= sesionesFiltradas[i];
         let tratamientoCorto = (s.tratamiento || ".").substring(0,50) + "...."; // mostrar solo los primeros 20 caracteres
         html += '<tr style="border-bottom: 1px solid #ecf0f1;">';
         html += '<td style="padding: 10px;">' + s.fecha + '</td>';
@@ -1274,7 +1274,7 @@ function mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin){
     for (let i=0; i< inasistencias.length; i++){
         let c = inasistencias[i];
         html += '<tr.'
-        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.paciente + '</td>';
+        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.Paciente + '</td>';
         html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.fecha + '</td>';
         html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.hora + '</td>';
         html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.tipo + '</td>';

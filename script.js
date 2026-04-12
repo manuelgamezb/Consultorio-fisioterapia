@@ -996,8 +996,7 @@ function mostrarCalendarioSemanal(){
 }
         function mostrarResultadoReporte(sesiones, paciente, mes, anio) {
         let div = document.getElementById("resultadoReporte");
-
-
+        let tr = traducciones[idioma];
         if (sesiones.length === 0) {
             div.innerHTML = '<div style= "background: #fff3cd; padding: 20px; border-radius: 10px; color: #856404;">' +
             '<h3> No se encontraron sesiones</h3>' +
@@ -1005,9 +1004,53 @@ function mostrarCalendarioSemanal(){
             '</div>';
             return;
         }
-        let nombresMeses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+        let nombresMeses = {
+            es: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
+            en: ["January","February","March","April","May","June","July","August","September","October","November","December"]};
+            let meses = nombresMeses[idioma];
+
+            if (sesionesFiltradas.length === 0) {
+                div.innerHTML = '<div style="background: #fff3cd; padding: 20px; border-radius: 10px; color: #856404;">' +
+                '<h3>' + (idioma === 'es' ? 'No se encontraron sesiones' : 'No sessions found') + '</h3>' +
+                '<p>' + (idioma === 'es' ? 'No hay sesiones registradas para los criterios seleccionados.' : 'No sessions recorded for the selected criteria.') + '</p>' +
+                '</div>';
+                return;
+            }
+
+            // texto segun idioma
+            let textos = {
+                es: {
+                    titulo: "REPORTE DE ASISTENCIAS",
+                    todosPacientes: "Todos los pacientes",
+                    periodo: "Periodo:",
+                    sesionesRealizadas: "SESIONES REALIZADAS:",
+                    colFecha: "Fecha",
+                    colPaciente: "Paciente",
+                    colTratamiento: "Tratamiento",
+                    total: "TOTAL DE SESIONES:",
+                    facturar: "Sesiones a facturar para este periodo",
+                    imprimir: "Imprimir Reporte"
+                },
+                en: {
+                    titulo: "ATTENDANCE REPORT",
+                    todosPacientes: "All patients",
+                    periodo: "Period:",
+                    sesionesRealizadas: "SESSIONS COMPLETED:",
+                    colFecha: "Date",
+                    colPaciente: "Patient",
+                    colTratamiento: "Treatment",
+                    total: "TOTAL SESSIONS:",
+                    facturar: "Sessions to bill for this period",
+                    imprimir: "Print Report"
+                }
+            };
+
+            let t = textos[idioma];
+
+
+
         let html = '<div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">';
-        html += '<h3 style="color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px;"> REPORTE DE ASISTENCIAS </h3>';
+        html += '<h3 style="color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px;"> ' + t.titulo + ' </h3>';
 
         if (paciente !== ""){
             html += '<p><strong>Paciente:</strong>' + paciente + '</p>';

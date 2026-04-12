@@ -124,31 +124,48 @@
     <div class="modal-body">
 
        
-    <h2 id="formPacienteTitulo">Registrar Nuevo Paciente</h2>
-    <form style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap ;">
-        <div style="flex: 1;">
-        <label id="labelNombre" for="nombrePaciente">Nombre:</label>
-        <input type="text"  id="nombrePaciente">
-        </div>
+   <div class="form-card">
+     <div class="form-header">
+        <div class="form-header-icon">+</div>
         <div>
+            <h3 id="formPacientesTitulo">Registrar Nuevo Paciente</h3>
+            <p> completa los campos requeridos</p>
+
+        </div>
+     </div>
+        
+     <div class="field-row">
+     <div class="field-group" style="flex:2;">
+        <label id="labelNombre" for="nombrePaciente">Nombre Completo:*</label>
+        <input type="text" id="nombrePaciente" placeholder="Nombre y Apellidos">
+    </div>
+
+    <div class="field-group" style="flex:1;">
         <label id="labelTelefono" for="telefonoPaciente">Telefono:</label>
-        <input type="text"  id="telefonoPaciente">
-        </div>  
-    
-        <div style="display: flex; gap: 15px; width: 100%;">
-            <div style="flex: 2;">
-        <label id="labelDireccion" for="Direccion">Direccion:</label>
-        <input type="text" id="direccionPaciente">
-            </div>
-            <div style="flex: 1;">
-        <label id="labelFechaNac" for="FecNac">Fecha de Nacimiento:</label>
-        <input type="date" id="nacimientoPaciente">
-            </div>  
+        <input type="tel" id="telefonoPaciente" placeholder="Ej: 555-0000">
+    </div>
+     </div>
+
+        <div class="field-row">
+        <div class="field-group" style="flex:2;">
+        <label id="labelDireccion" for="direccionPaciente">Direccion:</label>
+        <input type="text" id="direccionPaciente" placeholder="Calle, numero, colonia">
         </div>
-        <div style="width: 100%;">
-        <button type="button"   onclick="guardarPaciente()" id="btnGuardarPaciente">Guardar</button>
-        <button type="button"   onclick="cerrarFormulario()" id="btnCancelarPaciente">Cancelar</button>
+        <div class="field-group" style="flex:1;">
+        <label id="labelFechaNac" for="fechaNacimientoPaciente">Fecha de Nacimiento:</label>
+        <input type="date" id="fechaNacimientoPaciente">
         </div>
+
+        </div>
+
+
+        <div class="form-footer">
+            <button class="btn-secondary" type="button" onclick="cerrarFormulario()" id="btnCancelarPaciente">Cancelar</button>
+            <button class="btn-primary" type="button" onclick="registrarPaciente()" id="btnGuardarPaciente">Guardar Paciente</button>
+
+        </div>
+        </div>
+
         
         
     </form>

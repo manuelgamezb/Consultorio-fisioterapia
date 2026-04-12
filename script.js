@@ -1216,51 +1216,84 @@ function mostrarCitasControl(){
 function mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin){
     let div = document.getElementById("resultadoInasistencias");
 
+   let textos = {
+    es: {
+        sinInasistencias: "No hay inasistencias registradas",
+        todosAsistieron: "Todos los pacientes asistieron en este periodo",
+        titulo: "REPORTE DE INASISTENCIAS",
+        periodo: "Periodo:",
+        al: "al",
+        colPaciente: "Paciente",
+        colFecha: "Fecha",
+        colHora: "Hora",
+        colTipo: "Tipo de cita",
+        colMotivo: "Motivo",
+        total: "TOTAL DE INASISTENCIAS:",
+        reportar:"Pacientes a reportar al sistema de salud",
+        imprimir: "Imprimir Reporte"
+    },
+    en: {
+        sinInasistencias: "No absences recorded",
+        todosAsistieron: "All patients attended in this period",
+        titulo: "ABSENCE REPORT",
+        periodo: "Period:",
+        al: "to",
+        colPaciente: "Patient",
+        colFecha: "Date",
+        colHora: "Time",
+        colTipo:"Appointment type",
+        colMotivo: "Reason",
+        total: "TOTAL ABSENCES:",
+        reportar: "Patients to report to the health system",
+        imprimir: "Print Report"
+    }
+    };
+    let t = textos[idioma];
     if (inasistencias.length === 0) {
         div.innerHTML = '<div style="background: #d4edda; padding: 20px; border-radius: 10px; color: #155724;">' +
-            '<h3>No hay inasistencias registradas</h3>' +
-            '<p> Todos los pacientes asistieron a sus citas en este periodo.</p>' +
-            '</div>';
-        return
+        '<h3>' + t.sinInasistencias + '</h3>' +
+        '<p>' + t.todosAsistieron + '</p>' +
+        '</div>';
+        return;
     }
+    let html = '<div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">';
+    html += '<h3 style="color: #dc3545;">' + t.titulo + '</h3>';
+    html += '<p><strong>' + t.periodo + '</strong> ' + fechaInicio + ' ' + t.al + ' ' + fechaFin + '</p>';
+    html += '<table style="margin: 20px 0;">';
 
-    let html = '<div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0  4px 15px  rgba(0, 0, 0, 0.1);">';
-    html += '<h3 style="color: #dc3545;"> REPORTE DE INASISTENCIAS</h3>';
-    html += '<p><strong>Periodo:</strong> ' + fechaInicio + ' al ' + fechaFin + '</p>';
-    html += '<hr style="margin: 20px 0;">';
-
-    html += '<table style="width: 100%; border-collapse: collapse; ">';
-    html += '<thead><tr style="background: #f8d7da;">' +
-            '<th style="padding: 10px; border: 1px solid #ddd;">Paciente</th>' +
-            '<th style="padding: 10px; border: 1px solid #ddd;">Fecha</th>' +
-            '<th style="padding: 10px; border: 1px solid #ddd;">Hora</th>' +
-            '<th style="padding: 10px; border: 1px solid #ddd;">Tipo de Cita</th>' +
-            '<th style="padding: 10px; border: 1px solid #ddd;">Motivo</th>' +
-            '</tr></thead>';
+    html += '<table style="width: 100%; border-collapse: collapse;">';
+    html += '<thead><tr style="background: #f8d7da;">'+
+    '<th style="padding: 10px; border: 1px solid #ddd;">' + t.colPaciente + '</th>' +
+    '<th style="padding: 10px; border: 1px solid #ddd;">' + t.colFecha + '</th>' +
+    '<th style="padding: 10px; border: 1px solid #ddd;">' + t.colHora + '</th>' +
+    '<th style="padding: 10px; border: 1px solid #ddd;">' + t.colTipo + '</th>' +
+    '<th style="padding: 10px; border: 1px solid #ddd;">' + t.colMotivo + '</th>' +
+    '</tr></thead>';
     html += '<tbody>';
 
-    for (let i = 0; i < inasistencias.length; i++) {
-        let cita = inasistencias[i];
-        html += '<tr>';
+    for (let i=0; i< inasistencias.length; i++){
+        let c = inasistencias[i];
+        html += '<tr.'
         html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.paciente + '</td>';
         html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.fecha + '</td>';
         html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.hora + '</td>';
         html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.tipo + '</td>';
-        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.motivoInasistencia + '</td>';
+        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.motivoInasistencia  + '</td>';
         html += '</tr>';
-
-        
-    }
+        }
     html += '</tbody></table>';
     html += '<hr style="margin: 20px 0;">';
     html += '<div style="background: #f8d7da; padding: 20px; border-radius: 8px; border: 2px solid #dc3545;">';
-    html += '<h3 style="color: #721c24; margin: 0;"> TOTAL DE INASISTENCIAS: ' + inasistencias.length + '</h3>';
-    html += '<p style="margin: 10px 0 0 0; color: #721c24;"> Pacientes a reportar al sistema de salud</p>';
+    html += '<h3 style="color: #721c24; margin: 0;">' + t.total + ' ' + inasistencias.length + '</h3>';
+    html += '<p style="margin: 10px 0 0 0; color: #721c24;">' + t.reportar + '</p>';
     html += '</div>';
     html += '</div>';
-
-    html += '<br><button type="button" onclick="imprimirReporte(\'resultadoInasistencias\')" style="background: #dc3545; color: white; padding: 12px 30px;border: none; border-radius: 8px; cursor: pointer; font-size 1em; margin-top: 10px;">Imprimir Reporte</button>';
+    html += '<br><button type="button" onclick="imprimirReporte(\'resultadoInasistencias\')" style="background: #dc3545; color: white; padding: 12px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; margin-top: 10px;">' + t.imprimir + '</button>';
     div.innerHTML = html;
+
+
+
+
 
 }
 function cerrarModal(idModal){

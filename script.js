@@ -1273,12 +1273,12 @@ function mostrarResultadoInasistencias(inasistencias, fechaInicio, fechaFin){
 
     for (let i=0; i< inasistencias.length; i++){
         let c = inasistencias[i];
-        html += '<tr.'
-        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.paciente + '</td>';
-        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.fecha + '</td>';
-        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.hora + '</td>';
-        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.tipo + '</td>';
-        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + cita.motivoInasistencia  + '</td>';
+        html += '<tr>';
+        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + c.paciente + '</td>';
+        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + c.fecha + '</td>';
+        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + c.hora + '</td>';
+        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + c.tipo + '</td>';
+        html += '<td style="padding: 10px; border: 1px solid #ddd;">' + c.motivoInasistencia  + '</td>';
         html += '</tr>';
         }
     html += '</tbody></table>';

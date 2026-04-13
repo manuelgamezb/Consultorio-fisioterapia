@@ -66,18 +66,60 @@
     
     </div>
 
-    <header> 
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h1 id="tituloSistema">Sistema de Gestion - Consultorio de Fisioterapia</h1>
-        <button onclick="cambiarIdioma()" id="btnIdioma" style="font-size: 1em;background: transparent; border: 2px solid white; border-radius: 8px; padding: 8px 16px; cursor:pointer; color: white; font-weight: bold; ">English</button>
+    <header id="headerPrincipal" style="
+        background: #1a1f36;
+        padding: 0 28px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0;
+        border-radius: 0;
+        box-shadow: none;">
+       
+           <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width:28px; height:28px; background:#534AB7;
+                border-radius: 8px; display: flex; align-items: center;
+                justify-content: center;">
+                <span style="color: white;font-size: 14px; font-weight: 700;">F</span>
+                </div>
+                <h1 id="tituloSistema" style="color: white; font-size: 14px;
+                font-weight: 500; margin: 0;">
+                Sistema de Gestion - Consultorio de Fisioterapia
+            </h1>
 
-        <button onclick="cerrarSesion()" id="btnCerrarSesion" style="font-size: 1em;
-        background: transparent; border: 2px solid white;
-        border-radius: 8px; padding: 8px 16px;
-        cursor:pointer; color: white;
-        font-weight: bold; margin-left: 10px;">Cerrar Sesion</button>
-        </div>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 12px">
+                <button onclick="cambiarIdioma()" id="btnIdioma" style="
+                    background: transparent;
+                    border: 1px solid #3d4466;
+                    color: #aab0cc;
+                    font-size: 11px;
+                    padding: 4px 10px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-weight: 500;">English</button>
 
+                    <span style="background: #534AB7; color: #EEEDFE;
+                    font-size: 11px; padding: 3px 10px; border-radius: 99px;
+                    font-weight: 500;">Admin</span>
+
+                    <button onclick="cerrarSesion()" id="btnCerrarSesion" style="
+                    background: transparent;
+                    border: 1px solid #3d4466;
+                    color: #aab0cc;
+                    font-size: 11px;
+                    padding: 4px 10px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-weight: 500;">Cerrar Sesion</button>
+                    
+            </div>
+                
+    </header>
+
+        
 
     </header>
     <div class="modal-overlay" id="modalOverlay" onclick="cerrarTodosLosModales()"></div>

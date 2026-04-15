@@ -391,6 +391,7 @@ function cargarPacientes(){
             pacientes = [];
         }
         mostrarPacientes();
+        actualizarMetricas();
         actualizarTodosLosSelectores();
     });
 
@@ -449,6 +450,7 @@ function cargarCitas(){
             citas = [];
         }
         mostrarCitas();
+        actualizarMetricas();
     });
     
 }
@@ -465,6 +467,7 @@ function cargarSesiones(){
         } else {            sesiones = [];
         }
     mostrarSesiones();
+    actualizarMetricas();
     });
 }
 
@@ -1391,6 +1394,54 @@ function cerrarTodosLosModales(){
         ventana.document.close();
         ventana.print();
     }
+
+    function actualizarMetricas(){
+        let hoy = new Date();
+        let year = hoy.getFullYear();
+        let month = hoy.getMonth();
+        let dia = hoy.getDate();
+
+        let diasSemana = ["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"];
+        let mesesNombre= ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+
+        let labelFecha = document.getElementById("labelFechaHoy");
+        if (labelFecha){
+            labelFecha.textContent = diasSemana[hoy.getDay()] + " " + dia + " de " + mesesNombre[month] + " de " + year;
+        }
+
+        let metricaPacientes= document.getElementById("metricaPacientes");
+        if (metricaPacientes){
+            metricaPacientes.textContent = pacientes.length;
+        }
+
+        let fechaHoy = year + '-' + String(month + 1).padStart(2, '0') + '-' + String(day).padStart(2, '0');
+
+        let citasHoy = citas.filter(function(c){
+            return c.fecha === fechaHoy;
+        });
+        let metricaCitasHoy = document.getElementById("metricaCitasHoy");
+        if (metricaCitasHoy){
+            metricaCitasHoy.textContent = citasHoy.length;
+        }
+        let SesionesEsteMes = sesiones.filter(function(s){
+            let fecha = new Date(s.fecha);
+            return fecha.getMonth() === month && fecha.getFullYear() === year;
+        });
+        let metricaSesiones = document.getElementById("metricaSesiones");
+        if (metricaSesiones){
+            metricaSesiones.textContent = SesionesEsteMes.length;
+        }
+
+        let inasistenciasEsteMes = citasHoy.filter(function(c){
+            let fecha = new Date(c.fecha);
+            return c.asistencia === "no_asistio" && fecha.getMonth() === month && fecha.getFullYear() === year;
+        });
+        let metricaInasistencias = document.getElementById("metricaInasistencias");
+        if (metricaInasistencias){
+            metricaInasistencias.textContent = inasistenciasEsteMes.length;
+        }
+    }
+
 
 
 

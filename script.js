@@ -158,7 +158,14 @@ let traducciones = {
         labelFechaInicio: "Desde",
         labelFechaFin: "Hasta:",
         btnGenerarInasistencias: "Generar Reporte de Inasistencias",
-        btnCerrarSesion: "Cerrar Sesion"
+        btnCerrarSesion: "Cerrar Sesion",
+        btnCerrarSesion: "Cerrar Sesion",
+        dashcitasHoy: "Citas de hoy",
+        dashSinCitas: "No hay citas programadas para hoy",
+        dashHora: "Hora",
+            dashPaciente: "Paciente", dashTipo: "Tipo", dashEstado: "Estado",
+            dashPendiente: "Pendiente", dashNoAsistio: "No asistio",
+
     
 
          },
@@ -236,7 +243,13 @@ let traducciones = {
         labelFechaInicio: "From",
         labelFechaFin: "To:",
         btnGenerarInasistencias: "Generate Absence Report",
-        btnCerrarSesion: "Close Session"
+        btnCerrarSesion: "Close Session",
+        btnCerrarSesion: "Close Session",
+        dashcitasHoy: "Today's Appointments",
+        dashSinCitas: "No appointments scheduled for today",
+        dashHora: "Time",
+        dashPaciente: "Patient", dashTipo: "Type", dashEstado: "Status",
+        dashAsistio: "Attended", dashPendiente: "Pending", dashNoAsistio: "Absent"
 
     }
 };

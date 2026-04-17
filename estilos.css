@@ -194,7 +194,7 @@ table{
     box-shadow: 0 4px  15px  rgba(0, 0, 0, 1);
 }
 
-thead{
+    .modal-body thead{
     background: linear-gradient(135deg, #3498db, #2980b9);
     color: white;
 }

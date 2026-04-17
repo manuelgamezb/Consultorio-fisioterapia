@@ -296,7 +296,47 @@
             </div>
         </div>
 
-                        
+   <div Style ="margin-top: 20px; background: white; border-radius: 12px;
+        border: 0.5px solid #e8eaF0; overflow: hidden;">
+
+        <div style="padding: 16px 20px 12px; border-bottom: 0.5px solid #f0f2f7;
+        display: flex; align-items: center; justify-content: space-between;">
+            <h3 id="dashTituloCitasHoy" style="font-size: 13px; font-weight: 500; color: #1a1f36; margin: 0;">Citas de Hoy</h3>
+            <span id="dashContadorCitas" style="background: #EEEdfe; color:#3C3489;
+            font-size: 11px; padding: 3px 10px; border-radius: 99px; font-weight: 500;">0 citas</span>
+        </div>
+        <div style="padding: 0 20px;">
+            <table style="width: 100%; border-collapse: collapse;">
+
+
+                <thead>
+
+
+                    <tr style="border-bottom: 0.5px solid #f0f2f7;">
+                        <th id="dashThHora" style="padding: 10px 0; text-align: left;
+                        font-size: 11px;font-weight: 500; color: #8b8fa8;
+                        text-transform: uppercase; letter-spacing: 0.5px;
+                        width: 60px;">Hora</th>
+                        <th id="dashColPaciente" style="padding: 10px 0; text-align: left;
+                        font-size: 11px;font-weight: 500; color: #8b8fa8;
+                        text-transform: uppercase; letter-spacing: 0.5px;">Paciente</th>
+                        <th id="dashColTipo" style="padding: 10px 0; text-align: left;
+                        font-size: 11px;font-weight: 500; color: #8b8fa8;
+                        text-transform: uppercase; letter-spacing: 0.5px;">Tipo</th>
+                        <th id="dashColEstado" style="padding: 10px 0; text-align: right;
+                        font-size: 11px;font-weight: 500; color: #8b8fa8;
+                        text-transform: uppercase; letter-spacing: 0.5px;">Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="dashListaCitasHoy">
+                    <tr>
+                        <td colspan="4" style="padding: 20px 0; text-align: center;
+                        font-size: 13px; color: #8b8fa8;"> Cargando....</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 <div id="seccionPacientes" class="modal-container">
     <div class="modal-header">
@@ -442,47 +482,7 @@
     </div>
     </div>
     <!-- Lista de citas del día -->
-         <div Style ="margin-top: 20px; background: white; border-radius: 12px;
-        border: 0.5px solid #e8eaF0; overflow: hidden;">
-
-        <div style="padding: 16px 20px 12px; border-bottom: 0.5px solid #f0f2f7;
-        display: flex; align-items: center; justify-content: space-between;">
-            <h3 id="dashTituloCitasHoy" style="font-size: 13px; font-weight: 500; color: #1a1f36; margin: 0;">Citas de Hoy</h3>
-            <span id="dashContadorCitas" style="background: #EEEdfe; color:#3C3489;
-            font-size: 11px; padding: 3px 10px; border-radius: 99px; font-weight: 500;">0 citas</span>
-        </div>
-        <div style="padding: 0 20px;">
-            <table style="width: 100%; border-collapse: collapse;">
-
-
-                <thead>
-
-
-                    <tr style="border-bottom: 0.5px solid #f0f2f7;">
-                        <th id="dashThHora" style="padding: 10px 0; text-align: left;
-                        font-size: 11px;font-weight: 500; color: #8b8fa8;
-                        text-transform: uppercase; letter-spacing: 0.5px;
-                        width: 60px;">Hora</th>
-                        <th id="dashColPaciente" style="padding: 10px 0; text-align: left;
-                        font-size: 11px;font-weight: 500; color: #8b8fa8;
-                        text-transform: uppercase; letter-spacing: 0.5px;">Paciente</th>
-                        <th id="dashColTipo" style="padding: 10px 0; text-align: left;
-                        font-size: 11px;font-weight: 500; color: #8b8fa8;
-                        text-transform: uppercase; letter-spacing: 0.5px;">Tipo</th>
-                        <th id="dashColEstado" style="padding: 10px 0; text-align: right;
-                        font-size: 11px;font-weight: 500; color: #8b8fa8;
-                        text-transform: uppercase; letter-spacing: 0.5px;">Estado</th>
-                    </tr>
-                </thead>
-                <tbody id="dashListaCitasHoy">
-                    <tr>
-                        <td colspan="4" style="padding: 20px 0; text-align: center;
-                        font-size: 13px; color: #8b8fa8;"> Cargando....</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+       
 
 
 

@@ -464,6 +464,7 @@ function cargarCitas(){
         }
         mostrarCitas();
         actualizarMetricas();
+        actualizarCitasHoyDashboard();
     });
     
 }

@@ -1450,14 +1450,15 @@ function cerrarTodosLosModales(){
             let fecha = new Date(c.fecha);
             return c.asistencia === "no_asistio" && fecha.getMonth() === month && fecha.getFullYear() === year;
         });
-        let metricaInasistencias = document.getElementById("metricaInasistencias");
+        let metricaInasistencias = document.getElementById("metricaInasistenciasMes");
         if (metricaInasistencias){
             metricaInasistencias.textContent = inasistenciasEsteMes.length;
         }
+        } 
 
         function actualizarCitasHoyDashboard(){
             let tr = traducciones[idioma];
-            let tbody = document.getElementById("dahlistaCitasHoy");
+            let tbody = document.getElementById("dashlistaCitasHoy");
             let contador = document.getElementById("dashContadorCitas");
             let titulo = document.getElementById("dashTituloCitasHoy");
             if (!tbody) return;
@@ -1518,8 +1519,21 @@ function cerrarTodosLosModales(){
                 'color: #534ab7;">' + c.hora + '</td>' +
                 '<td style="padding: 12px 0; ">' +
                 '<div style="display: flex; align-items: center; gap: 10px;">' +
-                
+                '<div style="width: 30px; height: 30px; border-radius:50%;' +
+                'background: ' + bgColor + '; color: ' + textColor + ';' +
+                'display: flex; align-items: center; justify-content: center;' +
+                'font-size: 12px; font-weight: 500; flex-shrink: 0;">' + iniciales + '</div>' +
+                '<span style="font-size: 13px; font-weight: 500;' + 'color: #1a1f36;">' + c.paciente + '</span>' +
+                '</div>' +
+                '</td>' +
+                '<td style="padding: 12px 0; font-size: 12px; color: #8b8fa8;">' + c.tipo + '</td>' +
+                '<td style="padding: 12px 0; text-align: right;">' + estadoHTML + '</td>' +
+                '</tr>';
+                tbody.innerHTML += fila;
+            }
+
     }
+
 
 
 

@@ -1454,6 +1454,71 @@ function cerrarTodosLosModales(){
         if (metricaInasistencias){
             metricaInasistencias.textContent = inasistenciasEsteMes.length;
         }
+
+        function actualizarCitasHoyDashboard(){
+            let tr = traducciones[idioma];
+            let tbody = document.getElementById("dahlistaCitasHoy");
+            let contador = document.getElementById("dashContadorCitas");
+            let titulo = document.getElementById("dashTituloCitasHoy");
+            if (!tbody) return;
+            if (titulo) titulo.textContent = tr.DashCitasHoy;
+
+            let hoy = new Date();
+            let fechaHoy = hoy.getFullYear() + '-' + 
+            String(hoy.getMonth() + 1).padStart(2, '0') + '-' +
+            String(hoy.getDate()).padStart(2, '0');
+
+            let citasHoy = citas.filter(function(c){
+                return c.fecha === fechaHoy;
+            });
+            citasHoy.sort(function(a,b){
+                return a.hora > b.hora ? 1 : -1;
+            });
+
+            if (contador) {
+                contador.textContent = citasHoy.length + ' '  +
+                (idioma === 'es' ? 'citas' : 'appointments');
+
+            }
+            if (citasHoy.length === 0){
+                tbody.innerHTML = '<tr><td colspan="4" style= "padding: 20px 0;' +
+                'text-align: center; font-size:13px; color:#8b8fa8;">' +
+                 tr.dashSinCitas + '</td></tr>';
+                return;
+            }
+            let colores = ['#EEEDFE','#e1f5ee','#faedea','#faece7','#e6f1fb'];
+            let textColores = ['#3c3489','#085041','#633806','#712b13','#0c447c'];
+
+            tbody.innerHTML = "";
+            for (let i=0; i< citasHoy.length; i++){
+                let c = citasHoy[i];
+                let iniciales = c.paciente.split(" ").map(function(n) {return n[0]}).join("").substring(0,2).toUpperCase();
+
+                let colorIdx = i % colores.length;
+                let bgColor = colores[colorIdx];
+                let textColor = textColores[colorIdx];
+
+                let estadoHTML = "";
+                if (c.asistencia === 'asistio') {
+                    estadoHTML = '<span style="background: #eaf3de; color: #3b6d11;' +
+                    'font-size:11px; font-weight:500; padding: 3px 10px;'+
+                    'border-radius: 99px;">' + tr.dashAsistio + '</span>';
+                } else if (c.asistencia === 'no_asistio') {
+                    estadoHTML = '<span style="background: #fcebeb; color: #a32d2d;' +
+                    'font-size:11px; font-weight:500; padding: 3px 10px;' +
+                    'border-radius: 99px;">' + tr.dashNoAsistio + '</span>';
+                } else {
+                    estadoHTML = '<span style="background: #eeedfe; color: #3c3489;' +
+                    'font-size:11px; font-weight:500; padding: 3px 10px;' +
+                    'border-radius: 99px;">' + tr.dashPendiente + '</span>';
+                }
+
+                let fila = '<tr style="border-bottom: 0.5px solid #f0f2f7;">' +
+                '<td style="padding: 12px 0; font-size: 12px; font-weight:500;' +
+                'color: #534ab7;">' + c.hora + '</td>' +
+                '<td style="padding: 12px 0; ">' +
+                '<div style="display: flex; align-items: center; gap: 10px;">' +
+                
     }
 
 

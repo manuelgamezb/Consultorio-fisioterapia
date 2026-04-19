@@ -1456,8 +1456,64 @@ function cerrarTodosLosModales(){
         if (metricaInasistencias){
             metricaInasistencias.textContent = inasistenciasEsteMes.length;
         }
+
+        //barras de progreso
+
+        let divBarras= document.getElementById("barrasProgreso");
+        if (divBarras) return;
+
+        if (pacientes.length > 0){
+            divBarras.innerHTML = '<p style= "font-size: 13px; color: #8B8FA8; padding: 16px 0;">No hay pacientes registrados</p>';
+            return;
+        }
+
+        let html = "";
+        for (let i=0; i< pacientes.length; i++){
+            let nombre = pacientes[i].nombre;
+
+            let citaPaciente = citas.filter(function(c){
+                let fecha = new Date(c.fecha);
+                return c.paciente === nombre && fecha.getMonth() === month && fecha.getFullYear() === year;
+            });
+
+            let total = citaPaciente.length;
+            if (total === 0) continue;
+            let asistidas = citaPaciente.filter(function(c){
+                return c.asistencia === "asistio";
+            }).length;
+
+            let porcentaje = Math.round((asistidas / total) * 100);
+
+            let colorBarra = "#534ab7";
+            if (porcentaje >= 80) colorBarra = "#0f6e56";
+            else if (porcentaje >= 50) colorBarra = "#a32d2d";
+
+            let iniciales = nombre.split(" ").map(function(n){ return n[0];}).join("").substring(0,2).toUpperCase();
+
+            html += '<div style="display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 0.5px solid #f0f2f7;">' +
+            '<div style="width: 32px; height: 32px; border-radius: 50%; background:#eeedfe; color: #534ab7;' +
+            'display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600;flex-shrink: 0;">' + iniciales + '</div>' +
+            '<div style="flex-grow: 1;">' +
+            '<div style="display: flex; justify-content: space-between; margin-bottom: 5px;">' +
+            '<span style="font-size: 13px; font-weight: 500; color: #1a1f36;">' + nombre + '</span>' +
+            '<span style="font-size: 11px; color: #8b8fa8;">'+ asistidas + ' / ' + total + ' (' + porcentaje + '%)</span>' +
+            '</div>' +
+            '<div style="background: #f0f2f7; border-radius: 99px; height: 6px; width: 100%;">' +
+            '<div style="background: ' + colorBarra + '; height: 6px; border-radius: 99px; width: ' + porcentaje + '%;transition: width 0.5s;"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+        } 
+                if (html === ""){
+                    html = '<p style= "font-size: 13px; color: #8B8FA8; padding: 16px 0;">' +
+                    (idioma === 'es' ? "Sin Citas registradas este mes": "No Appointments Registered This Month") + '</p>';
+                }
+                divBarras.innerHTML = html;
     }
-         
+      
+
+
+        
 
 
         function actualizarCitasHoyDashboard(){

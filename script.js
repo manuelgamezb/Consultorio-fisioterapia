@@ -1448,7 +1448,7 @@ function cerrarTodosLosModales(){
             metricaSesiones.textContent = SesionesEsteMes.length;
         }
 
-        let inasistenciasEsteMes = citasHoy.filter(function(c){
+        let inasistenciasEsteMes = citas.filter(function(c){
             let fecha = new Date(c.fecha);
             return c.asistencia === "no_asistio" && fecha.getMonth() === month && fecha.getFullYear() === year;
         });

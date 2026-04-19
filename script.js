@@ -1460,9 +1460,9 @@ function cerrarTodosLosModales(){
         //barras de progreso
 
         let divBarras= document.getElementById("barrasProgreso");
-        if (divBarras) return;
+        if (!divBarras) return;
 
-        if (pacientes.length > 0){
+        if (pacientes.length === 0){
             divBarras.innerHTML = '<p style= "font-size: 13px; color: #8B8FA8; padding: 16px 0;">No hay pacientes registrados</p>';
             return;
         }
@@ -1510,7 +1510,7 @@ function cerrarTodosLosModales(){
                 }
                 divBarras.innerHTML = html;
     }
-      
+
 
 
         

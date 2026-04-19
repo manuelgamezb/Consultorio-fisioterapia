@@ -162,9 +162,11 @@ let traducciones = {
         btnCerrarSesion: "Cerrar Sesion",
         dashcitasHoy: "Citas de hoy",
         dashSinCitas: "No hay citas programadas para hoy",
+        dashAsistio: "Asistio",
         dashHora: "Hora",
             dashPaciente: "Paciente", dashTipo: "Tipo", dashEstado: "Estado",
             dashPendiente: "Pendiente", dashNoAsistio: "No asistio",
+            dashNoAsistio: "No asistio"
 
     
 
@@ -1441,7 +1443,7 @@ function cerrarTodosLosModales(){
             let fecha = new Date(s.fecha);
             return fecha.getMonth() === month && fecha.getFullYear() === year;
         });
-        let metricaSesiones = document.getElementById("metricaSesiones");
+        let metricaSesiones = document.getElementById("metricaSesionesMes");
         if (metricaSesiones){
             metricaSesiones.textContent = SesionesEsteMes.length;
         }
@@ -1453,16 +1455,18 @@ function cerrarTodosLosModales(){
         let metricaInasistencias = document.getElementById("metricaInasistenciasMes");
         if (metricaInasistencias){
             metricaInasistencias.textContent = inasistenciasEsteMes.length;
+            }
         }
-        } 
+         
+
 
         function actualizarCitasHoyDashboard(){
             let tr = traducciones[idioma];
-            let tbody = document.getElementById("dashlistaCitasHoy");
+            let tbody = document.getElementById("dashListaCitasHoy");
             let contador = document.getElementById("dashContadorCitas");
             let titulo = document.getElementById("dashTituloCitasHoy");
             if (!tbody) return;
-            if (titulo) titulo.textContent = tr.DashCitasHoy;
+            if (titulo) titulo.textContent = tr.dashCitasHoy;
 
             let hoy = new Date();
             let fechaHoy = hoy.getFullYear() + '-' + 

@@ -1455,8 +1455,8 @@ function cerrarTodosLosModales(){
         let metricaInasistencias = document.getElementById("metricaInasistenciasMes");
         if (metricaInasistencias){
             metricaInasistencias.textContent = inasistenciasEsteMes.length;
-            }
         }
+    }
          
 
 
@@ -1466,7 +1466,7 @@ function cerrarTodosLosModales(){
             let contador = document.getElementById("dashContadorCitas");
             let titulo = document.getElementById("dashTituloCitasHoy");
             if (!tbody) return;
-            if (titulo) titulo.textContent = tr.dashCitasHoy;
+            if (titulo) titulo.textContent = tr.dashcitasHoy;
 
             let hoy = new Date();
             let fechaHoy = hoy.getFullYear() + '-' + 
@@ -1536,7 +1536,7 @@ function cerrarTodosLosModales(){
                 tbody.innerHTML += fila;
             }
 
-    }
+        }
 
 
 

@@ -589,7 +589,7 @@ function guardarPaciente(){
     let nombre = document.getElementById("nombrePaciente").value;
     let telefono = document.getElementById("telefonoPaciente").value;
     let direccion = document.getElementById("direccionPaciente").value;
-        let fechaNac = document.getElementById("nacimientoPaciente").value;
+        let fechaNac = document.getElementById("fechaNacimientoPaciente").value;
     if (nombre === ""|| telefono === "") {
         alert("por favor llene todos los campos");
         return;
@@ -608,7 +608,7 @@ guardarPacienteEnFirebase(paciente).then(function(){
     document.getElementById("nombrePaciente").value = "";
     document.getElementById("telefonoPaciente").value = "";
     document.getElementById("direccionPaciente").value = "";
-    document.getElementById("nacimientoPaciente").value = "";
+    document.getElementById("fechaNacimientoPaciente").value = "";
     alert("Paciente guardado exitosamente");
 }).catch(function(error){
     alert("Error al guardar: " + error.message);

@@ -1430,7 +1430,7 @@ function cerrarTodosLosModales(){
             metricaPacientes.textContent = pacientes.length;
         }
 
-        let fechaHoy = year + '-' + String(month + 1).padStart(2, '0') + '-' + String(day).padStart(2, '0');
+        let fechaHoy = year + '-' + String(month + 1).padStart(2, '0') + '-' + String(dia).padStart(2, '0');
 
         let citasHoy = citas.filter(function(c){
             return c.fecha === fechaHoy;
@@ -1459,7 +1459,7 @@ function cerrarTodosLosModales(){
 
         //barras de progreso
 
-        let divBarras= document.getElementById("barrasProgreso");
+        let divBarras = document.getElementById("barrasProgreso");
         if (!divBarras) return;
 
         if (pacientes.length === 0){
@@ -1509,7 +1509,7 @@ function cerrarTodosLosModales(){
                     (idioma === 'es' ? "Sin Citas registradas este mes": "No Appointments Registered This Month") + '</p>';
                 }
                 divBarras.innerHTML = html;
-    }
+            }
 
 
 

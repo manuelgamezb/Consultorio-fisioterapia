@@ -166,7 +166,7 @@ let traducciones = {
         dashHora: "Hora",
             dashPaciente: "Paciente", dashTipo: "Tipo", dashEstado: "Estado",
             dashPendiente: "Pendiente", dashNoAsistio: "No asistio",
-            dashNoAsistio: "No asistio"
+           
 
     
 
@@ -246,7 +246,6 @@ let traducciones = {
         labelFechaFin: "To:",
         btnGenerarInasistencias: "Generate Absence Report",
         btnCerrarSesion: "Close Session",
-        btnCerrarSesion: "Close Session",
         dashcitasHoy: "Today's Appointments",
         dashSinCitas: "No appointments scheduled for today",
         dashHora: "Time",
@@ -287,7 +286,7 @@ function cambiarIdioma() {
     mostrarSesiones();
     mostrarCalendarioSemanal();
 
-    document.getElementById("formPacienteTitulo").textContent = tr.formPacienteTitulo;
+    document.getElementById("formPacientesTitulo").textContent = tr.formPacienteTitulo;
     document.getElementById("labelNombre").textContent = tr.labelNombre;
     document.getElementById("labelTelefono").textContent = tr.labelTelefono;
     document.getElementById("labelDireccion").textContent = tr.labelDireccion;  
@@ -365,13 +364,13 @@ function cambiarIdioma() {
     document.getElementById("labelFechaFin").textContent = tr.labelFechaFin;
     document.getElementById("btnGenerarInasistencias").textContent = tr.btnGenerarInasistencias;
     document.getElementById("btnCerrarSesion").textContent = tr.btnCerrarSesion;
-        document.getElementById("dashcitasHoy").textContent = tr.dashcitasHoy;
+        document.getElementById("dashTituloCitasHoy").textContent = tr.dashcitasHoy;
         document.getElementById("dashThHora").textContent = tr.dashHora;
         document.getElementById("dashColPaciente").textContent = tr.dashPaciente;
         document.getElementById("dashColTipo").textContent = tr.dashTipo;
         document.getElementById("dashColEstado").textContent = tr.dashEstado;
         document.getElementById("dashTituloBarras").textContent = idioma === "es" ? "Asistencias este mes" : "Attendance this month";
-        
+
 }
 
 

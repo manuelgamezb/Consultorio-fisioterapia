@@ -263,23 +263,22 @@ function cambiarIdioma() {
 
     document.getElementById("menuTitulo1").textContent = tr.menuTitulo1;
     document.getElementById("menuDesc1").textContent = tr.menuDesc1;
-    document.getElementById("menuBtn1").textContent = tr.menuBtn1;
+   
 
     document.getElementById("menuTitulo2").textContent = tr.menuTitulo2;
     document.getElementById("menuDesc2").textContent = tr.menuDesc2;
-    document.getElementById("menuBtn2").textContent = tr.menuBtn2;
+    
 
     document.getElementById("menuTitulo3").textContent = tr.menuTitulo3;
     document.getElementById("menuDesc3").textContent = tr.menuDesc3;
-    document.getElementById("menuBtn3").textContent = tr.menuBtn3;
-
+   
     document.getElementById("menuTitulo4").textContent = tr.menuTitulo4;
     document.getElementById("menuDesc4").textContent = tr.menuDesc4;
-    document.getElementById("menuBtn4").textContent = tr.menuBtn4;
+    
 
     document.getElementById("menuTitulo5").textContent = tr.menuTitulo5;
     document.getElementById("menuDesc5").textContent = tr.menuDesc5;
-    document.getElementById("menuBtn5").textContent = tr.menuBtn5;
+    
 
     mostrarPacientes();
     mostrarTablaCitas();

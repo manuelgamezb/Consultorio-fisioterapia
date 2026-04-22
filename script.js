@@ -365,6 +365,13 @@ function cambiarIdioma() {
     document.getElementById("labelFechaFin").textContent = tr.labelFechaFin;
     document.getElementById("btnGenerarInasistencias").textContent = tr.btnGenerarInasistencias;
     document.getElementById("btnCerrarSesion").textContent = tr.btnCerrarSesion;
+        document.getElementById("dashcitasHoy").textContent = tr.dashcitasHoy;
+        document.getElementById("dashThHora").textContent = tr.dashHora;
+        document.getElementById("dashColPaciente").textContent = tr.dashPaciente;
+        document.getElementById("dashColTipo").textContent = tr.dashTipo;
+        document.getElementById("dashColEstado").textContent = tr.dashEstado;
+        document.getElementById("dashTituloBarras").textContent = idioma === "es" ? "Asistencias este mes" : "Attendance this month";
+        
 }
 
 

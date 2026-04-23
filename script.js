@@ -1,3 +1,4 @@
+const { act } = require("react");
 
 //====== AUTENTICACION ======//
 function iniciarSesion(){
@@ -369,6 +370,14 @@ function cambiarIdioma() {
         document.getElementById("dashColTipo").textContent = tr.dashTipo;
         document.getElementById("dashColEstado").textContent = tr.dashEstado;
         document.getElementById("dashTituloBarras").textContent = idioma === "es" ? "Asistencias este mes" : "Attendance this month";
+
+        document.getElementById("labelPacientesTotales").textContent = idioma === "es" ? "Pacientes Totales" : "Total Patients";
+        document.getElementById("labelCitasHoy").textContent = idioma === "es" ? "Citas Hoy" : "Appointments Today";
+        document.getElementById("labelSesionesMes").textContent = idioma === "es" ? "Sesiones este mes" : "Sessions This Month";
+        document.getElementById("labelInasistenciasMes").textContent = idioma === "es" ? "Inasistencias este mes" : "Absences This Month";
+
+        actualizarCitasHoyDashboard();
+        actualizarMetricas();
 
 }
 

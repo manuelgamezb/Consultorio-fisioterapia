@@ -1498,9 +1498,9 @@ function cerrarTodosLosModales(){
 
             let porcentaje = Math.round((asistidas / total) * 100);
 
-            let colorBarra = "#534ab7";
+            let colorBarra = "#a32d2d";
             if (porcentaje >= 80) colorBarra = "#0f6e56";
-            else if (porcentaje >= 50) colorBarra = "#a32d2d";
+            else if (porcentaje >= 50) colorBarra = "#534ab7";
 
             let iniciales = nombre.split(" ").map(function(n){ return n[0];}).join("").substring(0,2).toUpperCase();
 

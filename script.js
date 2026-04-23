@@ -1,4 +1,4 @@
-const { act } = require("react");
+
 
 //====== AUTENTICACION ======//
 function iniciarSesion(){
@@ -1523,7 +1523,7 @@ function cerrarTodosLosModales(){
                     (idioma === 'es' ? "Sin Citas registradas este mes": "No Appointments Registered This Month") + '</p>';
                 }
                 divBarras.innerHTML = html;
-            }
+    }
 
 
 

@@ -481,6 +481,7 @@ function cargarCitas(){
         mostrarCitas();
         actualizarMetricas();
         actualizarCitasHoyDashboard();
+        actualizarNotificaciones();
     });
     
 }
@@ -1190,7 +1191,7 @@ function mostrarCitasControl(){
     let tbody = document.getElementById("listaControlAsistencias");
     tbody.innerHTML = "";
 
-    let citasHoy = citas.filter(function(cita) {
+    let citasHoy = citas.filter(function(c) {
         return cita.fecha === fechaHoy;
 
     });

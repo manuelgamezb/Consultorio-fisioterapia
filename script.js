@@ -1630,7 +1630,7 @@ function cerrarTodosLosModales(){
             });
             let badge= document.getElementById("badgeNotificaciones");
             let lista= document.getElementById("listaNotificaciones");
-            if (citasHoy.length === 0){
+            if (citasHoy.length > 0){
                 badge.style.display = "flex";
                 badge.textContent = citasHoy.length;
             } else {

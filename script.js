@@ -1608,6 +1608,53 @@ function cerrarTodosLosModales(){
 
         }
 
+        function toggleNotificaciones(){
+            let panel = document.getElementById("panelNotificaciones");
+            if (panel.style.display === "block"){
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+                actualizarNotificaciones();
+            }
+
+        }
+        function actualizarNotificaciones(){
+            let hoy = new Date();
+            let fechaHoy = hoy.getFullYear() + '-' +
+            String(hoy.getMonth() + 1).padStart(2, '0') + '-' +
+            String(hoy.getDate()).padStart(2, '0');
+
+            let citasHoy = citas.filter(function(c){
+                return c.fecha === fechaHoy;
+            });
+            let badge= document.getElementById("badgeNotificaciones");
+            let lista= document.getElementById("listaNotificaciones");
+            if (citasHoy.length === 0){
+                badge.style.display = "flex";
+                badge.textContent = citasHoy.length;
+            } else {
+                badge.style.display = "none";
+            }
+            if (citasHoy.length === 0){
+                lista.innerHTML = '<p style="font-size: 12px; color: #8b8fa8; padding: 12px 16px;">' + 
+                (idioma === 'es' ? "No hay citas pendientes hoy" : "No pending appointments today") + '</p>';
+                return;
+            }
+
+            citasHoy.sort(function(a,b){
+                return a.hora > b.hora ? 1 : -1;
+            });
+            let html = "";
+            for (let i=0; i< citasHoy.length; i++){
+                let c = citasHoy[i];
+                html += '<div style="padding: 10px 16px; border-bottom: 1px solid #2a3150;">' +
+                '<div style= "font-size: 12px; font-weight: 500; color: white;">' + c.paciente + '</div>' +
+                '<div style= "font-size: 11px; color: #8b8fa8; margin-top: 2px;">' + c.hora + ' - ' + c.tipo + '</div>' +
+                '</div>';
+            }
+            lista.innerHTML = html;
+        }
+
 
 
 

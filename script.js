@@ -365,6 +365,7 @@ function cambiarIdioma() {
     document.getElementById("btnGenerarInasistencias").textContent = tr.btnGenerarInasistencias;
     document.getElementById("btnCerrarSesion").textContent = tr.btnCerrarSesion;
         document.getElementById("dashTituloCitasHoy").textContent = tr.dashcitasHoy;
+        document.getElementById("tituloNotificaciones").textContent = tr.dashcitasHoy; 
         document.getElementById("dashThHora").textContent = tr.dashHora;
         document.getElementById("dashColPaciente").textContent = tr.dashPaciente;
         document.getElementById("dashColTipo").textContent = tr.dashTipo;
@@ -643,8 +644,9 @@ function mostrarPacientes(){
             "<td>" + (pacientes[i].direccion || "-") + "</td>" +
             "<td>" + (pacientes[i].fechaNac || "-") + "</td>" +
             "<td>" +
-            "<button onclick=\"editarPaciente('" + pacientes[i]._key + "')\" style='background:#ffc107; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Editar</button>" +
-            "<button onclick=\"eliminarPaciente('" + pacientes[i]._key + "')\" style='background:#dc3545; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;'>Eliminar</button>" +
+            "<button onclick=\"verPerfilPaciente('" + pacientes[i]._key + "')\" style='background: #534ab7; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Perfil</button>" +
+            "<button onclick=\"editarPaciente('" + pacientes[i]._key + "')\" style='background: #ffc107; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Editar</button>" +
+            "<button onclick= \"eliminarPaciente('" + pacientes[i].key + "')\style= background: #dc3545; color: white; border:none; padding: 5px 10px; border-radius:5px; cursor: pointer;'>Eliminar</button> " +
         "</td>" +
             "</tr>";
         tbody.innerHTML += fila;
@@ -1341,6 +1343,126 @@ function cerrarTodosLosModales(){
 }   
     document.getElementById("modalOverlay").classList.remove("active");
     }
+
+    function verPerfilPaciente(key ){
+        let paciente = pacientes.find(function(p){ return p._key === key; });
+        if (!paciente) return;
+        let citasPaciente = citas.filter(function(c){ return c.paciente === paciente.nombre; });
+        let sesionesPaciente = sesiones.filter(function(s){ return s.paciente === paciente.nombre; });
+
+        let totalCitas = citasPaciente.length;
+        let asistidas = citasPaciente.filter(function(c){ return c.asistencia === "asistio"; }).length;
+        let porcentaje = totalCitas > 0 ? Math.round((asistidas / totalCitas) * 100) : 0;
+
+        let colorBarra = "#a32d2d";
+        if (porcentaje >= 80) colorBarra = "#0f6e56";
+        else if (porcentaje >= 50) colorBarra = "#534ab7";
+
+        let iniciales = paciente.nombre.split(" ").map(function(n){return(n)[0];}).join("").substring(0,2).toUpperCase();
+        let html = '<div style="display: flex; gap:20px; flex-wrap: wrap;">';
+
+        //---tarjeta de datos personales---//
+        html += '<div style="flex: 1; min-width: 260px; background: #f8f9fc; border-radius: 12px; padding: 20px;">';
+        html += '<div style= "display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">';
+        html += '<div style="width: 52px; height: 52px; border-radius: 50%; background: #eeedfe; color: #534ab7; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight:700;">' + iniciales + '</div>';
+        html += '<div><div style="font-size:16px; font-weight: 600; color: #1a1f36;">' + paciente.nombre + '</div>';
+        html += '<div style="font-size:12px; color: #8b8fa8;">Paciente</div></div>';
+        html += '</div>';
+
+        html += '<hr style= "border: none; border-top: 0.5px solid #e8eaf0; margin-botom: 14px;">';
+        html += '<p style="font-size: 13px; color: #1a1f36; margin: 8px 0;"><strong>☎️ Telefono:</strong>' + (paciente.telefono || "-") + '</p>';
+        html += '<p style="font-size: 13px; color: #1a1f36; margin: 8px 0;"><strong>🏘️ Direccion:</strong>' + (paciente.direccion || "-") + '</p>';
+        html += '<p style="font-size: 13px; color: #1a1f36; margin: 8px 0;"><strong>🥳 Fecha de Nacimiento:</strong>' + (paciente.fechaNac|| "-") + '</p>';
+        html += '<hr style="border: none; border-top:0.5px; solid: #e8eaf0; margin:14px 0;">';
+        html += '<p style="font-size: 12px; color: #8b8fa8; margin-bottom: 6px;">Asistencia General</p>';
+        html += '<div style="background: #f0f2f7; border-radius: 99px; height: 8px; widht; 100%; margin-bottom: 6px;">';
+        html += '<div style= "background:' + colorBarra + '; height: 8px; border-radius: 99px; widht:' + porcentaje + '%;"></div>';
+        html += '<p style= "font-size: 12px; color: #8b8fa8;>' + asistidas + ' de ' + totalCitas + ' citas  (' + porcentaje + '%)</p>';
+        html += '</div>';
+
+        //--- Columnba derecha ---
+        html += '<div style="flex:2; min-widht: 300px; display: flex; flex-direction: column; gap: 16px;">';
+        
+        // Historial de Citas
+        html += '<div style="background: #f8f9fc; border-radius: 12px; padding: 20px;">';
+        html += '<h4 style= font-size: 13px; font-weight: 600; color: #1a1f36; margin: 0 0 12px 0;"> 📅 Historial de citas</h4>';
+        if (citasPaciente.length === 0) {
+            html += '<p style="font-size: 13px; color: #8b8fa8;"> No hay citas registradas.</p>';
+        } else {
+
+            citasPaciente.sort(function(a,b){return a.fecha > b.fecha ? -1: 1;});
+            html += '<table style="width: 100%; border-collapse:collapse;">';
+            html += '<thead><tr style="border-bottom: 0.5px solid #e8eaf0;"><th style="text-align:left; font-size: 11px; color: #8b8fa8; padding: 6px 0;"> Fecha</th><th style="text-align: right; font-size:11px; color: #8b8fa8; padding: 6px 0;">Estado</th></tr></thead>';
+            html += '<tbody>';
+
+            for (let i=0; i<citasPaciente.length; i++){
+                let estadoColor = c.asistencia === 'asistio' ? '#0f6e56' : c.asistencia === 'no_asistio' ? '#a32d2d' : '#534ab7';
+                let estadoBg = c.asistencia === 'asisitio' ? '#e1f5ee' : c. asistencia === 'no_asistio' ? '#fcebeb' : ' #eeedfe';
+                let estadoTexto = c.asistencia === 'asistio' ? 'Asistio' : c.asistencia === 'no_asistio' ? 'No asistio' : 'Pendiente';
+                html += '<tr style="border-bottom:0.5px solid #f0f2f7;">';
+                html += '<td style="font-size: 12px; color: #1a1f36; padding:8px 0;">' + c.fecha + '</td>';
+                html += '<td style="font-size: 12px; color: #1a1f36; padding:8px 0;">' + c.tipo + '</td>';
+                html += '<td style="text-align:right; padding: 8px 0;"><span style="background:' + estadoBg + '; color:' + estadoColor + '; font-size:11px; padding:2px 8px; border-radius: 99px;">' + estadoTexto + '</span></td>';
+                html += '</tr>';
+
+            }
+            html += '</tbody></table>';
+    }   
+
+    html += '</div>';
+
+    //hISTORIAL DE SESIONES
+    html += '<div style= "background: # f8f9fc; border-radius: 12px; padding: 20px;">';
+    html += '<h4 style="font-size: 13px; font-weight: 600; color: #1a1f36; margin: 0 0 12px 0;"> Historial de sesiones</h4>';
+    if (sesionesPaciente.length === 0){
+        html += '<p style= "font-size: 13px; color: #8b8fa8;"> No hay sesiones registradas </p>';
+    } else {
+        sesionesPaciente.sort(function(a,b){ return a.fecha > b.fecha ? -1 : 1;});
+        for (let i=0;  i<sesionesPaciente.length; i++) {
+            let s = sesionesPaciente[i];
+            html +='<div style= "border:0.5px solid #e8eaf0; border-radius: 10px; padding:14px; margin-bottom:10px; background: white;">';
+            html += '<p style= "font-size:12px; font-weight:600px; color: #534ab7; margin: 0 0 8px 0;"> 🗓️' + s.fecha + '</p>';
+            html += '<p style= "font-size: 12px; color: #1a1f36; margin: 4px 0;"><strong>Tratamiento:</strong>' + (s. tratamiento || "-") + '</p>';
+            html += '<p style= "font-size: 12px; color: #1a1f36; margin: 4px 0;"><strong>Evolucion:</strong>' + (s. evolucion || "-") + '</p>';
+            html += '<p style= "font-size: 12px; color: #1a1f36; margin: 4px 0;"><strong>Proximos pasos:</strong>' + (s.proximos || "-") + '</p>';
+            html += '<hr style= "border:none; border-top: 0.5px solid #e8eaf0; margin: 10px 0;">';
+            html += '<p style="font-size:11px; color: #8b8fa8; margin-bottom:4px;">📝 Notas del Doctor: </p>';
+            html += '<textarea id="notaDoctor_' + s.key + '" style="width:100%; border: 0.5px; solid #e8eaf0; border-radius: 8px; padding: 8px; font-size: 12px; color: #1a1f36; resize: vertical; mini-height:60px; box-sizing:border-box;" placeholder= "Medicamentos, Observaciones Importantes...">' + (s.notasDoctor || "") + '</textarea>';
+            html += '<button onclick= "guardarNotaDoctor(\'' + s._key + '\')" style="margin-top: 6px; background: #534ab7; color:white; border:none; padding: 5px; 14px; border-radius: 6px; font-size: 11px; cursor: pointer;"> Guardar Nota</button>';
+            html += '</div>';
+
+        }
+
+    }
+    html += '</div>';
+    html += '</div>';
+    html += '</div>';
+
+    document.getElementById("tituloPerfilPaciente").textContent = "perfil de " + paciente.nombre;
+    document.getElementById("cuerpoPerfilPaciente").innerHTML = html;
+    document.getElementById("modalPerfilPaciente").classList.add("active");
+    document.getElementById("modalOverlay").classList.add("active");
+
+}
+
+    function guardarNotaDoctor(key){
+        let textarea = document.getElementById("notaDoctor_" + key);
+        if (!textarea) return;
+        let nota = textarea.value;
+        actualizarSesionEnFirebase(key, {notasDoctor: nota})
+            .then(function(){alert ("Nota Guardada exitosamente"); })
+            .catch(function(error){alert("Error: " + error.message); });
+
+    }
+
+
+
+            
+
+
+
+
+
     function verExpediente(nombrePaciente){
         let historial = "";
         let contenido ="";

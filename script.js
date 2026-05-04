@@ -1370,9 +1370,20 @@ function cerrarTodosLosModales(){
         html += '</div>';
 
         html += '<hr style= "border: none; border-top: 0.5px solid #e8eaf0; margin-botom: 14px;">';
-        html += '<p style="font-size: 13px; color: #1a1f36; margin: 8px 0;"><strong>☎️ Telefono:</strong>' + (paciente.telefono || "-") + '</p>';
-        html += '<p style="font-size: 13px; color: #1a1f36; margin: 8px 0;"><strong>🏘️ Direccion:</strong>' + (paciente.direccion || "-") + '</p>';
-        html += '<p style="font-size: 13px; color: #1a1f36; margin: 8px 0;"><strong>🥳 Fecha de Nacimiento:</strong>' + (paciente.fechaNac|| "-") + '</p>';
+        html += '<div style= "background": white; border: 0.5 px solid: #e8eaf0; border-radius: 14px; margin-bottom: 14px;">';
+        html += '<p style="font-size:12px; font-weight:600; color: #534ab7;margin: 0 0 10px 0;"> ✏️ Editar datos</p>';
+        html += 'div style="margin-bottom: 8px;"><label style="font-size: 11px; color: #8b8fa8;"> Nombre</label>';
+        html += '<input id="editarNombre" type= "text" value:"' + (paciente.nombre || "") + '" style= "width:100%; border: 0.5px solid #e8eaf0; border-radius:6px 8px; font-sizing: bordex-box; margin-top: 2px;"></div>';
+        html += '<div style="margin-bottom: 8px;"><label style="font-size: 11px; color: #8b8fa8;"> Telefono</label>';
+        html += '<input id="editTelefono" type= "tel" value:"' + (paciente.telefono || "") + '" style= "width:100%; border: 0.5px solid #e8eaf0; border-radius:6px 8px; font-sizing: bordex-box; margin-top: 2px;"></div>';
+        html += '<div style="margin-bottom: 8px;"><label style="font-size: 11px; color: #8b8fa8;"> Direccion</label>';
+        html += '<input id="editDireccion" type= "text" value:"' + (paciente.direccion || "") + '" style= "width:100%; border: 0.5px solid #e8eaf0; border-radius:6px 8px; font-sizing: bordex-box; margin-top: 2px;"></div>';
+        html += '<div style="margin-bottom: 8px;"><label style="font-size: 11px; color: #8b8fa8;">Fecha de nacimiento</label>';
+        html += '<input id="editFechaNac" type= "date" value:"' + (paciente.fechaNac || "") + '" style= "width:100%; border: 0.5px solid #e8eaf0; border-radius:6px 8px; font-sizing: bordex-box; margin-top: 2px;"></div>';
+        html += '<button onclick = "guardarEdicionperfil(\'' + paciente._key + '\')" style="widht:100%; background: #534ab7; color: white; border: none; padding: 8px; border-radius: 6px; font-size: 12px; box-sizing:bordex-box; margin-top:2px;"></div>';
+        html += '</div>';
+
+
         html += '<hr style="border: none; border-top:0.5px; solid: #e8eaf0; margin:14px 0;">';
         html += '<p style="font-size: 12px; color: #8b8fa8; margin-bottom: 6px;">Asistencia General</p>';
         html += '<div style="background: #f0f2f7; border-radius: 99px; height: 8px; widht; 100%; margin-bottom: 6px;">';
@@ -1446,6 +1457,33 @@ function cerrarTodosLosModales(){
 }
 
     function guardarNotaDoctor(key){
+        let nombre = document.getElementById("editNombre").value;
+        let telefono = document.getElementById("editTelefono").value;
+        let direccion = document.getElementById("editDireccion").value;
+        let fechaNac = document.getElementById("editFechaNac").value;
+
+        if (nombre ==="" || telefono ===""){
+            alert("Nombre y telefono son obligatorios");
+            return;
+        }
+
+        actualizarPacienteEnFirebase(key, {
+            nombre: nombre,
+            telefono : telefono,
+            direccion : direccion,
+            fechaNac: fechaNac
+        })
+
+        .then(function(){
+            alert("Datos actualizados exitosamente");
+            cerrarModal("modalPerfilPaciente");
+        })
+
+        .catch(function(error){alert("Error: " + error.message);
+        });
+    }
+
+
         let textarea = document.getElementById("notaDoctor_" + key);
         if (!textarea) return;
         let nota = textarea.value;
@@ -1453,7 +1491,7 @@ function cerrarTodosLosModales(){
             .then(function(){alert ("Nota Guardada exitosamente"); })
             .catch(function(error){alert("Error: " + error.message); });
 
-    }
+    
 
 
 

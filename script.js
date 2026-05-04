@@ -1380,7 +1380,7 @@ function cerrarTodosLosModales(){
         html += '<input id="editDireccion" type= "text" value:"' + (paciente.direccion || "") + '" style= "width:100%; border: 0.5px solid #e8eaf0; border-radius:6px 8px; font-sizing: bordex-box; margin-top: 2px;"></div>';
         html += '<div style="margin-bottom: 8px;"><label style="font-size: 11px; color: #8b8fa8;">Fecha de nacimiento</label>';
         html += '<input id="editFechaNac" type= "date" value:"' + (paciente.fechaNac || "") + '" style= "width:100%; border: 0.5px solid #e8eaf0; border-radius:6px 8px; font-sizing: bordex-box; margin-top: 2px;"></div>';
-        html += '<button onclick = "guardarEdicionperfil(\'' + paciente._key + '\')" style="widht:100%; background: #534ab7; color: white; border: none; padding: 8px; border-radius: 6px; font-size: 12px; box-sizing:bordex-box; margin-top:2px;"></div>';
+        html += '<button onclick = "guardarEdicionperfil(\'' + paciente._key + '\')" style="widht:100%; background: #534ab7; color: white; border: none; padding: 8px; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: 500;">Guardar cambios</button>';
         html += '</div>';
 
 
@@ -1407,6 +1407,7 @@ function cerrarTodosLosModales(){
             html += '<tbody>';
 
             for (let i=0; i<citasPaciente.length; i++){
+                let c = citasPaciente[i];
                 let estadoColor = c.asistencia === 'asistio' ? '#0f6e56' : c.asistencia === 'no_asistio' ? '#a32d2d' : '#534ab7';
                 let estadoBg = c.asistencia === 'asisitio' ? '#e1f5ee' : c. asistencia === 'no_asistio' ? '#fcebeb' : ' #eeedfe';
                 let estadoTexto = c.asistencia === 'asistio' ? 'Asistio' : c.asistencia === 'no_asistio' ? 'No asistio' : 'Pendiente';
@@ -1438,7 +1439,7 @@ function cerrarTodosLosModales(){
             html += '<p style= "font-size: 12px; color: #1a1f36; margin: 4px 0;"><strong>Proximos pasos:</strong>' + (s.proximos || "-") + '</p>';
             html += '<hr style= "border:none; border-top: 0.5px solid #e8eaf0; margin: 10px 0;">';
             html += '<p style="font-size:11px; color: #8b8fa8; margin-bottom:4px;">📝 Notas del Doctor: </p>';
-            html += '<textarea id="notaDoctor_' + s.key + '" style="width:100%; border: 0.5px; solid #e8eaf0; border-radius: 8px; padding: 8px; font-size: 12px; color: #1a1f36; resize: vertical; mini-height:60px; box-sizing:border-box;" placeholder= "Medicamentos, Observaciones Importantes...">' + (s.notasDoctor || "") + '</textarea>';
+            html += '<textarea id="notaDoctor_' + s._key + '" style="width:100%; border: 0.5px solid #e8eaf0; border-radius: 8px; padding: 8px; font-size: 12px; color: #1a1f36; resize: vertical; min-height:60px; box-sizing:border-box;" placeholder= "Medicamentos, Observaciones Importantes...">' + (s.notasDoctor || "") + '</textarea>';
             html += '<button onclick= "guardarNotaDoctor(\'' + s._key + '\')" style="margin-top: 6px; background: #534ab7; color:white; border:none; padding: 5px; 14px; border-radius: 6px; font-size: 11px; cursor: pointer;"> Guardar Nota</button>';
             html += '</div>';
 
@@ -1457,14 +1458,13 @@ function cerrarTodosLosModales(){
 }
 
     function guardarNotaDoctor(key){
-        let nombre = document.getElementById("editNombre").value;
-        let telefono = document.getElementById("editTelefono").value;
-        let direccion = document.getElementById("editDireccion").value;
-        let fechaNac = document.getElementById("editFechaNac").value;
+        let textarea= document.getElementById("notaDoctor_" + key);
+        if (!textarea) return;
+        let nota = textarea.value;
+        actualizarSesionEnFirebase(key, {notasDoctor: nota})
+        .then(function(){alert ("Nota guardada exitosamente"); })
+        .catch(function(error){alert ("Error: " + error.message); });
 
-        if (nombre ==="" || telefono ===""){
-            alert("Nombre y telefono son obligatorios");
-            return;
         }
 
         actualizarPacienteEnFirebase(key, {
@@ -1481,24 +1481,35 @@ function cerrarTodosLosModales(){
 
         .catch(function(error){alert("Error: " + error.message);
         });
-    }
-
-
-        let textarea = document.getElementById("notaDoctor_" + key);
-        if (!textarea) return;
-        let nota = textarea.value;
-        actualizarSesionEnFirebase(key, {notasDoctor: nota})
-            .then(function(){alert ("Nota Guardada exitosamente"); })
-            .catch(function(error){alert("Error: " + error.message); });
-
     
+     function guardarEdicionPerfil(key){
+        let nombre = document.getElementById("editNombre").value;
+        let telefono = document.getElementById("editTelefono").value;
+        let direccion = document.getElementById("editDireccion").value;
+        let fechaNac = document.getElementById("editFechaNac").value;
+
+        if (nombre ==="" || telefono === ""){
+            alert ("Nombre y telefono son obligatorios");
+            return;
+
+        }
+
+        actualizarPacienteEnFirebase(key, {
+            nombre: nombre,
+            telefono: telefono,
+            direccion: direccion,
+            fechaNac: fechaNac
 
 
+        })
+        .then(function(){
+            alert("Datos actualizados exitosamente");
+            cerrarModal("modalPerfilPaciente");
 
-            
+        })
+        .catch (function(error){alert("Error: " + error.message);});
 
-
-
+     }   
 
 
     function verExpediente(nombrePaciente){

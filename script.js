@@ -646,7 +646,7 @@ function mostrarPacientes(){
             "<td>" +
             "<button onclick=\"verPerfilPaciente('" + pacientes[i]._key + "')\" style='background: #534ab7; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Perfil</button>" +
             "<button onclick=\"editarPaciente('" + pacientes[i]._key + "')\" style='background: #ffc107; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;margin-right:5px;'>Editar</button>" +
-            "<button onclick= \"eliminarPaciente('" + pacientes[i].key + "')\style= background: #dc3545; color: white; border:none; padding: 5px 10px; border-radius:5px; cursor: pointer;'>Eliminar</button> " +
+            "<button onclick= \"eliminarPaciente('" + pacientes[i]._key + "')\style= background: #dc3545; color: white; border:none; padding: 5px 10px; border-radius:5px; cursor: pointer;'>Eliminar</button> " +
         "</td>" +
             "</tr>";
         tbody.innerHTML += fila;
@@ -1372,7 +1372,7 @@ function cerrarTodosLosModales(){
         html += '<hr style= "border: none; border-top: 0.5px solid #e8eaf0; margin-botom: 14px;">';
         html += '<div style= "background": white; border: 0.5 px solid: #e8eaf0; border-radius: 14px; margin-bottom: 14px;">';
         html += '<p style="font-size:12px; font-weight:600; color: #534ab7;margin: 0 0 10px 0;"> ✏️ Editar datos</p>';
-        html += 'div style="margin-bottom: 8px;"><label style="font-size: 11px; color: #8b8fa8;"> Nombre</label>';
+        html += '<div style="margin-bottom: 8px;"><label style="font-size: 11px; color: #8b8fa8;"> Nombre</label>';
         html += '<input id="editarNombre" type= "text" value:"' + (paciente.nombre || "") + '" style= "width:100%; border: 0.5px solid #e8eaf0; border-radius:6px 8px; font-sizing: bordex-box; margin-top: 2px;"></div>';
         html += '<div style="margin-bottom: 8px;"><label style="font-size: 11px; color: #8b8fa8;"> Telefono</label>';
         html += '<input id="editTelefono" type= "tel" value:"' + (paciente.telefono || "") + '" style= "width:100%; border: 0.5px solid #e8eaf0; border-radius:6px 8px; font-sizing: bordex-box; margin-top: 2px;"></div>';

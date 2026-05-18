@@ -1186,9 +1186,9 @@ function mostrarCalendarioSemanal(){
 function mostrarCitasControl(){
     let hoy = new Date();
     let year = hoy.getFullYear();
-    let month = String(hoy.getMonth() + 1).padStart(2, '0');
-    let day = String(hoy.getDate()).padStart(2, '0');
-    let fechaHoy = year + '-' + month  + '-'+ day;
+    let month = hoy.getMonth();
+    let dia = hoy.getDate();
+    let fechaHoy = year + '-' +  String(month+1).padStart(2, '0') + '-'+ String(dia).padStart(2, '0');
     
     let tbody = document.getElementById("listaControlAsistencias");
     tbody.innerHTML = "";

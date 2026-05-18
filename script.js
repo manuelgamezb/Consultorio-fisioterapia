@@ -1193,7 +1193,7 @@ function mostrarCitasControl(){
     let tbody = document.getElementById("listaControlAsistencias");
     tbody.innerHTML = "";
 
-    let citasHoy = citas.filter(function(c) {
+    let citasHoy = citas.filter(function(cita) {
         return cita.fecha === fechaHoy;
 
     });
